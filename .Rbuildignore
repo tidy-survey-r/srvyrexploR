@@ -1,3 +1,4 @@
 ^LICENSE\.md$
 ^srvyrexploR\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
