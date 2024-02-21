@@ -251,7 +251,7 @@
 #'   \item{\code{V201024}}{double PRE: In what manner did R vote}
 #'   \item{\code{V201025x}}{double PRE: SUMMARY: Registration and early vote status}
 #'   \item{\code{V201029}}{double PRE: For whom did R vote for President}
-#'   \item{\code{V201101}}{double PRE: Did R vote for President in 2016 [revised]}
+#'   \item{\code{V201101}}{double PRE: Did R vote for President in 2016 (revised)}
 #'   \item{\code{V201102}}{double PRE: Did R vote for President in 2016}
 #'   \item{\code{VotedPres2016}}{factor PRE: Did R vote for President in 2016}
 #'   \item{\code{V201103}}{double PRE: Recall of last (2016) Presidential vote choice}
@@ -261,8 +261,8 @@
 #'   \item{\code{V201230}}{double PRE: No Party Identification - closer to Democratic Party or Republican Party}
 #'   \item{\code{V201231x}}{double PRE: SUMMARY: Party ID}
 #'   \item{\code{PartyID}}{factor PRE: SUMMARY: Party ID}
-#'   \item{\code{V201233}}{double PRE: How often trust government in Washington to do what is right [revised]}
-#'   \item{\code{TrustGovernment}}{factor PRE: How often trust government in Washington to do what is right [revised]}
+#'   \item{\code{V201233}}{double PRE: How often trust government in Washington to do what is right (revised)}
+#'   \item{\code{TrustGovernment}}{factor PRE: How often trust government in Washington to do what is right (revised)}
 #'   \item{\code{V201237}}{double PRE: How often can people be trusted}
 #'   \item{\code{TrustPeople}}{factor PRE: How often can people be trusted}
 #'   \item{\code{V201507x}}{double PRE: SUMMARY: Respondent age}
@@ -279,8 +279,8 @@
 #'   \item{\code{V201547z}}{double RESTRICTED: PRE: Race of R: other specify}
 #'   \item{\code{V201549x}}{double PRE: SUMMARY: R self-identified race/ethnicity}
 #'   \item{\code{RaceEth}}{factor PRE: SUMMARY: R self-identified race/ethnicity}
-#'   \item{\code{V201600}}{double PRE: What is your (R) sex? [revised]}
-#'   \item{\code{Gender}}{factor PRE: What is your (R) sex? [revised]}
+#'   \item{\code{V201600}}{double PRE: What is your (R) sex? (revised)}
+#'   \item{\code{Gender}}{factor PRE: What is your (R) sex? (revised)}
 #'   \item{\code{V201607}}{double RESTRICTED: PRE: Total income amount - revised}
 #'   \item{\code{V201610}}{double RESTRICTED: PRE: Income amt missing - categories lt 20K}
 #'   \item{\code{V201611}}{double RESTRICTED: PRE: Income amt missing - categories 20-40K}
