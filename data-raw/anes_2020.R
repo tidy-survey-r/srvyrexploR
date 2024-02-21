@@ -40,8 +40,7 @@ anes_in_2020 %>%
   filter(V200004==3) %>%
   arrange(Pct)
 
-
-anes_2020 <- anes_in_2020 %>%
+anes_in_2020_slim <- anes_in_2020 %>%
   filter(V200004==3) %>%
   select(
     V200001,
@@ -83,7 +82,9 @@ anes_2020 <- anes_in_2020 %>%
     V201029,
     V202073, # POST: FOR WHOM DID R VOTE FOR PRESIDENT
     V202110x # PRE-POST: SUMMARY: 2020 PRESIDENTIAL VOTE
-  ) %>%
+  ) 
+
+anes_2020 <- anes_in_2020_slim %>%
   mutate(
     CaseID=V200001,
     InterviewMode = fct_recode(as.character(V200002), Video = "1", Telephone = "2", Web = "3"),
@@ -362,3 +363,4 @@ anes_2020 <- anes_ord
 summary(anes_2020)
 
 usethis::use_data(anes_2020, overwrite = TRUE)
+write_dta(anes_in_2020_slim, here::here("inst", "extdata", "anes_2020_stata_example.dta"))
