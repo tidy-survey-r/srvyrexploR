@@ -70,3 +70,57 @@
 #' @format A data frame with 18496 rows and 789 variables. See "Variable and response codebook" at \url{https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata} for variable information.
 #' @source \url{https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata}
 "recs_2020_raw"
+
+#' @title Residential Energy Consumption Survey (RECS) (2015) data
+#' @description Based on the 2015 RECS microdata with derived variables
+#' @format A data frame with 5686 rows and 141 variables:
+#' \describe{
+#'   \item{\code{DOEID}}{double Unique identifier for each respondent}
+#'   \item{\code{REGIONC}}{double Census Region (numeric)}
+#'   \item{\code{Region}}{factor Census Region (factor)}
+#'   \item{\code{Division}}{factor Census Division}
+#'   \item{\code{MSAStatus}}{factor Housing unit in Census Metropolitan Statistical Area or Micropolitan Statistical Area}
+#'   \item{\code{Urbanicity}}{factor Census 2010 Urban Type}
+#'   \item{\code{HousingUnitType}}{factor Type of housing unit}
+#'   \item{\code{YearMade}}{factor Year range when housing unit was built}
+#'   \item{\code{SpaceHeatingUsed}}{logical Space heating used}
+#'   \item{\code{HeatingBehavior}}{factor Main heating equipment household behavior}
+#'   \item{\code{WinterTempDay}}{double Winter temperature when someone is home during the day}
+#'   \item{\code{WinterTempAway}}{double Winter temperature when no one is home during the day}
+#'   \item{\code{WinterTempNight}}{double Winter temperature at night}
+#'   \item{\code{ACUsed}}{logical Air conditioning equipment used}
+#'   \item{\code{ACBehavior}}{factor Central air conditioner household behavior}
+#'   \item{\code{SummerTempDay}}{double Summer temperature when someone is home during the day}
+#'   \item{\code{SummerTempAway}}{double Summer temperature when no one is home during the day}
+#'   \item{\code{SummerTempNight}}{double Summer temperature at night}
+#'   \item{\code{TOTCSQFT}}{double Total cooled square footage}
+#'   \item{\code{TOTHSQFT}}{double Total heated square footage}
+#'   \item{\code{TOTSQFT_EN}}{double Total square footage (used for publication)}
+#'   \item{\code{TOTUCSQFT}}{double Total uncooled square footage}
+#'   \item{\code{TOTUSQFT}}{double Total unheated square footage}
+#'   \item{\code{NWEIGHT}}{double Final sample weight}
+#'   \item{\code{BRRWT1-BRRWT96}}{double Replicate weight 1 through 96}
+#'   \item{\code{CDD30YR}}{double Cooling degree days, 30-year average 1981-2010, base temperature 65F}
+#'   \item{\code{CDD65}}{double Cooling degree days in 2015, base temperature 65F}
+#'   \item{\code{CDD80}}{double Cooling degree days in 2015, base temperature 80F (used for garage cooling load estimation only)}
+#'   \item{\code{ClimateRegion_BA}}{factor Building America Climate Zone}
+#'   \item{\code{ClimateRegion_IECC}}{factor IECC Climate Code}
+#'   \item{\code{HDD30YR}}{double Heating degree days, 30-year average 1981-2010, base temperature 65F}
+#'   \item{\code{HDD65}}{double Heating degree days in 2015, base temperature 65F}
+#'   \item{\code{HDD50}}{double Heating degree days in 2015, base temperature 50F (used for garage heating load estimation only)}
+#'   \item{\code{GNDHDD65}}{double Heating degree days of ground temperature in 2015, base temperature 65F}
+#'   \item{\code{BTUEL}}{double Total site electricity usage, in thousand Btu, 2015}
+#'   \item{\code{DOLLAREL}}{double Total electricity cost, in dollars, 2015}
+#'   \item{\code{BTUNG}}{double Total natural gas usage, in thousand Btu, 2015}
+#'   \item{\code{DOLLARNG}}{double Total natural gas cost, in dollars, 2015}
+#'   \item{\code{BTULP}}{double Total propane usage, in thousand Btu, 2015}
+#'   \item{\code{DOLLARLP}}{double Total cost of propane, in dollars, 2015}
+#'   \item{\code{BTUFO}}{double Total fuel oil/kerosene usage, in thousand Btu, 2015}
+#'   \item{\code{DOLLARFO}}{double Total cost of fuel oil/kerosene, in dollars, 2015}
+#'   \item{\code{TOTALBTU}}{double Total usage, in thousand Btu, 2015}
+#'   \item{\code{TOTALDOL}}{double Total cost, in dollars, 2015 }
+#'   \item{\code{BTUWOOD}}{double Total cordwood usage, in thousand Btu, 2015 (Wood consumption is not included in TOTALBTU or TOTALDOL)}
+#'   \item{\code{BTUPELLET}}{double Total wood pellet usage, in thousand Btu, 2015 (Wood consumption is not included in TOTALBTU or TOTALDOL)}
+#'}
+#' @source \url{https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata}
+"recs_2015"
