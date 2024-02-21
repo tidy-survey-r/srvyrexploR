@@ -1,0 +1,4 @@
+*.dta filter=lfs diff=lfs merge=lfs -text
+*.sas7bdat filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+*.sav filter=lfs diff=lfs merge=lfs -text
