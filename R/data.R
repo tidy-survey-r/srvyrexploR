@@ -124,3 +124,110 @@
 #'}
 #' @source \url{https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata}
 "recs_2015"
+
+#' @title National Crime Victimization Survey (NCVS) (2021) incident file
+#' @description A subset of the NCVS 2021 incident file. Includes all records but a subset of columns
+#' @format A data frame with 8982 rows and 60 variables:
+#' \describe{
+#'   \item{\code{YEARQ}}{double YEAR AND QUARTER OF INTERVIEW (YYYY.Q)}
+#'   \item{\code{IDHH}}{character NCVS ID FOR HOUSEHOLDS}
+#'   \item{\code{IDPER}}{character NCVS ID FOR PERSONS}
+#'   \item{\code{V4012}}{double INCIDENT NUMBER}
+#'   \item{\code{WGTVICCY}}{double ADJUSTED VICTIMIZATION WEIGHT - COLLECTION YEAR}
+#'   \item{\code{V4016}}{double HOW MANY TIMES INCIDENT OCCUR LAST 6 MOS}
+#'   \item{\code{V4017}}{integer CHECK ITEM B: HOW MANY INCIDENTS}
+#'   \item{\code{V4018}}{integer HECK ITEM C: ARE INCIDENTS SIMILAR IN DETAIL}
+#'   \item{\code{V4019}}{integer CHECK ITEM D: ENOUGH DETAIL TO DISTINGUISH INCIDENTS}
+#'   \item{\code{V4021B}}{integer ABOUT WHAT TIME DID INCIDENT OCCUR (START 1999 Q1)}
+#'   \item{\code{V4022}}{integer N WHAT CITY, TOWN, VILLAGE}
+#'   \item{\code{V4024}}{integer WHERE DID INCIDENT HAPPEN}
+#'   \item{\code{V4049}}{integer DID OFFENDER HAVE A WEAPON}
+#'   \item{\code{V4050}}{integer LI WHAT WAS WEAPON}
+#'   \item{\code{V4051}}{integer C WEAPON: HAND GUN}
+#'   \item{\code{V4052}}{integer C WEAPON: OTHER GUN}
+#'   \item{\code{V4053}}{integer C WEAPON: KNIFE}
+#'   \item{\code{V4054}}{integer C WEAPON: SHARP OBJECT}
+#'   \item{\code{V4055}}{integer C WEAPON: BLUNT OBJECT}
+#'   \item{\code{V4056}}{integer C WEAPON: OTHER}
+#'   \item{\code{V4057}}{integer C WEAPON: GUN TYPE UNKNOWN}
+#'   \item{\code{V4058}}{integer RESIDUE: TYPE OF WEAPON}
+#'   \item{\code{V4234}}{integer ONE OR MORE THAN ONE OFFENDER}
+#'   \item{\code{V4235}}{integer KNOW ANYTHING ABOUT ANY OFFENDERS}
+#'   \item{\code{V4241}}{integer SINGLE OFFENDER STRANGER}
+#'   \item{\code{V4242}}{integer SINGLE OFF WOULD RESP RECOGNIZE OFF}
+#'   \item{\code{V4243}}{integer SINGLE OFF HOW WELL KNOWN}
+#'   \item{\code{V4244}}{integer SINGLE OFF KNOW WHERE OFFENDER IS}
+#'   \item{\code{V4245}}{integer SINGLE OFF HOW DID RESP KNOW OFFENDER}
+#'   \item{\code{V4248}}{double NUMBER OF OFFENDERS (MULTIPLE OFFENDERS)}
+#'   \item{\code{V4256}}{integer MULTIPLE OFFENDERS ALL STRANGERS}
+#'   \item{\code{V4257}}{integer MULTIPLE OFFENDERS COULD RECOGNIZE}
+#'   \item{\code{V4258}}{integer LI MULT OFF HOW WELL KNOWN}
+#'   \item{\code{V4259}}{integer C MULT OFF KNOWN: BY SIGHT ONLY}
+#'   \item{\code{V4260}}{integer C MULT OFF KNOWN: CASUAL ACQUAINTANCE}
+#'   \item{\code{V4261}}{integer C MULT OFF KNOWN: WELL KNOWN}
+#'   \item{\code{V4262}}{integer RESIDUE: MULT OFF HOW WELL KNOWN}
+#'   \item{\code{V4263}}{integer MULTIPLE OFF: RESP KNOWS HOW TO FIND}
+#'   \item{\code{V4264}}{integer LI RELATION TO MULTIPLE OFFENDERS}
+#'   \item{\code{V4265}}{integer C MULT OFF: SPOUSE}
+#'   \item{\code{V4266}}{integer C MULT OFF: EX-SPOUSE}
+#'   \item{\code{V4267}}{integer C MULT OFF: PARENT/STEP}
+#'   \item{\code{V4268}}{integer C MULT OFF: CHILD/STEP}
+#'   \item{\code{V4269}}{integer C MULT OFF: BROTHER/SISTER}
+#'   \item{\code{V4270}}{integer C MULT OFF: OTHER RELATIVE}
+#'   \item{\code{V4271}}{integer C MULT OFF: BOY/GIRLFRIEND OR EX}
+#'   \item{\code{V4272}}{integer C MULT OFF: FRIEND OR EX-FRIEND}
+#'   \item{\code{V4273}}{integer C MULT OFF: ROOMMATE}
+#'   \item{\code{V4274}}{integer C MULT OFF: SCHOOLMATE}
+#'   \item{\code{V4275}}{integer C MULT OFF: NEIGHBOR}
+#'   \item{\code{V4276}}{integer C MULT OFF: CUSTOMER/CLIENT}
+#'   \item{\code{V4277}}{integer C MULT OFF: OTHER NONRELATIVE (END 2016 Q4) (START 2021 Q1)}
+#'   \item{\code{V4278}}{integer RESIDUE: RELATION TO MULT OFF}
+#'   \item{\code{V4277A}}{integer C MULT OFF: PATIENT (START 2001 Q3)}
+#'   \item{\code{V4277B}}{integer C MULT OFF: SUPERVISOR (CURR OR FORMER) (START 2001 Q3)}
+#'   \item{\code{V4277C}}{integer C MULT OFF: EMPLOYEE (CURRENT OR FORMER) (START 2001 Q3)}
+#'   \item{\code{V4277D}}{integer C MULT OFF: CO-WORKER (CURR OR FORMER) (START 2001 Q3)}
+#'   \item{\code{V4277E}}{integer C MULT OFF: TEACHER/SCHOOL STAFF (START 2007 Q1) (END 2016 Q4) (START 2021 Q1)}
+#'   \item{\code{V4399}}{integer REPORTED TO POLICE}
+#'   \item{\code{V4529}}{integer TYPE OF CRIME CODE (NEW, NCVS)}
+#'}
+#' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
+"ncvs_2021_incident"
+
+#' @title National Crime Victimization Survey (NCVS) (2021) household file
+#' @description A subset of the NCVS 2021 household file. Includes all records but a subset of columns
+#' @format A data frame with 256460 rows and 12 variables:
+#' \describe{
+#'   \item{\code{YEARQ}}{double YEAR AND QUARTER OF INTERVIEW (YYYY.Q)}
+#'   \item{\code{IDHH}}{character NCVS ID FOR HOUSEHOLDS}
+#'   \item{\code{WGTHHCY}}{double ADJUSTED HOUSEHOLD WEIGHT - COLLECTION YEAR}
+#'   \item{\code{V2117}}{double PSEUDOSTRATUM CODE}
+#'   \item{\code{V2118}}{double ECUCODE: HALF SAMPLE CODE}
+#'   \item{\code{V2015}}{integer TENURE (ALLOCATED)}
+#'   \item{\code{V2143}}{integer URBANICITY (START 2020 Q1)}
+#'   \item{\code{SC214A}}{integer HOUSEHOLD INCOME (ALLOCATED) (START 2015, Q1)}
+#'   \item{\code{V2122}}{integer FAMILY STRUCTURE CODE}
+#'   \item{\code{V2126B}}{integer PLACE SIZE CODE - 1990, 2000, 2010 SAMPLE DESIGN (START 1995 Q3)}
+#'   \item{\code{V2127B}}{integer REGION - 1990, 2000, 2010 SAMPLE DESIGN (START 1995 Q3)}
+#'   \item{\code{V2129}}{integer CBSA MSA STATUS}
+#'}
+#' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
+"ncvs_2021_household"
+
+#' @title National Crime Victimization Survey (NCVS) (2021) person file
+#' @description A subset of the NCVS 2021 person file. Includes all records but a subset of columns
+#' @format A data frame with 291878 rows and 11 variables:
+#' \describe{
+#'   \item{\code{YEARQ}}{double YEAR AND QUARTER OF INTERVIEW (YYYY.Q)}
+#'   \item{\code{IDHH}}{character NCVS ID FOR HOUSEHOLDS}
+#'   \item{\code{IDPER}}{character NCVS ID FOR PERSONS}
+#'   \item{\code{WGTPERCY}}{double ADJUSTED PERSON WEIGHT - COLLECTION YEAR}
+#'   \item{\code{V3014}}{double AGE (ALLOCATED)}
+#'   \item{\code{V3015}}{integer MARITAL STATUS (CURRENT SURVEY)}
+#'   \item{\code{V3018}}{integer SEX (ALLOCATED)}
+#'   \item{\code{V3023A}}{integer RACE RECODE (START 2003 Q1)}
+#'   \item{\code{V3024}}{integer HISPANIC ORIGIN}
+#'   \item{\code{V3084}}{integer SEXUAL ORIENTATION (START 2017 Q1)}
+#'   \item{\code{V3086}}{integer CURRENT GENDER IDENTITY (START 2017 Q1)}
+#'}
+#' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
+"ncvs_2021_person"
