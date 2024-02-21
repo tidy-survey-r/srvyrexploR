@@ -271,11 +271,11 @@
 #'   \item{\code{V201510}}{double PRE: Highest level of Education}
 #'   \item{\code{Education}}{factor PRE: Highest level of Education}
 #'   \item{\code{V201546}}{double PRE: R: Are you Spanish, Hispanic, or Latino}
-#'   \item{\code{V201547a}}{double RESTRICTED: PRE: Race of R: White [mention]}
-#'   \item{\code{V201547b}}{double RESTRICTED: PRE: Race of R: Black or African-American [mention]}
-#'   \item{\code{V201547c}}{double RESTRICTED: PRE: Race of R: Asian [mention]}
-#'   \item{\code{V201547d}}{double RESTRICTED: PRE: Race of R: Native Hawaiian or Pacific Islander [mention]}
-#'   \item{\code{V201547e}}{double RESTRICTED: PRE: Race of R: Native American or Alaska Native [mention]}
+#'   \item{\code{V201547a}}{double RESTRICTED: PRE: Race of R: White (mention)}
+#'   \item{\code{V201547b}}{double RESTRICTED: PRE: Race of R: Black or African-American (mention)}
+#'   \item{\code{V201547c}}{double RESTRICTED: PRE: Race of R: Asian (mention)}
+#'   \item{\code{V201547d}}{double RESTRICTED: PRE: Race of R: Native Hawaiian or Pacific Islander (mention)}
+#'   \item{\code{V201547e}}{double RESTRICTED: PRE: Race of R: Native American or Alaska Native (mention)}
 #'   \item{\code{V201547z}}{double RESTRICTED: PRE: Race of R: other specify}
 #'   \item{\code{V201549x}}{double PRE: SUMMARY: R self-identified race/ethnicity}
 #'   \item{\code{RaceEth}}{factor PRE: SUMMARY: R self-identified race/ethnicity}
