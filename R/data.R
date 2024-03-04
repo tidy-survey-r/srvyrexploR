@@ -250,6 +250,7 @@
 #'   \item{\code{CampaignInterest}}{factor PRE: How interested in following campaigns}
 #'   \item{\code{V201024}}{double PRE: In what manner did R vote}
 #'   \item{\code{V201025x}}{double PRE: SUMMARY: Registration and early vote status}
+#'   \item{\code{V201028}}{double PRE: DID R VOTE FOR PRESIDENT}
 #'   \item{\code{V201029}}{double PRE: For whom did R vote for President}
 #'   \item{\code{V201101}}{double PRE: Did R vote for President in 2016 (revised)}
 #'   \item{\code{V201102}}{double PRE: Did R vote for President in 2016}
