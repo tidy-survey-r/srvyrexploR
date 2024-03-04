@@ -54,6 +54,7 @@ anes_in_2020_slim <- anes_in_2020 %>%
     V201101, # PRE: DID R VOTE FOR PRESIDENT IN 2016 [REVISED]
     V201103, # PRE: RECALL OF LAST (2016) PRESIDENTIAL VOTE CHOICE)
     V201025x, # PRE: SUMMARY: REGISTRATION AND EARLY VOTE STATUS
+    V201028, # PRE: DID R VOTE FOR PRESIDENT
     V201228,
     V201229,
     V201230,
@@ -226,8 +227,8 @@ anes_2020 <- anes_in_2020_slim %>%
     ),
     VotedPres2020 = factor(
       case_when(
-        V202072 == 1 ~ "Yes",
-        V202072 == 2 ~ "No",
+        V202072 == 1 | V201028 == 1 ~ "Yes",
+        V202072 == 2 | V201028 == 2 ~ "No",
         TRUE ~ NA_character_
       ),
       levels = c("Yes", "No")
@@ -289,7 +290,7 @@ anes_2020 %>% count(VotedPres2016, V201101, V201102)
 
 anes_2020 %>% count(VotedPres2016_selection, V201103)
 
-anes_2020 %>% count(VotedPres2020, V202072)
+anes_2020 %>% count(VotedPres2020, V202072, V201028)
 
 anes_2020 %>% count(VotedPres2020_selection, V202110x)
 
