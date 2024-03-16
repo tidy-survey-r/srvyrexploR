@@ -16,14 +16,15 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.retina = 2,
-  fig.align = 'center'
+  fig.align = 'center',
+  tidy = 'styler'
 )
 library(tidyverse)
 ```
 
 # srvyexploR
 
-The **srvyexploR** package provides datasets used in the book "Exploring Complex Survey Data Analysis in R: A Tidy Introduction with srvyr". This will help readers follow along with examples and work on exercises.
+The **srvyexploR** package provides datasets used in the book "Exploring Complex Survey Data Analysis in R: A Tidy Introduction with srvyr". This will help readers follow along with the examples and work through the exercises.
 
 ## Installation
 
@@ -47,7 +48,7 @@ This package includes data from three surveys including the American National El
 
 ### ANES
 
-The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948.For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). At that site, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
+The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). At the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
 
 ```{r}
 #| label: show-anes
@@ -79,7 +80,7 @@ head(ncvs_2021_incident)
 
 ### RECS
 
-Three files are included associated with RECS - a dataset with the 2015 data with some derived variables created for the book (`recs_2015`), the 2020 data with some derived variables created for the book (`recs_2020`), and the 2020 data with the original variables. RECS is a survey about energy consumption and expenditure among residential households in the United States and has been conducted since 1979 by the Energy Information Administration. More information about the original data is available at the [RECS website](https://www.eia.gov/consumption/residential/data/2020/).
+Three files are included associated with RECS - a dataset with the 2015 data with some derived variables created for the book (`recs_2015`), the 2020 data with some derived variables created for the book (`recs_2020`), and the 2020 data with the original variables (`recs_2020_raw`). RECS is a survey about energy consumption and expenditure among residential households in the United States and has been conducted since 1979 by the Energy Information Administration. More information about the original data is available at the [RECS website](https://www.eia.gov/consumption/residential/data/2020/).
 
 ```{r}
 #| label: recs-show
