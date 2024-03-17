@@ -41,48 +41,47 @@ anes_in_2020 %>%
   arrange(Pct)
 
 anes_in_2020_slim <- anes_in_2020 %>%
-  filter(V200004==3) %>%
+  filter(V200004==3) %>% #Complete pre and post-election interviews
   select(
-    V200001,
-    V200001,
-    V200002, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
+    V200001,  # CASEID
+    V200002,  # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
     V200010b, # FULL SAMPLE POST-ELECTION WEIGHT
     V200010d, # FULL SAMPLE VARIANCE STRATUM
     V200010c, # FULL SAMPLE VARIANCE UNIT
-    V201006, # PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS
-    V201102, # PRE: DID R VOTE FOR PRESIDENT IN 2016
-    V201101, # PRE: DID R VOTE FOR PRESIDENT IN 2016 [REVISED]
-    V201103, # PRE: RECALL OF LAST (2016) PRESIDENTIAL VOTE CHOICE)
+    V201006,  # PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS
+    V201102,  # PRE: DID R VOTE FOR PRESIDENT IN 2016
+    V201101,  # PRE: DID R VOTE FOR PRESIDENT IN 2016 [REVISED]
+    V201103,  # PRE: RECALL OF LAST (2016) PRESIDENTIAL VOTE CHOICE)
     V201025x, # PRE: SUMMARY: REGISTRATION AND EARLY VOTE STATUS
-    V201028, # PRE: DID R VOTE FOR PRESIDENT
-    V201228,
-    V201229,
-    V201230,
-    V201231x, # PRE: SUMMARY: PARTY ID
-    V201233, # PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT [REVISED]
-    V201237, # PRE: HOW OFTEN CAN PEOPLE BE TRUSTED
+    V201028,  # PRE: DID R VOTE FOR PRESIDENT
+    V201228,  # PRE: PARTY ID
+    V201229,  # PRE: PARTY ID STRONG
+    V201230,  # PRE: PARTY ID LEAN
+    V201231x, # PRE: SUMMARY: PARTY ID (Derived from V201228, V201229, and PTYID_LEANPTY)
+    V201233,  # PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT [REVISED]
+    V201237,  # PRE: HOW OFTEN CAN PEOPLE BE TRUSTED
     V201507x, # PRE: SUMMARY: RESPONDENT AGE
-    V201510, # PRE: HIGHEST LEVEL OF EDUCATION
-    V201546,
-    starts_with("V201547"),
+    V201510,  # PRE: HIGHEST LEVEL OF EDUCATION
+    V201546,  # PRE: HISPANIC ETHNICITY
+    starts_with("V201547"), # PRE: RACE: a-WHITE, b-BLACK, c-ASIAN, d-HAWAIIAN, e-NATIVE, z-OTHER
     V201549x, # PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY
-    V201600, # PRE: WHAT IS YOUR (R) SEX? [REVISED]
-    V201607,
-    V201610,
-    V201611,
-    V201613,
-    V201615,
-    V201616,
+    V201600,  # PRE: WHAT IS YOUR (R) SEX? [REVISED]
+    V201607,  # PRE: INCOME [REVISED]
+    V201610,  # PRE: INCOME <20k
+    V201611,  # PRE: INCOME 20-40k
+    V201613,  # PRE: INCOME 40-70k
+    V201615,  # PRE: INCOME 70-100k
+    V201616,  # PRE: INCOME 100k+
     V201617x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
-    V202066, # POST: DID R VOTE IN NOVEMBER 2020 ELECTION
-    V201024,
-    V202066,
-    V202051,
+    V202066,  # POST: DID R VOTE IN NOVEMBER 2020 ELECTION
+    V201023,  # PRE: DID R ALREADY VOTE
+    V201024,  # PRE: HOW VOTE
+    V202051,  # POST: REGISTERED TO VOTE
     V202109x, # PRE-POST: SUMMARY: VOTER TURNOUT IN 2020
-    V202072, # POST: DID R VOTE FOR PRESIDENT
-    V201029,
-    V202073, # POST: FOR WHOM DID R VOTE FOR PRESIDENT
-    V202110x # PRE-POST: SUMMARY: 2020 PRESIDENTIAL VOTE
+    V202072,  # POST: DID R VOTE FOR PRESIDENT
+    V201029,  # PRE: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
+    V202073,  # POST: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
+    V202110x  # PRE-POST: SUMMARY: 2020 PRESIDENTIAL VOTE
   ) 
 
 anes_2020 <- anes_in_2020_slim %>%
@@ -93,8 +92,9 @@ anes_2020 <- anes_in_2020_slim %>%
     Stratum = as.factor(V200010d),
     VarUnit = as.factor(V200010c),
     Age = if_else(V201507x > 0, as.numeric(V201507x), NA_real_),
-    AgeGroup = cut(Age, c(17, 29, 39, 49, 59, 69, 200),
-                   labels = c("18-29", "30-39", "40-49", "50-59", "60-69", "70 or older")
+    AgeGroup = cut(
+      Age, c(17, 29, 39, 49, 59, 69, 200),
+      labels = c("18-29", "30-39", "40-49", "50-59", "60-69", "70 or older")
     ),
     Gender = factor(
       case_when(
@@ -114,7 +114,7 @@ anes_2020 <- anes_in_2020_slim %>%
         V201549x == 6 ~ "Other/multiple race",
         TRUE ~ NA_character_
       ),
-      levels = c("White", "Black", "Hispanic", "Asian, NH/PI", "AI/AN", "Other/multiple race", NA_character_)
+      levels = c("White", "Black", "Hispanic", "Asian, NH/PI", "AI/AN", "Other/multiple race")
     ),
     PartyID = factor(
       case_when(
@@ -141,40 +141,41 @@ anes_2020 <- anes_in_2020_slim %>%
       ),
       levels = c("Less than HS", "High school", "Post HS", "Bachelor's", "Graduate")
     ),
-    Income = cut(V201617x, c(-5, 1:22),
-                 labels = c(
-                   "Under $9,999",
-                   "$10,000-14,999",
-                   "$15,000-19,999",
-                   "$20,000-24,999",
-                   "$25,000-29,999",
-                   "$30,000-34,999",
-                   "$35,000-39,999",
-                   "$40,000-44,999",
-                   "$45,000-49,999",
-                   "$50,000-59,999",
-                   "$60,000-64,999",
-                   "$65,000-69,999",
-                   "$70,000-74,999",
-                   "$75,000-79,999",
-                   "$80,000-89,999",
-                   "$90,000-99,999",
-                   "$100,000-109,999",
-                   "$110,000-124,999",
-                   "$125,000-149,999",
-                   "$150,000-174,999",
-                   "$175,000-249,999",
-                   "$250,000 or more"
-                 )
+    Income = cut(
+      V201617x, c(-5, 1:22),
+      labels = c(
+        "Under $9,999",
+        "$10,000-14,999",
+        "$15,000-19,999",
+        "$20,000-24,999",
+        "$25,000-29,999",
+        "$30,000-34,999",
+        "$35,000-39,999",
+        "$40,000-44,999",
+        "$45,000-49,999",
+        "$50,000-59,999",
+        "$60,000-64,999",
+        "$65,000-69,999",
+        "$70,000-74,999",
+        "$75,000-79,999",
+        "$80,000-89,999",
+        "$90,000-99,999",
+        "$100,000-109,999",
+        "$110,000-124,999",
+        "$125,000-149,999",
+        "$150,000-174,999",
+        "$175,000-249,999",
+        "$250,000 or more"
+      )
     ),
     Income7 = fct_collapse(
       Income,
       "Under $20k" = c("Under $9,999", "$10,000-14,999", "$15,000-19,999"),
-      "$20-40k" = c("$20,000-24,999", "$25,000-29,999", "$30,000-34,999", "$35,000-39,999"),
-      "$40-60k" = c("$40,000-44,999", "$45,000-49,999", "$50,000-59,999"),
-      "$60-80k" = c("$60,000-64,999", "$65,000-69,999", "$70,000-74,999", "$75,000-79,999"),
-      "$80-100k" = c("$80,000-89,999", "$90,000-99,999"),
-      "$100-125k" = c("$100,000-109,999", "$110,000-124,999"),
+      "$20k to < 40k" = c("$20,000-24,999", "$25,000-29,999", "$30,000-34,999", "$35,000-39,999"),
+      "$40k to < 60k" = c("$40,000-44,999", "$45,000-49,999", "$50,000-59,999"),
+      "$60k to < 80k" = c("$60,000-64,999", "$65,000-69,999", "$70,000-74,999", "$75,000-79,999"),
+      "$80k to < 100k" = c("$80,000-89,999", "$90,000-99,999"),
+      "$100k to < 125k" = c("$100,000-109,999", "$110,000-124,999"),
       "$125k or more" = c("$125,000-149,999", "$150,000-174,999", "$175,000-249,999", "$250,000 or more")
     ),
     CampaignInterest = factor(
@@ -244,9 +245,8 @@ anes_2020 <- anes_in_2020_slim %>%
     ),
     EarlyVote2020 = factor(
       case_when(
-        V201025x < 0 ~ NA_character_,
-        V201025x == 4 ~ "Yes",
-        VotedPres2020 == "Yes" ~ "No",
+        V201023 == 1 ~ "Yes",
+        V201023 == 2 ~ "No",
         TRUE ~ NA_character_),
       levels = c("Yes", "No")
     )
@@ -294,7 +294,7 @@ anes_2020 %>% count(VotedPres2020, V202072, V201028)
 
 anes_2020 %>% count(VotedPres2020_selection, V202110x)
 
-anes_2020 %>% count(EarlyVote2020, V201025x, VotedPres2020)
+anes_2020 %>% count(EarlyVote2020, V201023)
 
 anes_2020 %>%
   summarise(WtSum = sum(Weight, na.rm = TRUE)) %>%
@@ -328,8 +328,7 @@ cb_slim <- cb_ord %>%
   select(Variable=BookDerived, `Description and Labels`, Question, Section, SectNum, Order) %>%
   filter(!is.na(Variable)) %>%
   separate_longer_delim(Variable, delim="; ") %>%
-  add_case(Variable="VotedPres2016", `Description and Labels`="PRE: Did R vote for President in 2016", Question="Derived from V201102, V201101", Section="PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum=3, Order=11) %>%
-  add_case(Variable="EarlyVote2020", `Description and Labels`="PRE-POST: Voted early for president", Question="Derived from V201025x, VotedPres2020", Section="POST-ELECTION SURVEY QUESTIONNAIRE", SectNum=4, Order=44) %>%
+  add_case(Variable="VotedPres2016", `Description and Labels`="PRE: Did R vote for President in 2016", Question="Derived from V201102, V201101", Section="PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum=3, Order=13) %>%
   mutate(Type=2) %>%
   bind_rows(select(cb_ord, -BookDerived)) %>%
   arrange(SectNum, Order, Type)
