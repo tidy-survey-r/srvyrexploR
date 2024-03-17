@@ -5,7 +5,7 @@
 \alias{anes_2020}
 \title{American National Election Studies (ANES) (2020) data}
 \format{
-A data frame with 7453 rows and 63 variables:
+A data frame with 7453 rows and 65 variables:
 \describe{
 \item{\code{V200001}}{double 2020 Case ID}
 \item{\code{CaseID}}{double 2020 Case ID}
@@ -19,6 +19,8 @@ A data frame with 7453 rows and 63 variables:
 \item{\code{Stratum}}{factor Full sample variance stratum}
 \item{\code{V201006}}{double PRE: How interested in following campaigns}
 \item{\code{CampaignInterest}}{factor PRE: How interested in following campaigns}
+\item{\code{V201023}}{factor PRE: Confirmation voted (early) in November 3 Election (2020)}
+\item{\code{EarlyVote2020}}{factor PRE: Confirmation voted (early) in November 3 Election (2020)}
 \item{\code{V201024}}{double PRE: In what manner did R vote}
 \item{\code{V201025x}}{double PRE: SUMMARY: Registration and early vote status}
 \item{\code{V201028}}{double PRE: DID R VOTE FOR PRESIDENT}
@@ -70,7 +72,6 @@ A data frame with 7453 rows and 63 variables:
 \item{\code{V202109x}}{double PRE-POST: SUMMARY: Voter turnout in 2020}
 \item{\code{V202110x}}{double PRE-POST: SUMMARY: 2020 Presidential vote}
 \item{\code{VotedPres2020_selection}}{factor PRE-POST: SUMMARY: 2020 Presidential vote}
-\item{\code{EarlyVote2020}}{factor Indicator of early voting in 2020}
 }
 }
 \source{

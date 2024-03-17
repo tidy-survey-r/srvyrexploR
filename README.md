@@ -5,7 +5,8 @@
 
 The **srvyexploR** package provides datasets used in the book “Exploring
 Complex Survey Data Analysis in R: A Tidy Introduction with srvyr”. This
-will help readers follow along with examples and work on exercises.
+will help readers follow along with the examples and work through the
+exercises.
 
 ## Installation
 
@@ -38,14 +39,14 @@ data on political polling in the United States and has been conducted
 since 1948.For more information about the 2020 study, see the [American
 National Election Studies
 website](https://electionstudies.org/data-center/2020-time-series-study/).
-At that site, you can learn more about the study, see codebooks and
-methodology reports, and download the data (after registering). We
+On the ANES website, you can learn more about the study, see codebooks
+and methodology reports, and download the data (after registering). We
 received permission to distribute this data for the purpose of the book.
 Once the package is loaded, you can use the data immediately as follows:
 
 ``` r
 head(anes_2020)
-#> # A tibble: 6 × 64
+#> # A tibble: 6 × 65
 #>   V200001 CaseID V200002 InterviewMode V200010b Weight V200010c VarUnit V200010d
 #>     <dbl>  <dbl> <hvn_l> <fct>            <dbl>  <dbl>    <dbl> <fct>      <dbl>
 #> 1  200015 200015       3 Web              1.01   1.01         2 2              9
@@ -54,13 +55,13 @@ head(anes_2020)
 #> 4  200046 200046       3 Web              0.521  0.521        2 2             29
 #> 5  200053 200053       3 Web              0.966  0.966        1 1             23
 #> 6  200060 200060       3 Web              0.235  0.235        2 2             37
-#> # ℹ 55 more variables: Stratum <fct>, V201006 <hvn_lbll>,
-#> #   CampaignInterest <fct>, V201024 <hvn_lbll>, V201025x <hvn_lbll>,
-#> #   V201028 <hvn_lbll>, V201029 <hvn_lbll>, V201101 <hvn_lbll>,
-#> #   VotedPres2016 <fct>, V201102 <hvn_lbll>, V201103 <hvn_lbll>,
-#> #   VotedPres2016_selection <fct>, V201228 <hvn_lbll>, V201229 <hvn_lbll>,
-#> #   V201230 <hvn_lbll>, V201231x <hvn_lbll>, PartyID <fct>, V201233 <hvn_lbll>,
-#> #   TrustGovernment <fct>, V201237 <hvn_lbll>, TrustPeople <fct>, …
+#> # ℹ 56 more variables: Stratum <fct>, V201006 <hvn_lbll>,
+#> #   CampaignInterest <fct>, V201023 <hvn_lbll>, EarlyVote2020 <fct>,
+#> #   V201024 <hvn_lbll>, V201025x <hvn_lbll>, V201028 <hvn_lbll>,
+#> #   V201029 <hvn_lbll>, V201101 <hvn_lbll>, V201102 <hvn_lbll>,
+#> #   VotedPres2016 <fct>, V201103 <hvn_lbll>, VotedPres2016_selection <fct>,
+#> #   V201228 <hvn_lbll>, V201229 <hvn_lbll>, V201230 <hvn_lbll>,
+#> #   V201231x <hvn_lbll>, PartyID <fct>, V201233 <hvn_lbll>, …
 ```
 
 See `?anes_2020` for more information about the data.
@@ -71,7 +72,7 @@ post-election interviews. To load this dataset, we recommend using the
 **haven** package as follows:
 
 ``` r
-anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package="srvyrexploR"))
+anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
 ```
 
 ### NCVS
@@ -132,11 +133,11 @@ head(ncvs_2021_incident)
 Three files are included associated with RECS - a dataset with the 2015
 data with some derived variables created for the book (`recs_2015`), the
 2020 data with some derived variables created for the book
-(`recs_2020`), and the 2020 data with the original variables. RECS is a
-survey about energy consumption and expenditure among residential
-households in the United States and has been conducted since 1979 by the
-Energy Information Administration. More information about the original
-data is available at the [RECS
+(`recs_2020`), and the 2020 data with the original variables
+(`recs_2020_raw`). RECS is a survey about energy consumption and
+expenditure among residential households in the United States and has
+been conducted since 1979 by the Energy Information Administration. More
+information about the original data is available at the [RECS
 website](https://www.eia.gov/consumption/residential/data/2020/).
 
 ``` r
@@ -208,9 +209,11 @@ remotes::install_github("gergness/srvyr")
 library(srvyr)
 
 recs_des <- recs_2020 %>%
-  as_survey_rep(weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
-                type = "JK1", scale = 59/60, mse = TRUE, 
-                variables=c(ACUsed, Region))
+  as_survey_rep(
+    weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
+    type = "JK1", scale = 59 / 60, mse = TRUE,
+    variables = c(ACUsed, Region)
+  )
 
 recs_des
 #> Call: Called via srvyr
@@ -234,7 +237,7 @@ recs_des
 recs_des %>%
   group_by(Region) %>%
   summarize(
-    p=survey_mean(ACUsed, vartype="ci", proportion = TRUE, prop_method = "logit")
+    p = survey_mean(ACUsed, vartype = "ci", proportion = TRUE, prop_method = "logit")
   )
 #> # A tibble: 4 × 4
 #>   Region        p p_low p_upp

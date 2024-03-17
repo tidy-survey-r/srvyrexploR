@@ -328,7 +328,7 @@ cb_slim <- cb_ord %>%
   select(Variable=BookDerived, `Description and Labels`, Question, Section, SectNum, Order) %>%
   filter(!is.na(Variable)) %>%
   separate_longer_delim(Variable, delim="; ") %>%
-  add_case(Variable="VotedPres2016", `Description and Labels`="PRE: Did R vote for President in 2016", Question="Derived from V201102, V201101", Section="PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum=3, Order=11) %>%
+  add_case(Variable="VotedPres2016", `Description and Labels`="PRE: Did R vote for President in 2016", Question="Derived from V201102, V201101", Section="PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum=3, Order=13) %>%
   mutate(Type=2) %>%
   bind_rows(select(cb_ord, -BookDerived)) %>%
   arrange(SectNum, Order, Type)
