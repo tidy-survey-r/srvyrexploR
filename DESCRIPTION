@@ -1,10 +1,11 @@
 Package: srvyrexploR
 Title: Data supplement for Exploring Complex Survey Data Analysis in R
 Version: 0.0.0.9000
+Date: 2024-03-24
 Authors@R: c(
-    person("Zimmer", "Stephanie", , "stephaniezimmer@gmail.com", role = c("aut", "cre")),
-    person("Powell", "Rebecca", role = "aut"),
-    person("Velásquez", "Isabella", role = "aut")
+    person("Stephanie", "Zimmer", email="stephaniezimmer+srvyrexploR@gmail.com", role = c("aut", "cre")),
+    person("Rebecca", "Powell", role = "aut"),
+    person("Isabella", "Velásquez", role = "aut")
   )
 Description: Includes datasets for the Residential Energy Consumption
     Survey (2015 and 2020), the American National Election Studies (2020),
@@ -20,3 +21,4 @@ LazyData: true
 LazyDataCompression: bzip2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+BugReports: https://github.com/tidy-survey-r/srvyrexploR/issues
