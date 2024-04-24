@@ -1,6 +1,6 @@
 Package: srvyrexploR
 Title: Data Supplement for Exploring Complex Survey Data Analysis in R
-Version: 1.0.0
+Version: 1.0.1
 Date: 2024-03-24
 Authors@R: c(
     person("Stephanie", "Zimmer", email="stephaniezimmer+srvyrexploR@gmail.com", role = c("aut", "cre")),
