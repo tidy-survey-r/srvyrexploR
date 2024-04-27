@@ -59,9 +59,7 @@ zimp012 <- function(x){
 
 recs <- recs_in %>%
   select(DOEID, REGIONC, DIVISION, STATE_FIPS, state_postal, state_name, UATYP10, TYPEHUQ, YEARMADERANGE, HEATHOME, HEATCNTL, TEMPHOME, TEMPGONE, TEMPNITE, AIRCOND, COOLCNTL, TEMPHOMEAC, TEMPGONEAC, TEMPNITEAC, TOTCSQFT, TOTHSQFT, TOTSQFT_EN, NWEIGHT, starts_with("NWEIGHT"), CDD30YR=CDD30YR_PUB, CDD65, BA_climate, IECC_climate_code, HDD30YR=HDD30YR_PUB, HDD65,
-         BTUEL, DOLLAREL, BTUNG, DOLLARNG, BTULP, DOLLARLP, BTUFO, DOLLARFO, TOTALBTU, TOTALDOL, BTUWOOD=BTUWD,
-         ZTYPEHUQ, ZYEARMADERANGE, ZHEATHOME, ZHEATCNTL, ZTEMPHOME, ZTEMPGONE, ZTEMPNITE, ZAIRCOND, ZCOOLCNTL, ZTEMPHOMEAC, ZTEMPGONEAC, ZTEMPNITEAC,
-         ZSQFTEST, ZSQFTINCA, ZSQFTINCB, ZSQFTINCG, ZSQFTRANGE, ZELAMOUNT, ZNGAMOUNT, ZLPAMOUNT, ZFOAMOUNT, ZWDAMOUNT) %>%
+         BTUEL, DOLLAREL, BTUNG, DOLLARNG, BTULP, DOLLARLP, BTUFO, DOLLARFO, TOTALBTU, TOTALDOL, BTUWOOD=BTUWD) %>%
   mutate(
     Region=parse_factor(
       str_to_title(REGIONC),
@@ -133,27 +131,7 @@ recs <- recs_in %>%
     SummerTempNight=if_else(TEMPNITEAC>0, TEMPNITEAC, NA_real_),
     ClimateRegion_BA=parse_factor(BA_climate),
     state_name=factor(state_name),
-    state_postal=fct_reorder(state_postal, as.numeric(state_name)),
-    ZHousingUnitType=zimp01(ZTYPEHUQ),
-    ZYearMade=zimp01(ZYEARMADERANGE),
-    ZSpaceHeatingUsed=zimp01(ZHEATHOME),
-    ZHeatingBehavior=zimp012(ZHEATCNTL),
-    ZWinterTempDay=zimp012(ZTEMPHOME), ZWinterTempAway=zimp012(ZTEMPGONE), ZWinterTempNight=zimp012(ZTEMPNITE),
-    ZACUsed=zimp01(ZAIRCOND),
-    ZACBehavior=zimp012(ZCOOLCNTL), ZSummerTempDay=zimp012(ZTEMPHOMEAC), ZSummerTempAway=zimp012(ZTEMPGONEAC), ZSummerTempNight=zimp012(ZTEMPNITEAC),
-    ZTOTSQFT_EN=zimp01(ZSQFTEST),
-    ZBTUEL =   parse_factor(
-      case_match(
-        ZELAMOUNT,
-        0 ~ "Not imputed",
-        1 ~ "Imputed amount and cost",
-        2 ~ "Imputed only amount for SOLAR=1 cases"
-      ),
-      levels=c("Not imputed", "Imputed amount and cost", "Imputed only amount for SOLAR=1 cases"),
-      include_na = FALSE
-    ),
-    ZBTUNG=zimp012(ZNGAMOUNT), ZBTULP=zimp012(ZLPAMOUNT),
-    ZBTUFO=zimp012(ZFOAMOUNT), ZBTUWOOD=zimp012(ZWDAMOUNT)
+    state_postal=fct_reorder(state_postal, as.numeric(state_name))
   )
 
 
@@ -172,24 +150,6 @@ recs %>% count(ACUsed, AIRCOND)
 recs %>% count(ACBehavior, COOLCNTL)
 recs %>% count(ClimateRegion_BA, BA_climate)
 recs %>% count(state_postal, state_name, STATE_FIPS) %>% print(n=51)
-recs %>% count(ZHousingUnitType=ZTYPEHUQ)
-recs %>% count(ZYearMade, ZYEARMADERANGE)
-recs %>% count(ZSpaceHeatingUsed, ZHEATHOME)
-recs %>% count(ZHeatingBehavior, ZHEATCNTL)
-recs %>% count(ZWinterTempDay, ZTEMPHOME)
-recs %>% count(ZWinterTempAway, ZTEMPGONE)
-recs %>% count(ZWinterTempNight, ZTEMPNITE)
-recs %>% count(ZACUsed, ZAIRCOND)
-recs %>% count(ZACBehavior, ZCOOLCNTL)
-recs %>% count(ZSummerTempDay, ZTEMPHOMEAC)
-recs %>% count(ZSummerTempAway, ZTEMPGONEAC)
-recs %>% count(ZSummerTempNight, ZTEMPNITEAC)
-recs %>% count(ZTOTSQFT_EN, ZSQFTEST)
-recs %>% count(ZBTUEL, ZELAMOUNT)
-recs %>% count(ZBTUNG, ZNGAMOUNT)
-recs %>% count(ZBTULP, ZLPAMOUNT)
-recs %>% count(ZBTUFO, ZFOAMOUNT)
-recs %>% count(ZBTUWOOD, ZWDAMOUNT)
 
 recs_out <- recs %>%
   select(DOEID, starts_with("NWEIGHT"),
@@ -201,12 +161,7 @@ recs_out <- recs %>%
          CDD30YR, CDD65, ClimateRegion_BA,
          HDD30YR, HDD65, BTUEL,
          DOLLAREL, BTUNG, DOLLARNG, BTULP, DOLLARLP, BTUFO, DOLLARFO,
-         TOTALBTU, TOTALDOL, BTUWOOD,
-         ZHousingUnitType, ZYearMade, ZSpaceHeatingUsed, ZHeatingBehavior,
-         ZWinterTempDay, ZWinterTempAway, ZWinterTempNight, ZACUsed,
-         ZACBehavior, ZSummerTempDay, ZSummerTempAway, ZSummerTempNight,
-         ZTOTSQFT_EN,
-         ZBTUEL, ZBTUNG, ZBTULP, ZBTUFO, ZBTUWOOD)
+         TOTALBTU, TOTALDOL, BTUWOOD)
 
 
 

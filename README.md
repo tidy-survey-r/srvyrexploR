@@ -159,7 +159,7 @@ head(recs_2015)
 #> #   BRRWT3 <dbl>, BRRWT4 <dbl>, BRRWT5 <dbl>, BRRWT6 <dbl>, BRRWT7 <dbl>,
 #> #   BRRWT8 <dbl>, BRRWT9 <dbl>, BRRWT10 <dbl>, BRRWT11 <dbl>, BRRWT12 <dbl>, …
 head(recs_2020)
-#> # A tibble: 6 × 118
+#> # A tibble: 6 × 100
 #>    DOEID ClimateRegion_BA Urbanicity Region    REGIONC   Division     STATE_FIPS
 #>    <dbl> <fct>            <fct>      <fct>     <chr>     <fct>        <chr>     
 #> 1 100001 Mixed-Dry        Urban Area West      WEST      Mountain So… 35        
@@ -168,13 +168,13 @@ head(recs_2020)
 #> 4 100004 Mixed-Humid      Urban Area South     SOUTH     South Atlan… 45        
 #> 5 100005 Mixed-Humid      Urban Area Northeast NORTHEAST Middle Atla… 34        
 #> 6 100006 Hot-Humid        Urban Area South     SOUTH     West South … 48        
-#> # ℹ 111 more variables: state_postal <fct>, state_name <fct>, HDD65 <dbl>,
+#> # ℹ 93 more variables: state_postal <fct>, state_name <fct>, HDD65 <dbl>,
 #> #   CDD65 <dbl>, HDD30YR <dbl>, CDD30YR <dbl>, HousingUnitType <fct>,
 #> #   YearMade <ord>, TOTSQFT_EN <dbl>, TOTHSQFT <dbl>, TOTCSQFT <dbl>,
-#> #   ZTOTSQFT_EN <fct>, ZYearMade <fct>, ZHousingUnitType <fct>,
-#> #   SpaceHeatingUsed <lgl>, ZSpaceHeatingUsed <fct>, ACUsed <lgl>,
-#> #   ZACUsed <fct>, ZACBehavior <fct>, HeatingBehavior <fct>,
-#> #   WinterTempDay <dbl>, WinterTempAway <dbl>, WinterTempNight <dbl>, …
+#> #   SpaceHeatingUsed <lgl>, ACUsed <lgl>, HeatingBehavior <fct>,
+#> #   WinterTempDay <dbl>, WinterTempAway <dbl>, WinterTempNight <dbl>,
+#> #   ACBehavior <fct>, SummerTempDay <dbl>, SummerTempAway <dbl>,
+#> #   SummerTempNight <dbl>, NWEIGHT <dbl>, NWEIGHT1 <dbl>, NWEIGHT2 <dbl>, …
 head(recs_2020_raw)
 #> # A tibble: 6 × 789
 #>    DOEID REGIONC   DIVISION        STATE_FIPS state_postal state_name BA_climate
