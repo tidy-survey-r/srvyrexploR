@@ -22,3 +22,4 @@ LazyDataCompression: bzip2
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 BugReports: https://github.com/tidy-survey-r/srvyrexploR/issues
+URL: https://github.com/tidy-survey-r/srvyrexploR, https://github.com/tidy-survey-r/tidy-survey-book
