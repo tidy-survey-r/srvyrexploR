@@ -4,9 +4,9 @@
 # srvyexploR
 
 The **srvyexploR** package provides datasets used in the book “Exploring
-Complex Survey Data Analysis in R: A Tidy Introduction with srvyr”. This
-will help readers follow along with the examples and work through the
-exercises.
+Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr}
+and {survey}”. This will help readers follow along with the examples and
+work through the exercises.
 
 ## Installation
 
