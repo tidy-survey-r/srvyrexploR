@@ -1,21 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# srvyexploR
+# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
 
-The **srvyexploR** package provides datasets used in the book “Exploring
+The **srvyexploR** package provides datasets used in the book [Exploring
 Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr}
-and {survey}”. This will help readers follow along with the examples and
-work through the exercises.
+and {survey}](https://tidy-survey-r.github.io/tidy-survey-book/). This
+will help readers follow along with the examples and work through the
+exercises.
 
 ## Installation
 
-To install the development version from [GitHub](https://github.com/)
+To install the development version from [GitHub](https://github.com/),
 use:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("tidy-survey-r/srvyrexploR")
+# install.packages("pak")
+pak::pak("tidy-survey-r/srvyrexploR")
 ```
 
 To load the package, use:
@@ -69,7 +70,7 @@ See `?anes_2020` for more information about the data.
 Also, included in the package is a Stata version of the ANES data with a
 subset of the columns and is subset to people who completed both pre and
 post-election interviews. To load this dataset, we recommend using the
-**haven** package as follows:
+{haven} package as follows:
 
 ``` r
 anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
@@ -196,13 +197,12 @@ head(recs_2020_raw)
 
 ## Examples
 
-To analyze the survey data, we recommend using the **srvyr** package as
+To analyze the survey data, we recommend using the {srvyr} package as
 follows:
 
 ``` r
-# install.packages("remotes")
-
-remotes::install_github("gergness/srvyr")
+# install.packages("pak")
+pak::pak("gergness/srvyr")
 ```
 
 ``` r
@@ -253,8 +253,8 @@ that use air-conditioning by region with a 95% confidence interval.
 
 ## License
 
-Data are available by [CC BY-SA
-4.0](https://creativecommons.org/licenses/by-sa/4.0/) license.
+Data are available by [CC BY
+4.0](https://creativecommons.org/licenses/by/4.0/) license.
 Additionally, re-distributing the ANES or NCVS datasets is subject to
 their policies.
 
@@ -265,7 +265,7 @@ Anyone interested in redistributing the NCVS data should refer to
 Data](https://www.icpsr.umich.edu/web/pages/datamanagement/policies/redistribute.html).
 
 Anyone interested in redistributing the ANES data should refer to the
-[ANES FAQ - disseminate](https://electionstudies.org/faq/)
+[ANES FAQ - disseminate](https://electionstudies.org/faq/).
 
 ## References
 
@@ -275,7 +275,7 @@ ANES:
 
 - American National Election Studies. 2021. ANES 2020 Time Series Study
   Full Release \[dataset and documentation\]. July 19, 2021 version.
-  www.electionstudies.org
+  <https://www.electionstudies.org>
 
 NCVS:
 

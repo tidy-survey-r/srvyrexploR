@@ -2,3 +2,9 @@
 ^srvyrexploR\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^logo\.png$
+^README\.Rmd$

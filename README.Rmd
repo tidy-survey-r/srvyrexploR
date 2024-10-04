@@ -4,6 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
 
 ```{r, include = FALSE}
 #| label: setup
@@ -22,17 +23,15 @@ knitr::opts_chunk$set(
 library(tidyverse)
 ```
 
-# srvyexploR
-
-The **srvyexploR** package provides datasets used in the book "Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}". This will help readers follow along with the examples and work through the exercises.
+The **srvyexploR** package provides datasets used in the book [Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}](https://tidy-survey-r.github.io/tidy-survey-book/). This will help readers follow along with the examples and work through the exercises.
 
 ## Installation
 
-To install the development version from [GitHub](https://github.com/) use:
+To install the development version from [GitHub](https://github.com/), use:
 
 ```r
-# install.packages("remotes")
-remotes::install_github("tidy-survey-r/srvyrexploR")
+# install.packages("pak")
+pak::pak("tidy-survey-r/srvyrexploR")
 ```
 
 To load the package, use:
@@ -58,7 +57,7 @@ head(anes_2020)
 
 See `?anes_2020` for more information about the data.
 
-Also, included in the package is a Stata version of the ANES data with a subset of the columns and is subset to people who completed both pre and post-election interviews. To load this dataset, we recommend using the **haven** package as follows:
+Also, included in the package is a Stata version of the ANES data with a subset of the columns and is subset to people who completed both pre and post-election interviews. To load this dataset, we recommend using the {haven} package as follows:
 
 ```{r}
 #| label: anes-stata
@@ -92,12 +91,11 @@ head(recs_2020_raw)
 
 ## Examples
 
-To analyze the survey data, we recommend using the **srvyr** package as follows:
+To analyze the survey data, we recommend using the {srvyr} package as follows:
 
 ```r
-# install.packages("remotes")
-
-remotes::install_github("gergness/srvyr")
+# install.packages("pak")
+pak::pak("gergness/srvyr")
 ```
 
 ```{r}
@@ -123,14 +121,14 @@ The above example estimates the proportion of residential households that use ai
 
 ## License
 
-Data are available by [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license. Additionally, re-distributing the ANES or NCVS datasets is subject to their policies.
+Data are available by [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license. Additionally, re-distributing the ANES or NCVS datasets is subject to their policies.
 
 
 ## Additional data use information
 
 Anyone interested in redistributing the NCVS data should refer to [ICPSR: Requests for Permission to Redistribute ICPSR Data](https://www.icpsr.umich.edu/web/pages/datamanagement/policies/redistribute.html).
 
-Anyone interested in redistributing the ANES data should refer to the [ANES FAQ - disseminate](https://electionstudies.org/faq/) 
+Anyone interested in redistributing the ANES data should refer to the [ANES FAQ - disseminate](https://electionstudies.org/faq/).
 
 
 ## References
@@ -139,7 +137,7 @@ Anyone interested in redistributing the ANES data should refer to the [ANES FAQ 
 
 ANES: 
 
-+ American National Election Studies. 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. www.electionstudies.org
++ American National Election Studies. 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. https://www.electionstudies.org
 
 NCVS:
 
