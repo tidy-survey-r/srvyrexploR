@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
+# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="128.76181102362204724409448818898"/>
 
 The **srvyexploR** package provides datasets used in the book [Exploring
 Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr}
