@@ -47,22 +47,76 @@ Once the package is loaded, you can use the data immediately as follows:
 
 ``` r
 head(anes_2020)
-#> # A tibble: 6 × 65
-#>   V200001 CaseID V200002 InterviewMode V200010b Weight V200010c VarUnit V200010d
-#>     <dbl>  <dbl> <hvn_l> <fct>            <dbl>  <dbl>    <dbl> <fct>      <dbl>
-#> 1  200015 200015       3 Web              1.01   1.01         2 2              9
-#> 2  200022 200022       3 Web              1.16   1.16         2 2             26
-#> 3  200039 200039       3 Web              0.769  0.769        1 1             41
-#> 4  200046 200046       3 Web              0.521  0.521        2 2             29
-#> 5  200053 200053       3 Web              0.966  0.966        1 1             23
-#> 6  200060 200060       3 Web              0.235  0.235        2 2             37
-#> # ℹ 56 more variables: Stratum <fct>, V201006 <hvn_lbll>,
-#> #   CampaignInterest <fct>, V201023 <hvn_lbll>, EarlyVote2020 <fct>,
-#> #   V201024 <hvn_lbll>, V201025x <hvn_lbll>, V201028 <hvn_lbll>,
-#> #   V201029 <hvn_lbll>, V201101 <hvn_lbll>, V201102 <hvn_lbll>,
-#> #   VotedPres2016 <fct>, V201103 <hvn_lbll>, VotedPres2016_selection <fct>,
-#> #   V201228 <hvn_lbll>, V201229 <hvn_lbll>, V201230 <hvn_lbll>,
-#> #   V201231x <hvn_lbll>, PartyID <fct>, V201233 <hvn_lbll>, …
+#>   V200001 CaseID V200002 InterviewMode  V200010b    Weight V200010c VarUnit
+#> 1  200015 200015       3           Web 1.0057375 1.0057375        2       2
+#> 2  200022 200022       3           Web 1.1634731 1.1634731        2       2
+#> 3  200039 200039       3           Web 0.7686811 0.7686811        1       1
+#> 4  200046 200046       3           Web 0.5210195 0.5210195        2       2
+#> 5  200053 200053       3           Web 0.9657892 0.9657892        1       1
+#> 6  200060 200060       3           Web 0.2347078 0.2347078        2       2
+#>   V200010d Stratum V201006     CampaignInterest V201023 EarlyVote2020 V201024
+#> 1        9       9       2  Somewhat interested      -1          <NA>      -1
+#> 2       26      26       3  Not much interested      -1          <NA>      -1
+#> 3       41      41       2  Somewhat interested      -1          <NA>      -1
+#> 4       29      29       3  Not much interested      -1          <NA>      -1
+#> 5       23      23       2  Somewhat interested      -1          <NA>      -1
+#> 6       37      37       1 Very much interested      -1          <NA>      -1
+#>   V201025x V201028 V201029 V201101 V201102 VotedPres2016 V201103
+#> 1        3      -1      -1      -1       1           Yes       2
+#> 2        3      -1      -1      -1       1           Yes       5
+#> 3        3      -1      -1      -1       1           Yes       1
+#> 4        3      -1      -1      -1       1           Yes       1
+#> 5        3      -1      -1      -1       1           Yes       2
+#> 6        3      -1      -1      -1       2            No      -1
+#>   VotedPres2016_selection V201228 V201229 V201230 V201231x
+#> 1                   Trump       2       1      -1        7
+#> 2                   Other       5      -1       2        4
+#> 3                 Clinton       3      -1       3        3
+#> 4                 Clinton       2       2      -1        6
+#> 5                   Trump       3      -1       2        4
+#> 6                    <NA>       3      -1       3        3
+#>                      PartyID V201233     TrustGovernment V201237
+#> 1          Strong republican       5               Never       3
+#> 2                Independent       5               Never       4
+#> 3       Independent-democrat       4    Some of the time       4
+#> 4 Not very strong republican       3 About half the time       2
+#> 5                Independent       5               Never       4
+#> 6       Independent-democrat       4    Some of the time       2
+#>           TrustPeople V201507x Age    AgeGroup V201510   Education V201546
+#> 1 About half the time       46  46       40-49       6  Bachelor's       1
+#> 2    Some of the time       37  37       30-39       3     Post HS       2
+#> 3    Some of the time       40  40       40-49       2 High school       2
+#> 4    Most of the time       41  41       40-49       4     Post HS       2
+#> 5    Some of the time       72  72 70 or older       8    Graduate       2
+#> 6    Most of the time       71  71 70 or older       3     Post HS       2
+#>   V201547a V201547b V201547c V201547d V201547e V201547z V201549x      RaceEth
+#> 1       -3       -3       -3       -3       -3       -3        3     Hispanic
+#> 2       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI
+#> 3       -3       -3       -3       -3       -3       -3        1        White
+#> 4       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI
+#> 5       -3       -3       -3       -3       -3       -3        5        AI/AN
+#> 6       -3       -3       -3       -3       -3       -3        1        White
+#>   V201600 Gender V201607 V201610 V201611 V201613 V201615 V201616 V201617x
+#> 1       1   Male      -3      -3      -3      -3      -3      -3       21
+#> 2       2 Female      -3      -3      -3      -3      -3      -3       13
+#> 3       2 Female      -3      -3      -3      -3      -3      -3       17
+#> 4       1   Male      -3      -3      -3      -3      -3      -3        7
+#> 5       1   Male      -3      -3      -3      -3      -3      -3       22
+#> 6       2 Female      -3      -3      -3      -3      -3      -3        3
+#>             Income         Income7 V202051 V202066 V202072 VotedPres2020
+#> 1 $175,000-249,999   $125k or more      -1       1      -1          <NA>
+#> 2   $70,000-74,999   $60k to < 80k      -1       4       1           Yes
+#> 3 $100,000-109,999 $100k to < 125k      -1       4       1           Yes
+#> 4   $35,000-39,999   $20k to < 40k      -1       4       1           Yes
+#> 5 $250,000 or more   $125k or more      -1       4       1           Yes
+#> 6   $15,000-19,999      Under $20k      -1       4       1           Yes
+#>   V202073 V202109x V202110x VotedPres2020_selection
+#> 1      -1        0       -1                    <NA>
+#> 2       3        1        3                   Other
+#> 3       1        1        1                   Biden
+#> 4       1        1        1                   Biden
+#> 5       2        1        2                   Trump
+#> 6       1        1        1                   Biden
 ```
 
 See `?anes_2020` for more information about the data.
@@ -127,6 +181,37 @@ head(ncvs_2021_incident)
 #> #   V4257 <fct>, V4258 <fct>, V4259 <fct>, V4260 <fct>, V4261 <fct>,
 #> #   V4262 <fct>, V4263 <fct>, V4264 <fct>, V4265 <fct>, V4266 <fct>,
 #> #   V4267 <fct>, V4268 <fct>, V4269 <fct>, V4270 <fct>, V4271 <fct>, …
+```
+
+### NSDUH
+
+The National Survey on Drug Use and Health (NSDUH) is an annual survey
+of the civilian, non-institutionalized population in the United States
+who are at least 12 years old. Topics include substance use (tobacco,
+alcohol, and illicit drugs including marijuana), mental health, and
+general health. This package provides a subset of the variables from the
+2023 Public Use File. For more details about the study and the data,
+refer to the [Methodological Summary and
+Definitions](https://www.samhsa.gov/data/sites/default/files/reports/rpt47098/Methodological%20Summary%20and%20Definitions/2023-nsduh-method-summary-defs.pdf),
+[Data User’s
+Guide](https://www.samhsa.gov/data/sites/default/files/reports/rpt56198/2023-nsduh-puf-data-users-guide.pdf),
+and
+[Codebook](https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-info-codebook_v1.pdf).
+
+``` r
+head(nsduh_2023)
+#> # A tibble: 6 × 22
+#>   QUESTID2 ANALWT2_C VESTR_C VEREP NICVAPMON TOBMON ALCMON ILLMON ILTOBVAPALC
+#>      <dbl>     <dbl>   <dbl> <dbl>     <int>  <int>  <int>  <int>       <int>
+#> 1 10000053     3276.   40031     2         0      0      1      0           1
+#> 2 10000679    15630.   40021     2         0      1      1      0           1
+#> 3 10001208     4018.   40043     1         0      1      0      1           1
+#> 4 10001260    10712.   40030     2         0      0      0      0           0
+#> 5 10001588     8195.   40023     2         0      0      1      0           1
+#> 6 10004996     3771.   40048     1         1      1      1      0           1
+#> # ℹ 13 more variables: BNGDRKMON <int>, IRPYUD5ALC <int>, UD5ILLANY <int>,
+#> #   UD5ILALANY <int>, YMDELT <fct>, YMDEYR <fct>, MDEIMPY <fct>, AMIPY <int>,
+#> #   SMIPY <int>, AGE3 <fct>, NEWRACE2 <fct>, IRSEX <fct>, POVERTY3 <fct>
 ```
 
 ### RECS
@@ -273,7 +358,7 @@ Anyone interested in redistributing the ANES data should refer to the
 
 ANES:
 
-- American National Election Studies. 2021. ANES 2020 Time Series Study
+- American National Election Studies, 2021. ANES 2020 Time Series Study
   Full Release \[dataset and documentation\]. July 19, 2021 version.
   <https://www.electionstudies.org>
 
@@ -284,13 +369,19 @@ NCVS:
   Consortium for Political and Social Research \[distributor\],
   2022-09-19. <https://doi.org/10.3886/ICPSR38429.v1>
 
+NSDUH:
+
+- Center for Behavioral Health Statistics and Quality, 2025. 2023
+  National Survey on Drug Use and Health: Public use file data users’
+  guide. <https://www.samhsa.gov/data/data-wecollect/nsduh/datafiles>
+
 RECS:
 
-- U.S. Energy Information Administration. 2024. Residential Energy
+- U.S. Energy Information Administration, 2024. Residential Energy
   Consumption 2020 Survey Data. \[dataset and documentation\]. January
   2024 version.
   <https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata>
-- U.S. Energy Information Administration. 2018 Residential Energy
+- U.S. Energy Information Administration, 2018 Residential Energy
   Consumption 2015 Survey Data. \[dataset and documentation\]. December
   2018 version.
   <https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata>
