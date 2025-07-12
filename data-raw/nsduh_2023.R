@@ -60,10 +60,22 @@ nsduh_slim %>%
 nsduh_slim %>%
   select(-where(is.factor))
 
+# Update labels and zap formats
+
+update_label <- function(var) {
+  attr(nsduh_slim[[var]], "label") <<- attr(puf2023_102124[[var]], "label")
+}
+
+walk(names(nsduh_slim), update_label)
+
+haven::zap_formats(nsduh_slim)
+
+str(nsduh_slim)
+
 nsduh_slim_md <- tibble(
   Variable = names(nsduh_slim),
   Class = sapply(nsduh_slim, class),
-  Label = map_chr(names(nsduh_slim), \(x) attr(puf2023_102124[[x]], "label"))
+  Label = map_chr(names(nsduh_slim), \(x) attr(nsduh_slim[[x]], "label"))
 ) %>%
   mutate(
     Class2 = map_chr(Class, ~ str_flatten(.x, collapse = ";")),
