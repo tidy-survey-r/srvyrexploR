@@ -298,18 +298,18 @@
 #'    \item{\code{SMKCUR30}}{factor CURRENT SMOKER (PAST 30 DAYS)}
 #'    \item{\code{AB1}}{factor GENERAL HEALTH CONDITION}
 #'    \item{\code{DIABETES}}{factor DOCTOR EVER TOLD HAVE DIABETES (NON-GESTATIONAL)}
-#'    \item{\code{BMI_P}}{numeric BODY MASS INDEX (PUF RECODE)}
+#'    \item{\code{BMI_P}}{double BODY MASS INDEX (PUF RECODE)}
 #'    \item{\code{RBMI}}{factor BMI DESCRIPTIVE}
 #'    \item{\code{AB17}}{factor DOCTOR EVER TOLD HAVE ASTHMA}
 #'    \item{\code{DSTRS12}}{factor LIKELY HAS HAD PSYCHOLOGICAL DISTRESS IN THE LAST YEAR}
 #'    \item{\code{AB29V2}}{factor DOCTOR EVER TOLD HAVE HIGH BLOOD PRESSURE}
 #'    \item{\code{SPK_ENG}}{factor ENGLISH USE AND PROFICIENCY}
-#'    \item{\code{POVLL2_P1V2}}{numeric POVERTY LEVEL AS TIMES OF 100% FPL (PUF RECODE V2)}
+#'    \item{\code{POVLL2_P1V2}}{double POVERTY LEVEL AS TIMES OF 100% FPL (PUF RECODE V2)}
 #'    \item{\code{POVLL}}{factor POVERTY LEVEL}
-#'    \item{\code{SRAGE_P1}}{ordered factor SELF-REPORTED AGE (PUF 1 YR RECODE)}
+#'    \item{\code{SRAGE_P1}}{ordered;factor SELF-REPORTED AGE (PUF 1 YR RECODE)}
 #'    \item{\code{SRSEX}}{factor SELF-REPORTED GENDER}
 #'    \item{\code{OMBSRR_P1}}{factor OMB/CURRENT DOF RACE - ETHNICITY (PUF 1 YR RECODE)}
-#'    \item{\code{RAKEDW0}}{numeric CHIS2023 RAKED WEIGHT - FULL SAMPLE}
+#'    \item{\code{RAKEDW0}}{double CHIS 2023 FINAL RAKED WEIGHT}
 #'    \item{\code{RAKEDW1 - RAKEDW80}}{CHIS2023 RAKED WEIGHT - REPLICATE 1 through REPLICATE 80}
 #'}
 #' @source \url{https://healthpolicy.ucla.edu/our-work/public-use-files/one-year-public-use-files-pufs}

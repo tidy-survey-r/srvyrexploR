@@ -62,48 +62,25 @@ chis_slim %>%
 
 chis_slim_md <- tibble(
   Variable=names(chis_slim),
-  Class=sapply(head(chis_slim), class)
+  Class=sapply(chis_slim, class),
+  Label=map_chr(names(chis_slim), \(x) attr(chis_in[[x]], "label")),
+  RepWt=str_detect(Variable, "RAKEDW") & Variable!="RAKEDW0"
 ) %>%
   mutate(
-    Description=case_match(
-      Variable,
-      "PUF1Y_ID"~"PUBLIC USE FILE ID - CHIS 1 YEAR DATAFILES",
-      "AH1V2"~"HAVE USUAL SOURCE OF HEALTH CARE",
-      "AH22"~"DELAY/NOT GET OTHER MEDICAL CARE IN PAST 12 MOS",
-      "SMKCUR30"~"CURRENT SMOKER (PAST 30 DAYS)",
-      "AB1"~"GENERAL HEALTH CONDITION",
-      "DIABETES"~"DOCTOR EVER TOLD HAVE DIABETES (NON-GESTATIONAL)",
-      "BMI_P"~"BODY MASS INDEX (PUF RECODE)",
-      "RBMI"~"BMI DESCRIPTIVE",
-      "AB17"~"DOCTOR EVER TOLD HAVE ASTHMA",
-      "DSTRS12"~"LIKELY HAS HAD PSYCHOLOGICAL DISTRESS IN THE LAST YEAR",
-      "AB29V2"~"DOCTOR EVER TOLD HAVE HIGH BLOOD PRESSURE",
-      "SPK_ENG"~"ENGLISH USE AND PROFICIENCY",
-      "POVLL2_P1V2"~"POVERTY LEVEL AS TIMES OF 100% FPL (PUF RECODE V2)",
-      "POVLL"~"POVERTY LEVEL",
-      "SRAGE_P1"~"SELF-REPORTED AGE (PUF 1 YR RECODE)",
-      "SRSEX"~"SELF-REPORTED GENDER",
-      "OMBSRR_P1"~"OMB/CURRENT DOF RACE - ETHNICITY (PUF 1 YR RECODE)",
-      "RAKEDW0"~"CHIS2023 RAKED WEIGHT - FULL SAMPLE"
-    ),
-    Description=case_when(
-      !is.na(Description)~Description,
-      str_detect(Variable, "RAKEDW")~str_c("CHIS2023 RAKED WEIGHT - REPLICATE ", str_sub(Variable, 7))
-    ),
-    RepWt=str_detect(Variable, "RAKEDW") & Variable!="RAKEDW0"
+    Class2=map_chr(Class, ~str_flatten(.x, collapse=";")),
+    Class2=if_else(Class2=="numeric", "double", Class2)
   )
 
 chis_slim_md %>%
   filter(!RepWt) %>%
   mutate(
-    roxy=str_c("#'    \\item{\\code{", Variable,"}}{", Class," ", Description, "}")
+    roxy=str_c("#'    \\item{\\code{", Variable,"}}{", Class2," ", Label, "}")
   ) %>%
   pull(roxy) %>%
   str_view()
 
 chis_2023 <- chis_slim
 
-glimpse(chis_2023)
 summary(chis_2023)
 
 usethis::use_data(chis_2023, overwrite = TRUE)
