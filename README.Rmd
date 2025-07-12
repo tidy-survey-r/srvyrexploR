@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.retina = 2,
-  fig.align = 'center',
-  tidy = 'styler'
+  fig.align = "center",
+  tidy = "styler"
 )
 library(tidyverse)
 ```
@@ -62,7 +62,7 @@ Also, included in the package is a Stata version of the ANES data with a subset 
 ```{r}
 #| label: anes-stata
 
-anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package="srvyrexploR"))
+anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
 ```
 
 ### NCVS
@@ -116,16 +116,18 @@ pak::pak("gergness/srvyr")
 library(srvyr)
 
 recs_des <- recs_2020 %>%
-  as_survey_rep(weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
-                type = "JK1", scale = 59/60, mse = TRUE, 
-                variables=c(ACUsed, Region))
+  as_survey_rep(
+    weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
+    type = "JK1", scale = 59 / 60, mse = TRUE,
+    variables = c(ACUsed, Region)
+  )
 
 recs_des
 
 recs_des %>%
   group_by(Region) %>%
   summarize(
-    p=survey_mean(ACUsed, vartype="ci", proportion = TRUE, prop_method = "logit")
+    p = survey_mean(ACUsed, vartype = "ci", proportion = TRUE, prop_method = "logit")
   )
 ```
 

@@ -43,7 +43,7 @@
 #'    \item{\code{BTUWOOD}}{double Total wood use, in thousand Btu, 2020}
 #'    \item{\code{TOTALBTU}}{double Total usage including electricity, natural gas, propane, and fuel oil, in thousand Btu, 2020}
 #'    \item{\code{TOTALDOL}}{double Total cost including electricity, natural gas, propane, and fuel oil, in dollars, 2020}
-#'}
+#' }
 #' @source \url{https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata}
 "recs_2020"
 
@@ -103,7 +103,7 @@
 #'   \item{\code{TOTALDOL}}{double Total cost, in dollars, 2015 }
 #'   \item{\code{BTUWOOD}}{double Total cordwood usage, in thousand Btu, 2015 (Wood consumption is not included in TOTALBTU or TOTALDOL)}
 #'   \item{\code{BTUPELLET}}{double Total wood pellet usage, in thousand Btu, 2015 (Wood consumption is not included in TOTALBTU or TOTALDOL)}
-#'}
+#' }
 #' @source \url{https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata}
 "recs_2015"
 
@@ -171,7 +171,7 @@
 #'   \item{\code{V4277E}}{integer C MULT OFF: TEACHER/SCHOOL STAFF (START 2007 Q1) (END 2016 Q4) (START 2021 Q1)}
 #'   \item{\code{V4399}}{integer REPORTED TO POLICE}
 #'   \item{\code{V4529}}{integer TYPE OF CRIME CODE (NEW, NCVS)}
-#'}
+#' }
 #' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
 "ncvs_2021_incident"
 
@@ -191,7 +191,7 @@
 #'   \item{\code{V2126B}}{integer PLACE SIZE CODE - 1990, 2000, 2010 SAMPLE DESIGN (START 1995 Q3)}
 #'   \item{\code{V2127B}}{integer REGION - 1990, 2000, 2010 SAMPLE DESIGN (START 1995 Q3)}
 #'   \item{\code{V2129}}{integer CBSA MSA STATUS}
-#'}
+#' }
 #' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
 "ncvs_2021_household"
 
@@ -210,7 +210,7 @@
 #'   \item{\code{V3024}}{integer HISPANIC ORIGIN}
 #'   \item{\code{V3084}}{integer SEXUAL ORIENTATION (START 2017 Q1)}
 #'   \item{\code{V3086}}{integer CURRENT GENDER IDENTITY (START 2017 Q1)}
-#'}
+#' }
 #' @source \url{https://doi.org/10.3886/ICPSR38429.v1}
 "ncvs_2021_person"
 
@@ -283,7 +283,7 @@
 #'   \item{\code{V202109x}}{double PRE-POST: SUMMARY: Voter turnout in 2020}
 #'   \item{\code{V202110x}}{double PRE-POST: SUMMARY: 2020 Presidential vote}
 #'   \item{\code{VotedPres2020_selection}}{factor PRE-POST: SUMMARY: 2020 Presidential vote}
-#'}
+#' }
 #' @source \url{https://electionstudies.org/data-center/2020-time-series-study/}
 "anes_2020"
 
@@ -311,6 +311,6 @@
 #'    \item{\code{OMBSRR_P1}}{factor OMB/CURRENT DOF RACE - ETHNICITY (PUF 1 YR RECODE)}
 #'    \item{\code{RAKEDW0}}{double CHIS 2023 FINAL RAKED WEIGHT}
 #'    \item{\code{RAKEDW1 - RAKEDW80}}{CHIS2023 RAKED WEIGHT - REPLICATE 1 through REPLICATE 80}
-#'}
+#' }
 #' @source \url{https://healthpolicy.ucla.edu/our-work/public-use-files/one-year-public-use-files-pufs}
 "chis_2023"
