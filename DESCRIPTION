@@ -13,7 +13,7 @@ Description: Includes datasets for the Residential Energy Consumption
     and incident files.
 License: CC BY 4.0
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Suggests: 
     srvyr
 Encoding: UTF-8
