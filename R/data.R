@@ -31,7 +31,7 @@
 #'    \item{\code{SummerTempAway}}{double Summer thermostat setting or temperature in home when no one is home during the day}
 #'    \item{\code{SummerTempNight}}{double Summer thermostat setting or temperature in home at night}
 #'    \item{\code{NWEIGHT}}{double Final Analysis Weight}
-#'    \item{\code{NWEIGHT1-NWEIGHT60}}{double Final Analysis Weight for replicate 1-60}
+#'    \item{\code{NWEIGHT1 - NWEIGHT60}}{double Final Analysis Weight for replicate 1-60}
 #'    \item{\code{BTUEL}}{double Total electricity use, in thousand Btu, 2020, including self-generation of solar power}
 #'    \item{\code{DOLLAREL}}{double Total electricity cost, in dollars, 2020}
 #'    \item{\code{BTUNG}}{double Total natural gas use, in thousand Btu, 2020}
@@ -81,7 +81,7 @@
 #'   \item{\code{TOTUCSQFT}}{double Total uncooled square footage}
 #'   \item{\code{TOTUSQFT}}{double Total unheated square footage}
 #'   \item{\code{NWEIGHT}}{double Final sample weight}
-#'   \item{\code{BRRWT1-BRRWT96}}{double Replicate weight 1 through 96}
+#'   \item{\code{BRRWT1 - BRRWT96}}{double Replicate weight 1 through 96}
 #'   \item{\code{CDD30YR}}{double Cooling degree days, 30-year average 1981-2010, base temperature 65F}
 #'   \item{\code{CDD65}}{double Cooling degree days in 2015, base temperature 65F}
 #'   \item{\code{CDD80}}{double Cooling degree days in 2015, base temperature 80F (used for garage cooling load estimation only)}
@@ -286,3 +286,31 @@
 #'}
 #' @source \url{https://electionstudies.org/data-center/2020-time-series-study/}
 "anes_2020"
+
+
+#' @title California Health Interview Survey (CHIS) (2023) data
+#' @description A subset of variables from the CHIS 2023 Public Use File
+#' @format A data frame with 21671 rows and 98 variables:
+#' \describe{
+#'    \item{\code{PUF1Y_ID}}{character PUBLIC USE FILE ID - CHIS 1 YEAR DATAFILES}
+#'    \item{\code{AH1V2}}{factor HAVE USUAL SOURCE OF HEALTH CARE}
+#'    \item{\code{AH22}}{factor DELAY/NOT GET OTHER MEDICAL CARE IN PAST 12 MOS}
+#'    \item{\code{SMKCUR30}}{factor CURRENT SMOKER (PAST 30 DAYS)}
+#'    \item{\code{AB1}}{factor GENERAL HEALTH CONDITION}
+#'    \item{\code{DIABETES}}{factor DOCTOR EVER TOLD HAVE DIABETES (NON-GESTATIONAL)}
+#'    \item{\code{BMI_P}}{numeric BODY MASS INDEX (PUF RECODE)}
+#'    \item{\code{RBMI}}{factor BMI DESCRIPTIVE}
+#'    \item{\code{AB17}}{factor DOCTOR EVER TOLD HAVE ASTHMA}
+#'    \item{\code{DSTRS12}}{factor LIKELY HAS HAD PSYCHOLOGICAL DISTRESS IN THE LAST YEAR}
+#'    \item{\code{AB29V2}}{factor DOCTOR EVER TOLD HAVE HIGH BLOOD PRESSURE}
+#'    \item{\code{SPK_ENG}}{factor ENGLISH USE AND PROFICIENCY}
+#'    \item{\code{POVLL2_P1V2}}{numeric POVERTY LEVEL AS TIMES OF 100% FPL (PUF RECODE V2)}
+#'    \item{\code{POVLL}}{factor POVERTY LEVEL}
+#'    \item{\code{SRAGE_P1}}{ordered factor SELF-REPORTED AGE (PUF 1 YR RECODE)}
+#'    \item{\code{SRSEX}}{factor SELF-REPORTED GENDER}
+#'    \item{\code{OMBSRR_P1}}{factor OMB/CURRENT DOF RACE - ETHNICITY (PUF 1 YR RECODE)}
+#'    \item{\code{RAKEDW0}}{numeric CHIS2023 RAKED WEIGHT - FULL SAMPLE}
+#'    \item{\code{RAKEDW1 - RAKEDW80}}{CHIS2023 RAKED WEIGHT - REPLICATE 1 through REPLICATE 80}
+#'}
+#' @source \url{https://healthpolicy.ucla.edu/our-work/public-use-files/one-year-public-use-files-pufs}
+"chis_2023"

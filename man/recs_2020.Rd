@@ -36,7 +36,7 @@ A data frame with 18496 rows and 118 variables:
 \item{\code{SummerTempAway}}{double Summer thermostat setting or temperature in home when no one is home during the day}
 \item{\code{SummerTempNight}}{double Summer thermostat setting or temperature in home at night}
 \item{\code{NWEIGHT}}{double Final Analysis Weight}
-\item{\code{NWEIGHT1-NWEIGHT60}}{double Final Analysis Weight for replicate 1-60}
+\item{\code{NWEIGHT1 - NWEIGHT60}}{double Final Analysis Weight for replicate 1-60}
 \item{\code{BTUEL}}{double Total electricity use, in thousand Btu, 2020, including self-generation of solar power}
 \item{\code{DOLLAREL}}{double Total electricity cost, in dollars, 2020}
 \item{\code{BTUNG}}{double Total natural gas use, in thousand Btu, 2020}

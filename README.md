@@ -37,7 +37,7 @@ The ANES data is based on the publicly available 2020 ANES data with
 additional derived variables and is subset to people who completed both
 pre and post-election interviews. The ANES Times Series Studies collect
 data on political polling in the United States and has been conducted
-since 1948.For more information about the 2020 study, see the [American
+since 1948. For more information about the 2020 study, see the [American
 National Election Studies
 website](https://electionstudies.org/data-center/2020-time-series-study/).
 On the ANES website, you can learn more about the study, see codebooks
@@ -195,6 +195,42 @@ head(recs_2020_raw)
 #> #   STUDIO <dbl>, WALLTYPE <dbl>, ROOFTYPE <dbl>, HIGHCEIL <dbl>, …
 ```
 
+### CHIS
+
+The CHIS data is a subset of variables from the 2023 California Health
+Interview Survey Adult Public Use File. CHIS is an annual survey of
+people in households in California with several topics related to
+[health and social determinants of
+health](https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis/chis-design-and-methods/survey-topics-and-questionnaires).
+For more information about the study, refer to the [CHIS
+website](https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis).
+To download a full version of the data with all variables or view
+codebooks, create an account and [download the public use
+files](https://healthpolicy.ucla.edu/our-work/public-use-files). See a
+snippet of the data below:
+
+``` r
+head(chis_2023)
+#> # A tibble: 6 × 98
+#>   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2
+#>   <chr>    <fct> <fct> <fct>    <fct>  <fct>    <dbl> <fct> <fct> <fct>   <fct> 
+#> 1 23021436 Yes   No    No       Very … No        35.6 Obes… No    No      No    
+#> 2 23009146 Yes   No    No       Excel… No        23.0 Norm… No    No      No    
+#> 3 23005039 Yes   No    No       Good   No        25.6 Over… Yes   No      Borde…
+#> 4 23025815 Yes   Yes   No       Fair   No        42.5 Obes… No    No      Borde…
+#> 5 23010158 Yes   No    No       Good   Yes       24.7 Norm… No    No      Yes   
+#> 6 23006250 Yes   No    No       Excel… No        19.1 Norm… No    No      No    
+#> # ℹ 87 more variables: SPK_ENG <fct>, POVLL2_P1V2 <dbl>, POVLL <fct>,
+#> #   SRAGE_P1 <ord>, SRSEX <fct>, OMBSRR_P1 <fct>, RAKEDW0 <dbl>, RAKEDW1 <dbl>,
+#> #   RAKEDW2 <dbl>, RAKEDW3 <dbl>, RAKEDW4 <dbl>, RAKEDW5 <dbl>, RAKEDW6 <dbl>,
+#> #   RAKEDW7 <dbl>, RAKEDW8 <dbl>, RAKEDW9 <dbl>, RAKEDW10 <dbl>,
+#> #   RAKEDW11 <dbl>, RAKEDW12 <dbl>, RAKEDW13 <dbl>, RAKEDW14 <dbl>,
+#> #   RAKEDW15 <dbl>, RAKEDW16 <dbl>, RAKEDW17 <dbl>, RAKEDW18 <dbl>,
+#> #   RAKEDW19 <dbl>, RAKEDW20 <dbl>, RAKEDW21 <dbl>, RAKEDW22 <dbl>, …
+```
+
+See `?chis_2023` for more information about the data.
+
 ## Examples
 
 To analyze the survey data, we recommend using the {srvyr} package as
@@ -276,6 +312,12 @@ ANES:
 - American National Election Studies. 2021. ANES 2020 Time Series Study
   Full Release \[dataset and documentation\]. July 19, 2021 version.
   <https://www.electionstudies.org>
+
+CHIS:
+
+- California Health Interview Survey. CHIS 2023 Adult Public Use Files.
+  \[Computer file\]. UCLA Center for Health Policy Research, Los
+  Angeles, CA. February 2025 version
 
 NCVS:
 
