@@ -3,53 +3,47 @@
 library(tidyverse)
 
 if (!dir.exists("nsduh-temp")) dir.create(here::here("nsduh-temp"))
-download.file("https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-bndl-data-r_v1.zip",
-              here::here("nsduh-temp", "nsduh-2023.zip"))
+download.file(
+  "https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-bndl-data-r_v1.zip",
+  here::here("nsduh-temp", "nsduh-2023.zip")
+)
 
 unzip(here::here("nsduh-temp", "nsduh-2023.zip"),
-      exdir = here::here("nsduh-temp"))
+  exdir = here::here("nsduh-temp")
+)
 
 load(here::here("nsduh-temp", "NSDUH_2023.Rdata"))
 
 varinfo <- tibble(
-  Variables=names(puf2023_102124),
-  Label=map_chr(names(puf2023_102124), ~attr(puf2023_102124[[.x]], "label"))
-  
+  Variables = names(puf2023_102124),
+  Label = map_chr(names(puf2023_102124), ~ attr(puf2023_102124[[.x]], "label"))
 )
 
 openxlsx2::write_xlsx(varinfo, here::here("nsduh-temp", "variable-list.xlsx"))
 
-fct_yesno_01 <- function(x){
-  factor(
-    if_else(x %in% c(0:1), x, NA),
-    labels = c("No", "Yes")
-  )
-}
-
-fct_yesno_12 <- function(x){
+fct_yesno_12 <- function(x) {
   factor(
     if_else(x %in% c(1:2), x, NA),
     labels = c("Yes", "No")
   )
 }
 
-
 nsduh_slim <- puf2023_102124 %>%
   select(
     QUESTID2, ANALWT2_C, VESTR_C, VEREP,
     NICVAPMON, TOBMON, ALCMON, ILLMON, ILTOBVAPALC, BNGDRKMON,
     IRPYUD5ALC, UD5ILLANY, UD5ILALANY,
-    YMDELT, YMDEYR, MDEIMPY, 
+    YMDELT, YMDEYR, MDEIMPY,
     AMIPY, SMIPY,
     AGE3, NEWRACE2, IRSEX, POVERTY3
   ) %>%
   mutate(
-    across(c(NICVAPMON, TOBMON, ALCMON, ILLMON, ILTOBVAPALC, BNGDRKMON, IRPYUD5ALC, UD5ILLANY, UD5ILALANY, AMIPY, SMIPY), fct_yesno_01),
-    across(c(YMDELT, YMDEYR, MDEIMPY, ), fct_yesno_12),
-    AGE3=factor(AGE3, labels=c("12-13", "14-15", "16-17", "18-20", "21-23", "24-25", "26-29", "30-34", "35-49", "50-64", "65+")),
-    NEWRACE2 =factor(NEWRACE2, labels=c("White, NH", "Black, NH", "Native Am/AK Native, NH", "Native HI/PI, NH", "Asian, NH", "More than one race, NH", "Other")),
-    IRSEX= factor(IRSEX, labels=c("Male", "Female")),
-    POVERTY3=factor(POVERTY3, labels=c("0-100% FPL", "101-200% FPL", "201%+ FPL"))
+    across(c(NICVAPMON, TOBMON, ALCMON, ILLMON, ILTOBVAPALC, BNGDRKMON, IRPYUD5ALC, UD5ILLANY, UD5ILALANY, AMIPY, SMIPY), as.integer),
+    across(c(YMDELT, YMDEYR, MDEIMPY), fct_yesno_12),
+    AGE3 = factor(AGE3, labels = c("12-13", "14-15", "16-17", "18-20", "21-23", "24-25", "26-29", "30-34", "35-49", "50-64", "65+")),
+    NEWRACE2 = factor(NEWRACE2, labels = c("White, NH", "Black, NH", "Native Am/AK Native, NH", "Native HI/PI, NH", "Asian, NH", "More than one race, NH", "Other")),
+    IRSEX = factor(IRSEX, labels = c("Male", "Female")),
+    POVERTY3 = factor(POVERTY3, labels = c("0-100% FPL", "101-200% FPL", "201%+ FPL"))
   )
 
 check_vars <- function(var) {
@@ -81,10 +75,14 @@ nsduh_slim_md %>%
     roxy = str_c("#'    \\item{\\code{", Variable, "}}{", Class2, " ", Label, "}")
   ) %>%
   pull(roxy) %>%
-  cat(sep="\n")
+  cat(sep = "\n")
 
 nsduh_2023 <- nsduh_slim
 
+summary(nsduh_2023)
+nrow(nsduh_2023)
+ncol(nsduh_2023)
+
 usethis::use_data(nsduh_2023, overwrite = TRUE)
 
-unlink(here::here("nsduh-temp"), recursive= TRUE)
+unlink(here::here("nsduh-temp"), recursive = TRUE)
