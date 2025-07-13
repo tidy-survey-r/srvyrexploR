@@ -11,7 +11,7 @@ Description: Includes datasets for the Residential Energy Consumption
     Survey (2015 and 2020), the American National Election Studies (2020),
     and the National Crime Victimization Study (2021) - household, person,
     and incident files.
-License: CC BY 4.0
+License: CC BY 4.0 + file LICENSE
 Depends: 
     R (>= 2.10)
 Suggests: 
