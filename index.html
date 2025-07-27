@@ -73,7 +73,7 @@
 <div class="section level3">
 <h3 id="anes">ANES<a class="anchor" aria-label="anchor" href="#anes"></a>
 </h3>
-<p>The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948.For more information about the 2020 study, see the <a href="https://electionstudies.org/data-center/2020-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:</p>
+<p>The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the <a href="https://electionstudies.org/data-center/2020-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">anes_2020</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 65</span></span>
@@ -197,15 +197,39 @@
 <span><span class="co">#&gt; #   NCOMBATH &lt;dbl&gt;, NHAFBATH &lt;dbl&gt;, OTHROOMS &lt;dbl&gt;, TOTROOMS &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   STUDIO &lt;dbl&gt;, WALLTYPE &lt;dbl&gt;, ROOFTYPE &lt;dbl&gt;, HIGHCEIL &lt;dbl&gt;, …</span></span></code></pre></div>
 </div>
+<div class="section level3">
+<h3 id="chis">CHIS<a class="anchor" aria-label="anchor" href="#chis"></a>
+</h3>
+<p>The CHIS data is a subset of variables from the 2023 California Health Interview Survey Adult Public Use File. CHIS is an annual survey of people in households in California with several topics related to <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis/chis-design-and-methods/survey-topics-and-questionnaires" class="external-link">health and social determinants of health</a>. For more information about the study, refer to the <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis" class="external-link">CHIS website</a>. To download a full version of the data with all variables or view codebooks, create an account and <a href="https://healthpolicy.ucla.edu/our-work/public-use-files" class="external-link">download the public use files</a>. See a snippet of the data below:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chis_2023</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 98</span></span>
+<span><span class="co">#&gt;   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt; </span></span>
+<span><span class="co">#&gt; 1 23021436 Yes   No    No       Very … No        35.6 Obes… No    No      No    </span></span>
+<span><span class="co">#&gt; 2 23009146 Yes   No    No       Excel… No        23.0 Norm… No    No      No    </span></span>
+<span><span class="co">#&gt; 3 23005039 Yes   No    No       Good   No        25.6 Over… Yes   No      Borde…</span></span>
+<span><span class="co">#&gt; 4 23025815 Yes   Yes   No       Fair   No        42.5 Obes… No    No      Borde…</span></span>
+<span><span class="co">#&gt; 5 23010158 Yes   No    No       Good   Yes       24.7 Norm… No    No      Yes   </span></span>
+<span><span class="co">#&gt; 6 23006250 Yes   No    No       Excel… No        19.1 Norm… No    No      No    </span></span>
+<span><span class="co">#&gt; # ℹ 87 more variables: SPK_ENG &lt;fct&gt;, POVLL2_P1V2 &lt;dbl&gt;, POVLL &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   SRAGE_P1 &lt;ord&gt;, SRSEX &lt;fct&gt;, OMBSRR_P1 &lt;fct&gt;, RAKEDW0 &lt;dbl&gt;, RAKEDW1 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RAKEDW2 &lt;dbl&gt;, RAKEDW3 &lt;dbl&gt;, RAKEDW4 &lt;dbl&gt;, RAKEDW5 &lt;dbl&gt;, RAKEDW6 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RAKEDW7 &lt;dbl&gt;, RAKEDW8 &lt;dbl&gt;, RAKEDW9 &lt;dbl&gt;, RAKEDW10 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RAKEDW11 &lt;dbl&gt;, RAKEDW12 &lt;dbl&gt;, RAKEDW13 &lt;dbl&gt;, RAKEDW14 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RAKEDW15 &lt;dbl&gt;, RAKEDW16 &lt;dbl&gt;, RAKEDW17 &lt;dbl&gt;, RAKEDW18 &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   RAKEDW19 &lt;dbl&gt;, RAKEDW20 &lt;dbl&gt;, RAKEDW21 &lt;dbl&gt;, RAKEDW22 &lt;dbl&gt;, …</span></span></code></pre></div>
+<p>See <code><a href="reference/chis_2023.html">?chis_2023</a></code> for more information about the data.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
 <p>To analyze the survey data, we recommend using the {srvyr} package as follows:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"gergness/srvyr"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://gdfe.co/srvyr/" class="external-link">srvyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">recs_des</span> <span class="op">&lt;-</span> <span class="va">recs_2020</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -267,6 +291,10 @@
 <ul>
 <li>American National Election Studies. 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. <a href="https://www.electionstudies.org" class="external-link uri">https://www.electionstudies.org</a>
 </li>
+</ul>
+<p>CHIS:</p>
+<ul>
+<li>California Health Interview Survey. CHIS 2023 Adult Public Use Files. [Computer file]. UCLA Center for Health Policy Research, Los Angeles, CA. February 2025 version</li>
 </ul>
 <p>NCVS:</p>
 <ul>
