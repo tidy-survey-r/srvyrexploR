@@ -13,13 +13,13 @@ Description: Includes datasets for the Residential Energy Consumption
     and incident files.
 License: CC BY 4.0 + file LICENSE
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Suggests: 
     srvyr
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: bzip2
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 BugReports: https://github.com/tidy-survey-r/srvyrexploR/issues
 URL: https://github.com/tidy-survey-r/srvyrexploR, https://github.com/tidy-survey-r/tidy-survey-book, https://tidy-survey-r.github.io/srvyrexploR/
