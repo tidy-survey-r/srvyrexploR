@@ -76,22 +76,76 @@
 <p>The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the <a href="https://electionstudies.org/data-center/2020-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">anes_2020</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 65</span></span>
-<span><span class="co">#&gt;   V200001 CaseID V200002 InterviewMode V200010b Weight V200010c VarUnit V200010d</span></span>
-<span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;hvn_l&gt; &lt;fct&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1  200015 200015       3 Web              1.01   1.01         2 2              9</span></span>
-<span><span class="co">#&gt; 2  200022 200022       3 Web              1.16   1.16         2 2             26</span></span>
-<span><span class="co">#&gt; 3  200039 200039       3 Web              0.769  0.769        1 1             41</span></span>
-<span><span class="co">#&gt; 4  200046 200046       3 Web              0.521  0.521        2 2             29</span></span>
-<span><span class="co">#&gt; 5  200053 200053       3 Web              0.966  0.966        1 1             23</span></span>
-<span><span class="co">#&gt; 6  200060 200060       3 Web              0.235  0.235        2 2             37</span></span>
-<span><span class="co">#&gt; # ℹ 56 more variables: Stratum &lt;fct&gt;, V201006 &lt;hvn_lbll&gt;,</span></span>
-<span><span class="co">#&gt; #   CampaignInterest &lt;fct&gt;, V201023 &lt;hvn_lbll&gt;, EarlyVote2020 &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   V201024 &lt;hvn_lbll&gt;, V201025x &lt;hvn_lbll&gt;, V201028 &lt;hvn_lbll&gt;,</span></span>
-<span><span class="co">#&gt; #   V201029 &lt;hvn_lbll&gt;, V201101 &lt;hvn_lbll&gt;, V201102 &lt;hvn_lbll&gt;,</span></span>
-<span><span class="co">#&gt; #   VotedPres2016 &lt;fct&gt;, V201103 &lt;hvn_lbll&gt;, VotedPres2016_selection &lt;fct&gt;,</span></span>
-<span><span class="co">#&gt; #   V201228 &lt;hvn_lbll&gt;, V201229 &lt;hvn_lbll&gt;, V201230 &lt;hvn_lbll&gt;,</span></span>
-<span><span class="co">#&gt; #   V201231x &lt;hvn_lbll&gt;, PartyID &lt;fct&gt;, V201233 &lt;hvn_lbll&gt;, …</span></span></code></pre></div>
+<span><span class="co">#&gt;   V200001 CaseID V200002 InterviewMode  V200010b    Weight V200010c VarUnit</span></span>
+<span><span class="co">#&gt; 1  200015 200015       3           Web 1.0057375 1.0057375        2       2</span></span>
+<span><span class="co">#&gt; 2  200022 200022       3           Web 1.1634731 1.1634731        2       2</span></span>
+<span><span class="co">#&gt; 3  200039 200039       3           Web 0.7686811 0.7686811        1       1</span></span>
+<span><span class="co">#&gt; 4  200046 200046       3           Web 0.5210195 0.5210195        2       2</span></span>
+<span><span class="co">#&gt; 5  200053 200053       3           Web 0.9657892 0.9657892        1       1</span></span>
+<span><span class="co">#&gt; 6  200060 200060       3           Web 0.2347078 0.2347078        2       2</span></span>
+<span><span class="co">#&gt;   V200010d Stratum V201006     CampaignInterest V201023 EarlyVote2020 V201024</span></span>
+<span><span class="co">#&gt; 1        9       9       2  Somewhat interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt; 2       26      26       3  Not much interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt; 3       41      41       2  Somewhat interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt; 4       29      29       3  Not much interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt; 5       23      23       2  Somewhat interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt; 6       37      37       1 Very much interested      -1          &lt;NA&gt;      -1</span></span>
+<span><span class="co">#&gt;   V201025x V201028 V201029 V201101 V201102 VotedPres2016 V201103</span></span>
+<span><span class="co">#&gt; 1        3      -1      -1      -1       1           Yes       2</span></span>
+<span><span class="co">#&gt; 2        3      -1      -1      -1       1           Yes       5</span></span>
+<span><span class="co">#&gt; 3        3      -1      -1      -1       1           Yes       1</span></span>
+<span><span class="co">#&gt; 4        3      -1      -1      -1       1           Yes       1</span></span>
+<span><span class="co">#&gt; 5        3      -1      -1      -1       1           Yes       2</span></span>
+<span><span class="co">#&gt; 6        3      -1      -1      -1       2            No      -1</span></span>
+<span><span class="co">#&gt;   VotedPres2016_selection V201228 V201229 V201230 V201231x</span></span>
+<span><span class="co">#&gt; 1                   Trump       2       1      -1        7</span></span>
+<span><span class="co">#&gt; 2                   Other       5      -1       2        4</span></span>
+<span><span class="co">#&gt; 3                 Clinton       3      -1       3        3</span></span>
+<span><span class="co">#&gt; 4                 Clinton       2       2      -1        6</span></span>
+<span><span class="co">#&gt; 5                   Trump       3      -1       2        4</span></span>
+<span><span class="co">#&gt; 6                    &lt;NA&gt;       3      -1       3        3</span></span>
+<span><span class="co">#&gt;                      PartyID V201233     TrustGovernment V201237</span></span>
+<span><span class="co">#&gt; 1          Strong republican       5               Never       3</span></span>
+<span><span class="co">#&gt; 2                Independent       5               Never       4</span></span>
+<span><span class="co">#&gt; 3       Independent-democrat       4    Some of the time       4</span></span>
+<span><span class="co">#&gt; 4 Not very strong republican       3 About half the time       2</span></span>
+<span><span class="co">#&gt; 5                Independent       5               Never       4</span></span>
+<span><span class="co">#&gt; 6       Independent-democrat       4    Some of the time       2</span></span>
+<span><span class="co">#&gt;           TrustPeople V201507x Age    AgeGroup V201510   Education V201546</span></span>
+<span><span class="co">#&gt; 1 About half the time       46  46       40-49       6  Bachelor's       1</span></span>
+<span><span class="co">#&gt; 2    Some of the time       37  37       30-39       3     Post HS       2</span></span>
+<span><span class="co">#&gt; 3    Some of the time       40  40       40-49       2 High school       2</span></span>
+<span><span class="co">#&gt; 4    Most of the time       41  41       40-49       4     Post HS       2</span></span>
+<span><span class="co">#&gt; 5    Some of the time       72  72 70 or older       8    Graduate       2</span></span>
+<span><span class="co">#&gt; 6    Most of the time       71  71 70 or older       3     Post HS       2</span></span>
+<span><span class="co">#&gt;   V201547a V201547b V201547c V201547d V201547e V201547z V201549x      RaceEth</span></span>
+<span><span class="co">#&gt; 1       -3       -3       -3       -3       -3       -3        3     Hispanic</span></span>
+<span><span class="co">#&gt; 2       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI</span></span>
+<span><span class="co">#&gt; 3       -3       -3       -3       -3       -3       -3        1        White</span></span>
+<span><span class="co">#&gt; 4       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI</span></span>
+<span><span class="co">#&gt; 5       -3       -3       -3       -3       -3       -3        5        AI/AN</span></span>
+<span><span class="co">#&gt; 6       -3       -3       -3       -3       -3       -3        1        White</span></span>
+<span><span class="co">#&gt;   V201600 Gender V201607 V201610 V201611 V201613 V201615 V201616 V201617x</span></span>
+<span><span class="co">#&gt; 1       1   Male      -3      -3      -3      -3      -3      -3       21</span></span>
+<span><span class="co">#&gt; 2       2 Female      -3      -3      -3      -3      -3      -3       13</span></span>
+<span><span class="co">#&gt; 3       2 Female      -3      -3      -3      -3      -3      -3       17</span></span>
+<span><span class="co">#&gt; 4       1   Male      -3      -3      -3      -3      -3      -3        7</span></span>
+<span><span class="co">#&gt; 5       1   Male      -3      -3      -3      -3      -3      -3       22</span></span>
+<span><span class="co">#&gt; 6       2 Female      -3      -3      -3      -3      -3      -3        3</span></span>
+<span><span class="co">#&gt;             Income         Income7 V202051 V202066 V202072 VotedPres2020</span></span>
+<span><span class="co">#&gt; 1 $175,000-249,999   $125k or more      -1       1      -1          &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2   $70,000-74,999   $60k to &lt; 80k      -1       4       1           Yes</span></span>
+<span><span class="co">#&gt; 3 $100,000-109,999 $100k to &lt; 125k      -1       4       1           Yes</span></span>
+<span><span class="co">#&gt; 4   $35,000-39,999   $20k to &lt; 40k      -1       4       1           Yes</span></span>
+<span><span class="co">#&gt; 5 $250,000 or more   $125k or more      -1       4       1           Yes</span></span>
+<span><span class="co">#&gt; 6   $15,000-19,999      Under $20k      -1       4       1           Yes</span></span>
+<span><span class="co">#&gt;   V202073 V202109x V202110x VotedPres2020_selection</span></span>
+<span><span class="co">#&gt; 1      -1        0       -1                    &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2       3        1        3                   Other</span></span>
+<span><span class="co">#&gt; 3       1        1        1                   Biden</span></span>
+<span><span class="co">#&gt; 4       1        1        1                   Biden</span></span>
+<span><span class="co">#&gt; 5       2        1        2                   Trump</span></span>
+<span><span class="co">#&gt; 6       1        1        1                   Biden</span></span></code></pre></div>
 <p>See <code><a href="reference/anes_2020.html">?anes_2020</a></code> for more information about the data.</p>
 <p>Also, included in the package is a Stata version of the ANES data with a subset of the columns and is subset to people who completed both pre and post-election interviews. To load this dataset, we recommend using the {haven} package as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -141,10 +195,29 @@
 <span><span class="co">#&gt; #   V4267 &lt;fct&gt;, V4268 &lt;fct&gt;, V4269 &lt;fct&gt;, V4270 &lt;fct&gt;, V4271 &lt;fct&gt;, …</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="nsduh">NSDUH<a class="anchor" aria-label="anchor" href="#nsduh"></a>
+</h3>
+<p>The National Survey on Drug Use and Health (NSDUH) is an annual survey of the civilian, non-institutionalized population in the United States who are at least 12 years old. Topics include substance use (tobacco, alcohol, and illicit drugs including marijuana), mental health, and general health. This package provides a subset of the variables from the 2023 Public Use File. For more details about the study and the data, refer to the <a href="https://www.samhsa.gov/data/sites/default/files/reports/rpt47098/Methodological%20Summary%20and%20Definitions/2023-nsduh-method-summary-defs.pdf" class="external-link">Methodological Summary and Definitions</a>, <a href="https://www.samhsa.gov/data/sites/default/files/reports/rpt56198/2023-nsduh-puf-data-users-guide.pdf" class="external-link">Data User’s Guide</a>, and <a href="https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-info-codebook_v1.pdf" class="external-link">Codebook</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nsduh_2023</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 22</span></span>
+<span><span class="co">#&gt;   QUESTID2 ANALWT2_C VESTR_C VEREP NICVAPMON TOBMON ALCMON ILLMON ILTOBVAPALC</span></span>
+<span><span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;  &lt;int&gt;       &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 10000053     3276.   40031     2         0      0      1      0           1</span></span>
+<span><span class="co">#&gt; 2 10000679    15630.   40021     2         0      1      1      0           1</span></span>
+<span><span class="co">#&gt; 3 10001208     4018.   40043     1         0      1      0      1           1</span></span>
+<span><span class="co">#&gt; 4 10001260    10712.   40030     2         0      0      0      0           0</span></span>
+<span><span class="co">#&gt; 5 10001588     8195.   40023     2         0      0      1      0           1</span></span>
+<span><span class="co">#&gt; 6 10004996     3771.   40048     1         1      1      1      0           1</span></span>
+<span><span class="co">#&gt; # ℹ 13 more variables: BNGDRKMON &lt;int&gt;, IRPYUD5ALC &lt;int&gt;, UD5ILLANY &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   UD5ILALANY &lt;int&gt;, YMDELT &lt;fct&gt;, YMDEYR &lt;fct&gt;, MDEIMPY &lt;fct&gt;, AMIPY &lt;int&gt;,</span></span>
+<span><span class="co">#&gt; #   SMIPY &lt;int&gt;, AGE3 &lt;fct&gt;, NEWRACE2 &lt;fct&gt;, IRSEX &lt;fct&gt;, POVERTY3 &lt;fct&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="recs">RECS<a class="anchor" aria-label="anchor" href="#recs"></a>
 </h3>
 <p>Three files are included associated with RECS - a dataset with the 2015 data with some derived variables created for the book (<code>recs_2015</code>), the 2020 data with some derived variables created for the book (<code>recs_2020</code>), and the 2020 data with the original variables (<code>recs_2020_raw</code>). RECS is a survey about energy consumption and expenditure among residential households in the United States and has been conducted since 1979 by the Energy Information Administration. More information about the original data is available at the <a href="https://www.eia.gov/consumption/residential/data/2020/" class="external-link">RECS website</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">recs_2015</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 141</span></span>
 <span><span class="co">#&gt;   DOEID REGIONC Region    Division MSAStatus Urbanicity HousingUnitType YearMade</span></span>
@@ -201,7 +274,7 @@
 <h3 id="chis">CHIS<a class="anchor" aria-label="anchor" href="#chis"></a>
 </h3>
 <p>The CHIS data is a subset of variables from the 2023 California Health Interview Survey Adult Public Use File. CHIS is an annual survey of people in households in California with several topics related to <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis/chis-design-and-methods/survey-topics-and-questionnaires" class="external-link">health and social determinants of health</a>. For more information about the study, refer to the <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis" class="external-link">CHIS website</a>. To download a full version of the data with all variables or view codebooks, create an account and <a href="https://healthpolicy.ucla.edu/our-work/public-use-files" class="external-link">download the public use files</a>. See a snippet of the data below:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chis_2023</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 98</span></span>
 <span><span class="co">#&gt;   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2</span></span>
@@ -226,10 +299,10 @@
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
 <p>To analyze the survey data, we recommend using the {srvyr} package as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"gergness/srvyr"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://gdfe.co/srvyr/" class="external-link">srvyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">recs_des</span> <span class="op">&lt;-</span> <span class="va">recs_2020</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -289,7 +362,7 @@
 <p><strong>Data citations:</strong></p>
 <p>ANES:</p>
 <ul>
-<li>American National Election Studies. 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. <a href="https://www.electionstudies.org" class="external-link uri">https://www.electionstudies.org</a>
+<li>American National Election Studies, 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. <a href="https://www.electionstudies.org" class="external-link uri">https://www.electionstudies.org</a>
 </li>
 </ul>
 <p>CHIS:</p>
@@ -301,11 +374,16 @@
 <li>United States. Bureau of Justice Statistics. National Crime Victimization Survey, [United States], 2021. Inter-university Consortium for Political and Social Research [distributor], 2022-09-19. <a href="https://doi.org/10.3886/ICPSR38429.v1" class="external-link uri">https://doi.org/10.3886/ICPSR38429.v1</a>
 </li>
 </ul>
+<p>NSDUH:</p>
+<ul>
+<li>Center for Behavioral Health Statistics and Quality, 2025. 2023 National Survey on Drug Use and Health: Public use file data users’ guide. <a href="https://www.samhsa.gov/data/data-wecollect/nsduh/datafiles" class="external-link uri">https://www.samhsa.gov/data/data-wecollect/nsduh/datafiles</a>
+</li>
+</ul>
 <p>RECS:</p>
 <ul>
-<li>U.S. Energy Information Administration. 2024. Residential Energy Consumption 2020 Survey Data. [dataset and documentation]. January 2024 version. <a href="https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata" class="external-link uri">https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata</a>
+<li>U.S. Energy Information Administration, 2024. Residential Energy Consumption 2020 Survey Data. [dataset and documentation]. January 2024 version. <a href="https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata" class="external-link uri">https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata</a>
 </li>
-<li>U.S. Energy Information Administration. 2018 Residential Energy Consumption 2015 Survey Data. [dataset and documentation]. December 2018 version. <a href="https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata" class="external-link uri">https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata</a>
+<li>U.S. Energy Information Administration, 2018 Residential Energy Consumption 2015 Survey Data. [dataset and documentation]. December 2018 version. <a href="https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata" class="external-link uri">https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata</a>
 </li>
 </ul>
 </div>
