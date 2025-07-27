@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
   fig.align = "center",
   tidy = "styler"
 )
-library(tidyverse)
 ```
 
 The **srvyexploR** package provides datasets used in the book [Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}](https://tidy-survey-r.github.io/tidy-survey-book/). This will help readers follow along with the examples and work through the exercises.
@@ -75,6 +74,16 @@ The NCVS data is based off of publicly available data for the 2021 NCVS. The NCV
 head(ncvs_2021_household)
 head(ncvs_2021_person)
 head(ncvs_2021_incident)
+```
+
+### NSDUH
+
+The National Survey on Drug Use and Health (NSDUH) is an annual survey of the civilian, non-institutionalized population in the United States who are at least 12 years old. Topics include substance use (tobacco, alcohol, and illicit drugs including marijuana), mental health, and general health. This package provides a subset of the variables from the 2023 Public Use File. For more details about the study and the data, refer to the [Methodological Summary and Definitions](https://www.samhsa.gov/data/sites/default/files/reports/rpt47098/Methodological%20Summary%20and%20Definitions/2023-nsduh-method-summary-defs.pdf), [Data User's Guide](https://www.samhsa.gov/data/sites/default/files/reports/rpt56198/2023-nsduh-puf-data-users-guide.pdf), and [Codebook](https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-info-codebook_v1.pdf).
+
+```{r}
+#| label: nsduh-show
+
+head(nsduh_2023)
 ```
 
 ### RECS
@@ -152,7 +161,7 @@ Anyone interested in redistributing the ANES data should refer to the [ANES FAQ 
 
 ANES: 
 
-+ American National Election Studies. 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. https://www.electionstudies.org
++ American National Election Studies, 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. https://www.electionstudies.org
 
 CHIS:
 
@@ -162,7 +171,12 @@ NCVS:
 
 + United States. Bureau of Justice Statistics. National Crime Victimization Survey, [United States], 2021. Inter-university Consortium for Political and Social Research [distributor], 2022-09-19. https://doi.org/10.3886/ICPSR38429.v1
 
+NSDUH:
+
++ Center for Behavioral Health Statistics and Quality, 2025. 2023 National Survey on Drug Use
+and Health: Public use file data users’ guide. https://www.samhsa.gov/data/data-wecollect/nsduh/datafiles
+
 RECS:
 
-+ U.S. Energy Information Administration. 2024. Residential Energy Consumption 2020 Survey Data. [dataset and documentation]. January 2024 version. https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata
-+ U.S. Energy Information Administration. 2018 Residential Energy Consumption 2015 Survey Data. [dataset and documentation]. December 2018 version. https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata 
++ U.S. Energy Information Administration, 2024. Residential Energy Consumption 2020 Survey Data. [dataset and documentation]. January 2024 version. https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata
++ U.S. Energy Information Administration, 2018 Residential Energy Consumption 2015 Survey Data. [dataset and documentation]. December 2018 version. https://www.eia.gov/consumption/residential/data/2015/index.php?view=microdata 

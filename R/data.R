@@ -287,6 +287,35 @@
 #' @source \url{https://electionstudies.org/data-center/2020-time-series-study/}
 "anes_2020"
 
+#' @title NATIONAL SURVEY ON DRUG USE AND HEALTH (NSDUH) (2023) data
+#' @description A subset of variables from the NSDUH 2023 Public Use File
+#' @format A data frame with 56705 rows and 22 variables:
+#' \describe{
+#'    \item{\code{QUESTID2}}{double RESPONDENT IDENTIFICATION}
+#'    \item{\code{ANALWT2_C}}{double FIN PRSN-LEVEL SMPLE WGHT 2}
+#'    \item{\code{VESTR_C}}{double VARIANCE STRATUM}
+#'    \item{\code{VEREP}}{double VARIANCE PRIMARY SAMPLING UNIT}
+#'    \item{\code{NICVAPMON}}{integer RC-NICOTINE VAPING - PAST MONTH USE}
+#'    \item{\code{TOBMON}}{integer RC-ANY TOBACCO - PAST MONTH USE}
+#'    \item{\code{ALCMON}}{integer RC-ALCOHOL - PAST MONTH USE}
+#'    \item{\code{ILLMON}}{integer RC-ANY ILLICIT DRUG - PAST MONTH USE}
+#'    \item{\code{ILTOBVAPALC}}{integer RC-TOBACCO, NICOTINE VAPING, ALCOHOL, ILLICIT DRUG - PST MON}
+#'    \item{\code{BNGDRKMON}}{integer RC-BINGE ALCOHOL USE PAST 30 DAYS}
+#'    \item{\code{IRPYUD5ALC}}{integer ALCOHOL USE DISORDER IN THE PAST YEAR - IMP REV}
+#'    \item{\code{UD5ILLANY}}{integer RC-DRUG USE DISORDER - PAST YEAR USERS}
+#'    \item{\code{UD5ILALANY}}{integer RC-DRUG OR ALCOHOL USE DISORDER - PAST YEAR USERS}
+#'    \item{\code{YMDELT}}{factor RC-YOUTH: LIFETIME MAJOR DEPRESSIVE EPISODE (MDE)}
+#'    \item{\code{YMDEYR}}{factor RC-YOUTH: PAST YEAR MAJOR DEPRESSIVE EPISODE (MDE)}
+#'    \item{\code{MDEIMPY}}{factor RC-YOUTH: MDE WITH SEVERE ROLE IMPAIRMENT}
+#'    \item{\code{AMIPY}}{integer RC-IMP AMI IND (1/0) BASED ON PREDICTED SMI PROB PY}
+#'    \item{\code{SMIPY}}{integer RC-IMP SMI IND (1/0) BASED ON PREDICTED SMI PROB PY}
+#'    \item{\code{AGE3}}{factor RECODE - FINAL EDITED AGE}
+#'    \item{\code{NEWRACE2}}{factor RC-RACE/HISPANICITY RECODE (7 LEVELS)}
+#'    \item{\code{IRSEX}}{factor SEX AT BIRTH - IMPUTATION REVISED}
+#'    \item{\code{POVERTY3}}{factor RC-POVERTY LEVEL-NEW INC (% OF US CENSUS POVERTY THRESHOLD)}
+#' }
+#' @source \url{https://www.samhsa.gov/data/data-we-collect/nsduh-national-survey-drug-use-and-health/datafiles}
+"nsduh_2023"
 
 #' @title California Health Interview Survey (CHIS) (2023) data
 #' @description A subset of variables from the CHIS 2023 Public Use File
