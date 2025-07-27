@@ -2,24 +2,24 @@
 knitr::opts_chunk$set(echo = TRUE)
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-library(tidyverse) #data manipulation
-library(tidylog) #informative logging messages
+library(tidyverse) # data manipulation
+library(tidylog) # informative logging messages
 library(osfr)
 
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 inc_file_osf_det <- osf_retrieve_node("https://osf.io/z5c3m/") %>%
-  osf_ls_files(path="NCVS_2021/DS0004") %>%
-  osf_download(conflicts="overwrite", path=here::here("data-raw"))
+  osf_ls_files(path = "NCVS_2021/DS0004") %>%
+  osf_download(conflicts = "overwrite", path = here::here("data-raw"))
 
-incfiles <- load(pull(inc_file_osf_det, local_path), verbose=TRUE)
+incfiles <- load(pull(inc_file_osf_det, local_path), verbose = TRUE)
 
 inc_in <- get(incfiles) %>%
   as_tibble()
 
 unlink(pull(inc_file_osf_det, local_path))
 
-make_num_fact <- function(x){
+make_num_fact <- function(x) {
   xchar <- sub("^\\(0*([0-9]+)\\).+$", "\\1", x)
   xnum <- as.numeric(xchar)
   fct_reorder(xchar, xnum, .na_rm = TRUE)
@@ -30,14 +30,14 @@ inc_slim <- inc_in %>%
     YEARQ, IDHH, IDPER, V4012, WGTVICCY, # identifiers and weight
     num_range("V", 4016:4019), # series crime information
     V4021B, V4022, V4024, # time of incident, location of incident (macro and micro)
-    num_range("V", 4049:4058), #weapon type
+    num_range("V", 4049:4058), # weapon type
     V4234, V4235, num_range("V", 4241:4245), V4248, num_range("V", 4256:4278), starts_with("V4277"), # victim-offender relationship
     V4399, # report to police
     V4529 # type of crime
   ) %>%
   mutate(
-    IDHH=as.character(IDHH),
-    IDPER=as.character(IDPER),
+    IDHH = as.character(IDHH),
+    IDPER = as.character(IDPER),
     across(where(is.factor), make_num_fact)
   )
 
@@ -50,10 +50,10 @@ usethis::use_data(ncvs_2021_incident, overwrite = TRUE)
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 pers_file_osf_det <- osf_retrieve_node("https://osf.io/z5c3m/") %>%
-  osf_ls_files(path="NCVS_2021/DS0003") %>%
-  osf_download(conflicts="overwrite", path=here::here("data-raw"))
+  osf_ls_files(path = "NCVS_2021/DS0003") %>%
+  osf_download(conflicts = "overwrite", path = here::here("data-raw"))
 
-persfiles <- load(pull(pers_file_osf_det, local_path), verbose=TRUE)
+persfiles <- load(pull(pers_file_osf_det, local_path), verbose = TRUE)
 
 pers_in <- get(persfiles) %>%
   as_tibble()
@@ -67,8 +67,8 @@ pers_slim <- pers_in %>%
     # age, marital status, sex, race, hispanic origin, gender, sexual orientation
   ) %>%
   mutate(
-    IDHH=as.character(IDHH),
-    IDPER=as.character(IDPER),
+    IDHH = as.character(IDHH),
+    IDPER = as.character(IDPER),
     across(where(is.factor), make_num_fact)
   )
 
@@ -82,10 +82,10 @@ usethis::use_data(ncvs_2021_person, overwrite = TRUE)
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 hh_file_osf_det <- osf_retrieve_node("https://osf.io/z5c3m/") %>%
-  osf_ls_files(path="NCVS_2021/DS0002") %>%
-  osf_download(conflicts="overwrite", path=here::here("data-raw"))
+  osf_ls_files(path = "NCVS_2021/DS0002") %>%
+  osf_download(conflicts = "overwrite", path = here::here("data-raw"))
 
-hhfiles <- load(pull(hh_file_osf_det, local_path), verbose=TRUE)
+hhfiles <- load(pull(hh_file_osf_det, local_path), verbose = TRUE)
 
 hh_in <- get(hhfiles) %>%
   as_tibble()
@@ -99,7 +99,7 @@ hh_slim <- hh_in %>%
     # tenure, urbanicity, income, family structure, place size, region, msa status
   ) %>%
   mutate(
-    IDHH=as.character(IDHH),
+    IDHH = as.character(IDHH),
     across(where(is.factor), make_num_fact)
   )
 
@@ -108,5 +108,3 @@ summary(hh_slim)
 ncvs_2021_household <- hh_slim
 
 usethis::use_data(ncvs_2021_household, overwrite = TRUE)
-
-

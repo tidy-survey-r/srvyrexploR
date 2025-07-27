@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   fig.retina = 2,
-  fig.align = 'center',
-  tidy = 'styler'
+  fig.align = "center",
+  tidy = "styler"
 )
 ```
 
@@ -46,7 +46,7 @@ This package includes data from three surveys including the American National El
 
 ### ANES
 
-The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948.For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
+The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
 
 ```{r}
 #| label: show-anes
@@ -61,7 +61,7 @@ Also, included in the package is a Stata version of the ANES data with a subset 
 ```{r}
 #| label: anes-stata
 
-anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package="srvyrexploR"))
+anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
 ```
 
 ### NCVS
@@ -98,6 +98,19 @@ head(recs_2020)
 head(recs_2020_raw)
 ```
 
+### CHIS
+
+The CHIS data is a subset of variables from the 2023 California Health Interview Survey Adult Public Use File. CHIS is an annual survey of people in households in California with several topics related to [health and social determinants of health](https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis/chis-design-and-methods/survey-topics-and-questionnaires). For more information about the study, refer to the [CHIS website](https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis). To download a full version of the data with all variables or view codebooks, create an account and [download the public use files](https://healthpolicy.ucla.edu/our-work/public-use-files). See a snippet of the data below:
+
+```{r}
+#| label: show-chis
+
+head(chis_2023)
+```
+
+See `?chis_2023` for more information about the data.
+
+
 ## Examples
 
 To analyze the survey data, we recommend using the {srvyr} package as follows:
@@ -112,16 +125,18 @@ pak::pak("gergness/srvyr")
 library(srvyr)
 
 recs_des <- recs_2020 %>%
-  as_survey_rep(weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
-                type = "JK1", scale = 59/60, mse = TRUE, 
-                variables=c(ACUsed, Region))
+  as_survey_rep(
+    weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
+    type = "JK1", scale = 59 / 60, mse = TRUE,
+    variables = c(ACUsed, Region)
+  )
 
 recs_des
 
 recs_des %>%
   group_by(Region) %>%
   summarize(
-    p=survey_mean(ACUsed, vartype="ci", proportion = TRUE, prop_method = "logit")
+    p = survey_mean(ACUsed, vartype = "ci", proportion = TRUE, prop_method = "logit")
   )
 ```
 
@@ -147,6 +162,10 @@ Anyone interested in redistributing the ANES data should refer to the [ANES FAQ 
 ANES: 
 
 + American National Election Studies, 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. https://www.electionstudies.org
+
+CHIS:
+
++ California Health Interview Survey. CHIS 2023 Adult Public Use Files. [Computer file]. UCLA Center for Health Policy Research, Los Angeles, CA. February 2025	version
 
 NCVS:
 

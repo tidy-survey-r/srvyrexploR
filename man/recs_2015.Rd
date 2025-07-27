@@ -31,7 +31,7 @@ A data frame with 5686 rows and 141 variables:
 \item{\code{TOTUCSQFT}}{double Total uncooled square footage}
 \item{\code{TOTUSQFT}}{double Total unheated square footage}
 \item{\code{NWEIGHT}}{double Final sample weight}
-\item{\code{BRRWT1-BRRWT96}}{double Replicate weight 1 through 96}
+\item{\code{BRRWT1 - BRRWT96}}{double Replicate weight 1 through 96}
 \item{\code{CDD30YR}}{double Cooling degree days, 30-year average 1981-2010, base temperature 65F}
 \item{\code{CDD65}}{double Cooling degree days in 2015, base temperature 65F}
 \item{\code{CDD80}}{double Cooling degree days in 2015, base temperature 80F (used for garage cooling load estimation only)}

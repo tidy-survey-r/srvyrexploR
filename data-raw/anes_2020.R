@@ -12,8 +12,8 @@ library(osfr)
 
 ## ----derivedata------------------------------------------------------------------------------------------------------------------------------------------------------
 anes_file_osf_det <- osf_retrieve_node("https://osf.io/z5c3m/") %>%
-  osf_ls_files(path="ANES_2020", pattern="sav") %>%
-  osf_download(conflicts="overwrite", path=here::here("data-raw"))
+  osf_ls_files(path = "ANES_2020", pattern = "sav") %>%
+  osf_download(conflicts = "overwrite", path = here::here("data-raw"))
 
 anes_in_2020 <- read_sav(pull(anes_file_osf_det, local_path))
 
@@ -22,11 +22,11 @@ unlink(pull(anes_file_osf_det, local_path))
 # weight validity for post-election survey
 anes_in_2020 %>%
   select(V200004, V200010a, V200010b) %>%
-  group_by(V200004) %>% #type of respondent
+  group_by(V200004) %>% # type of respondent
   summarise(
-    n=n(),
-    nvalidwt_pre=sum(!is.na(V200010a) & V200010a>0),
-    nvalidwt_post=sum(!is.na(V200010b) & V200010b>0)
+    n = n(),
+    nvalidwt_pre = sum(!is.na(V200010a) & V200010a > 0),
+    nvalidwt_post = sum(!is.na(V200010b) & V200010b > 0)
   )
 
 # Are all PSU/Stratum represented in post-weight? If so, we can drop pre-only cases later
@@ -35,58 +35,58 @@ anes_in_2020 %>%
   count(V200010d, V200010c, V200004) %>%
   group_by(V200010d, V200010c) %>%
   mutate(
-    Pct=n/sum(n)
+    Pct = n / sum(n)
   ) %>%
-  filter(V200004==3) %>%
+  filter(V200004 == 3) %>%
   arrange(Pct)
 
 anes_in_2020_slim <- anes_in_2020 %>%
-  filter(V200004==3) %>% #Complete pre and post-election interviews
+  filter(V200004 == 3) %>% # Complete pre and post-election interviews
   select(
-    V200001,  # CASEID
-    V200002,  # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
+    V200001, # CASEID
+    V200002, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
     V200010b, # FULL SAMPLE POST-ELECTION WEIGHT
     V200010d, # FULL SAMPLE VARIANCE STRATUM
     V200010c, # FULL SAMPLE VARIANCE UNIT
-    V201006,  # PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS
-    V201102,  # PRE: DID R VOTE FOR PRESIDENT IN 2016
-    V201101,  # PRE: DID R VOTE FOR PRESIDENT IN 2016 [REVISED]
-    V201103,  # PRE: RECALL OF LAST (2016) PRESIDENTIAL VOTE CHOICE)
+    V201006, # PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS
+    V201102, # PRE: DID R VOTE FOR PRESIDENT IN 2016
+    V201101, # PRE: DID R VOTE FOR PRESIDENT IN 2016 [REVISED]
+    V201103, # PRE: RECALL OF LAST (2016) PRESIDENTIAL VOTE CHOICE)
     V201025x, # PRE: SUMMARY: REGISTRATION AND EARLY VOTE STATUS
-    V201028,  # PRE: DID R VOTE FOR PRESIDENT
-    V201228,  # PRE: PARTY ID
-    V201229,  # PRE: PARTY ID STRONG
-    V201230,  # PRE: PARTY ID LEAN
+    V201028, # PRE: DID R VOTE FOR PRESIDENT
+    V201228, # PRE: PARTY ID
+    V201229, # PRE: PARTY ID STRONG
+    V201230, # PRE: PARTY ID LEAN
     V201231x, # PRE: SUMMARY: PARTY ID (Derived from V201228, V201229, and PTYID_LEANPTY)
-    V201233,  # PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT [REVISED]
-    V201237,  # PRE: HOW OFTEN CAN PEOPLE BE TRUSTED
+    V201233, # PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT [REVISED]
+    V201237, # PRE: HOW OFTEN CAN PEOPLE BE TRUSTED
     V201507x, # PRE: SUMMARY: RESPONDENT AGE
-    V201510,  # PRE: HIGHEST LEVEL OF EDUCATION
-    V201546,  # PRE: HISPANIC ETHNICITY
+    V201510, # PRE: HIGHEST LEVEL OF EDUCATION
+    V201546, # PRE: HISPANIC ETHNICITY
     starts_with("V201547"), # PRE: RACE: a-WHITE, b-BLACK, c-ASIAN, d-HAWAIIAN, e-NATIVE, z-OTHER
     V201549x, # PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY
-    V201600,  # PRE: WHAT IS YOUR (R) SEX? [REVISED]
-    V201607,  # PRE: INCOME [REVISED]
-    V201610,  # PRE: INCOME <20k
-    V201611,  # PRE: INCOME 20-40k
-    V201613,  # PRE: INCOME 40-70k
-    V201615,  # PRE: INCOME 70-100k
-    V201616,  # PRE: INCOME 100k+
+    V201600, # PRE: WHAT IS YOUR (R) SEX? [REVISED]
+    V201607, # PRE: INCOME [REVISED]
+    V201610, # PRE: INCOME <20k
+    V201611, # PRE: INCOME 20-40k
+    V201613, # PRE: INCOME 40-70k
+    V201615, # PRE: INCOME 70-100k
+    V201616, # PRE: INCOME 100k+
     V201617x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
-    V202066,  # POST: DID R VOTE IN NOVEMBER 2020 ELECTION
-    V201023,  # PRE: DID R ALREADY VOTE
-    V201024,  # PRE: HOW VOTE
-    V202051,  # POST: REGISTERED TO VOTE
+    V202066, # POST: DID R VOTE IN NOVEMBER 2020 ELECTION
+    V201023, # PRE: DID R ALREADY VOTE
+    V201024, # PRE: HOW VOTE
+    V202051, # POST: REGISTERED TO VOTE
     V202109x, # PRE-POST: SUMMARY: VOTER TURNOUT IN 2020
-    V202072,  # POST: DID R VOTE FOR PRESIDENT
-    V201029,  # PRE: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
-    V202073,  # POST: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
-    V202110x  # PRE-POST: SUMMARY: 2020 PRESIDENTIAL VOTE
-  ) 
+    V202072, # POST: DID R VOTE FOR PRESIDENT
+    V201029, # PRE: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
+    V202073, # POST: FOR WHOM DID R VOTE FOR PRESIDENT (2020)
+    V202110x # PRE-POST: SUMMARY: 2020 PRESIDENTIAL VOTE
+  )
 
 anes_2020 <- anes_in_2020_slim %>%
   mutate(
-    CaseID=V200001,
+    CaseID = V200001,
     InterviewMode = fct_recode(as.character(V200002), Video = "1", Telephone = "2", Web = "3"),
     Weight = V200010b,
     Stratum = as.factor(V200010d),
@@ -238,7 +238,7 @@ anes_2020 <- anes_in_2020_slim %>%
       case_when(
         V202110x == 1 ~ "Biden",
         V202110x == 2 ~ "Trump",
-        V202110x >= 3 & V202110x <= 5~ "Other",
+        V202110x >= 3 & V202110x <= 5 ~ "Other",
         TRUE ~ NA_character_
       ),
       levels = c("Biden", "Trump", "Other")
@@ -247,7 +247,8 @@ anes_2020 <- anes_in_2020_slim %>%
       case_when(
         V201023 == 1 ~ "Yes",
         V201023 == 2 ~ "No",
-        TRUE ~ NA_character_),
+        TRUE ~ NA_character_
+      ),
       levels = c("Yes", "No")
     )
   )
@@ -302,34 +303,35 @@ anes_2020 %>%
 
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#label: label-ord
+# label: label-ord
 
 cb_in <- readxl::read_xlsx(here::here("data-raw", "ANES Codebook Metadata.xlsx"))
 
 cb_ord <- cb_in %>%
   mutate(
-    Type=1,
-    SectNum=case_match(
+    Type = 1,
+    SectNum = case_match(
       Section,
-      "ADMIN"~1,
-      "WEIGHTS"~2,
-      "PRE-ELECTION SURVEY QUESTIONNAIRE"~3,
-      "POST-ELECTION SURVEY QUESTIONNAIRE"~4
-    )) %>%
+      "ADMIN" ~ 1,
+      "WEIGHTS" ~ 2,
+      "PRE-ELECTION SURVEY QUESTIONNAIRE" ~ 3,
+      "POST-ELECTION SURVEY QUESTIONNAIRE" ~ 4
+    )
+  ) %>%
   arrange(SectNum, Variable) %>%
   mutate(
-    Order=row_number()
+    Order = row_number()
   )
 
 
 
 
 cb_slim <- cb_ord %>%
-  select(Variable=BookDerived, `Description and Labels`, Question, Section, SectNum, Order) %>%
+  select(Variable = BookDerived, `Description and Labels`, Question, Section, SectNum, Order) %>%
   filter(!is.na(Variable)) %>%
-  separate_longer_delim(Variable, delim="; ") %>%
-  add_case(Variable="VotedPres2016", `Description and Labels`="PRE: Did R vote for President in 2016", Question="Derived from V201102, V201101", Section="PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum=3, Order=13) %>%
-  mutate(Type=2) %>%
+  separate_longer_delim(Variable, delim = "; ") %>%
+  add_case(Variable = "VotedPres2016", `Description and Labels` = "PRE: Did R vote for President in 2016", Question = "Derived from V201102, V201101", Section = "PRE-ELECTION SURVEY QUESTIONNAIRE", SectNum = 3, Order = 13) %>%
+  mutate(Type = 2) %>%
   bind_rows(select(cb_ord, -BookDerived)) %>%
   arrange(SectNum, Order, Type)
 
@@ -345,7 +347,7 @@ anes_ord <- anes_2020 %>%
 options("tidylog.display" = list())
 
 for (var in pull(cb_vars, Variable)) {
-  vi <- cb_vars %>% filter(Variable==var)
+  vi <- cb_vars %>% filter(Variable == var)
   attr(anes_ord[[deparse(as.name(var))]], "format.spss") <- NULL
   attr(anes_ord[[deparse(as.name(var))]], "display_width") <- NULL
   attr(anes_ord[[deparse(as.name(var))]], "label") <- pull(vi, `Description and Labels`)
