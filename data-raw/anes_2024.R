@@ -75,8 +75,10 @@ anes_in_2024_slim <- anes_in_2024 %>%
       V241039, # PRE: FOR WHOM DID R VOTE FOR PRESIDENT (2024)
       V242067, # POST: FOR WHOM DID R VOTE FOR PRESIDENT (2024)
       V242096x # PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE
-  ) %>% 
-  mutate(CaseID = V240001, # CASEID
+  )
+
+anes_2024 <- anes_in_2024_slim  %>% 
+  select(CaseID = V240001, # CASEID
          InterviewMode_Pre = V240002a, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
          InterviewMode_Post = V240002b, # MODE OF INTERVIEW: POST-ELECTION INTERVIEW
          Weight = V240108b, # FULL SAMPLE POST-ELECTION WEIGHT
@@ -88,24 +90,26 @@ anes_in_2024_slim <- anes_in_2024 %>%
          PartyID = V241227x, # PRE: SUMMARY: PARTY ID
          TrustGovernment = V241229, # PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT [REVISED]
          TrustPeople = V241234, # PRE: HOW OFTEN CAN PEOPLE BE TRUSTED
+         Age = V241458x, # PRE: SUMMARY: RESPONDENT AGE
+         Education = V241463, # PRE: HIGHEST LEVEL OF EDUCATION
          RaceEth = V241501x, # PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY
          Sex = V241550, # PRE: WHAT IS YOUR (R) SEX? [REVISED]
          Income = V241566x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
          EarlyVote2024 = V241035, # PRE: DID R ALREADY VOTE
          VotedPres2024 = V242066, # POST: DID R VOTE FOR PRESIDENT
-         VotedPres2024_selection = V242096x, # PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE,
-         Education = as.numeric(V241463),
-         Age = if_else(as.numeric(V241458x) > 0, 
-                       as.numeric(V241458x), 
+         VotedPres2024_selection = V242096x # PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE,
+  ) %>%
+  mutate(Education = as.numeric(Education),
+         Age = if_else(as.numeric(Age) > 0, 
+                       as.numeric(Age), 
                        NA_real_),
          across(c(InterviewMode_Pre,InterviewMode_Post,CampaignInterest,
-                  VotedPres2020,VotedPres2020_selection,PartyID,TrustGovernment,TrustPeople,
-                  RaceEth,Sex,Income,EarlyVote2024,VotedPres2024,VotedPres2024_selection),
+                  VotedPres2020,VotedPres2020_selection,
+                  PartyID,TrustGovernment,TrustPeople,
+                  Age,Education,RaceEth,Sex,Income,
+                  EarlyVote2024,VotedPres2024,VotedPres2024_selection),
                 ~case_when(.x >= 0 ~ .x))
-         )
-
-
-anes_2024 <- anes_in_2024_slim %>%
+  ) %>%
   labelled::to_factor() %>% 
   mutate(
     AgeGroup = cut(
@@ -139,7 +143,8 @@ anes_2024 <- anes_in_2024_slim %>%
              VotedPres2020,VotedPres2020_selection,PartyID,TrustGovernment,TrustPeople,
              RaceEth,Sex,Income,EarlyVote2024,VotedPres2024,VotedPres2024_selection),
            fct_drop)
-  )
+  ) %>% 
+  full_join(anes_in_2024_slim,join_by(CaseID == V240001))
 
 summary(anes_2024)
 
@@ -168,7 +173,7 @@ anes_2024 %>% count(EducationGroup, V241463)
 
 anes_2024 %>%
   count(Income, Income7, V241566x) %>%
-  print(n = 30)
+  print(n = Inf)
 
 anes_2024 %>% count(CampaignInterest, V241005)
 
