@@ -144,7 +144,7 @@ anes_2024 <- anes_in_2024_slim  %>%
              RaceEth,Sex,Income,EarlyVote2024,VotedPres2024,VotedPres2024_selection),
            fct_drop)
   ) %>% 
-  full_join(anes_in_2024_slim,join_by(CaseID == V240001))
+  full_join(anes_in_2024_slim %>% mutate(CaseID = V240001),join_by(CaseID))
 
 summary(anes_2024)
 
