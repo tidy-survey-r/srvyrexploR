@@ -1,14 +1,14 @@
 Package: srvyrexploR
 Title: Data Supplement for Exploring Complex Survey Data Analysis Using R
-Version: 1.0.1
-Date: 2024-03-24
+Version: 1.1.0
+Date: 2025-11-05
 Authors@R: c(
     person("Stephanie A.", "Zimmer", email="stephaniezimmer+srvyrexploR@gmail.com", role = c("aut", "cre")),
     person("Rebecca J.", "Powell", role = "aut"),
     person("Isabella C.", "Velásquez", role = "aut")
   )
 Description: Includes datasets for the Residential Energy Consumption
-    Survey (2015 and 2020), the American National Election Studies (2020),
+    Survey (2015 and 2020), the American National Election Studies (2020 and 2024),
     and the National Crime Victimization Study (2021) - household, person,
     and incident files.
 License: CC BY 4.0 + file LICENSE
