@@ -140,9 +140,8 @@ conducted since 1948. For more information about the 2024 study, see the
 [American National Election Studies
 website](https://electionstudies.org/data-center/2024-time-series-study/).
 On the ANES website, you can learn more about the study, see codebooks
-and methodology reports, and download the data (after registering). We
-received permission to distribute this data for the purpose of the book.
-Once the package is loaded, you can use the data immediately as follows:
+and methodology reports, and download the data (after registering). Once
+the package is loaded, you can use the data immediately as follows:
 
 ``` r
 head(anes_2024)
@@ -432,6 +431,9 @@ ANES:
 
 - American National Election Studies, 2021. ANES 2020 Time Series Study
   Full Release \[dataset and documentation\]. July 19, 2021 version.
+  <https://www.electionstudies.org>
+- American National Election Studies. 2025. ANES 2024 Time Series Study
+  Full Release \[dataset and documentation\]. August 8, 2025 version.
   <https://www.electionstudies.org>
 
 CHIS:
