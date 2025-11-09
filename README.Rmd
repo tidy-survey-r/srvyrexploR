@@ -44,12 +44,12 @@ library(srvyrexploR)
 
 This package includes data from three surveys including the American National Election Studies (ANES), the National Crime Victimization Survey (NCVS), and the Residential Energy Consumption Survey (RECS). 
 
-### ANES
+### ANES 2020
 
-The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
+The ANES 2020 data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2020-time-series-study/). On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:
 
 ```{r}
-#| label: show-anes
+#| label: show-anes-2020
 
 head(anes_2020)
 ```
@@ -63,6 +63,20 @@ Also, included in the package is a Stata version of the ANES data with a subset 
 
 anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
 ```
+
+
+### ANES 2024
+
+The ANES 2024 data is based on the publicly available 2024 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2024 study, see the [American National Election Studies website](https://electionstudies.org/data-center/2024-time-series-study/). On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). Once the package is loaded, you can use the data immediately as follows:
+
+```{r}
+#| label: show-anes-2024
+
+head(anes_2024)
+```
+
+See `?anes_2024` for more information about the data.
+
 
 ### NCVS
 
@@ -162,6 +176,7 @@ Anyone interested in redistributing the ANES data should refer to the [ANES FAQ 
 ANES: 
 
 + American National Election Studies, 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. https://www.electionstudies.org
++ American National Election Studies. 2025. ANES 2024 Time Series Study Full Release [dataset and documentation]. August 8, 2025 version. https://www.electionstudies.org
 
 CHIS:
 
