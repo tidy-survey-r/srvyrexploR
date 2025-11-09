@@ -1,0 +1,105 @@
+# NATIONAL SURVEY ON DRUG USE AND HEALTH (NSDUH) (2023) data
+
+A subset of variables from the NSDUH 2023 Public Use File
+
+## Usage
+
+``` r
+nsduh_2023
+```
+
+## Format
+
+A data frame with 56705 rows and 22 variables:
+
+- `QUESTID2`:
+
+  double RESPONDENT IDENTIFICATION
+
+- `ANALWT2_C`:
+
+  double FIN PRSN-LEVEL SMPLE WGHT 2
+
+- `VESTR_C`:
+
+  double VARIANCE STRATUM
+
+- `VEREP`:
+
+  double VARIANCE PRIMARY SAMPLING UNIT
+
+- `NICVAPMON`:
+
+  integer RC-NICOTINE VAPING - PAST MONTH USE
+
+- `TOBMON`:
+
+  integer RC-ANY TOBACCO - PAST MONTH USE
+
+- `ALCMON`:
+
+  integer RC-ALCOHOL - PAST MONTH USE
+
+- `ILLMON`:
+
+  integer RC-ANY ILLICIT DRUG - PAST MONTH USE
+
+- `ILTOBVAPALC`:
+
+  integer RC-TOBACCO, NICOTINE VAPING, ALCOHOL, ILLICIT DRUG - PST MON
+
+- `BNGDRKMON`:
+
+  integer RC-BINGE ALCOHOL USE PAST 30 DAYS
+
+- `IRPYUD5ALC`:
+
+  integer ALCOHOL USE DISORDER IN THE PAST YEAR - IMP REV
+
+- `UD5ILLANY`:
+
+  integer RC-DRUG USE DISORDER - PAST YEAR USERS
+
+- `UD5ILALANY`:
+
+  integer RC-DRUG OR ALCOHOL USE DISORDER - PAST YEAR USERS
+
+- `YMDELT`:
+
+  factor RC-YOUTH: LIFETIME MAJOR DEPRESSIVE EPISODE (MDE)
+
+- `YMDEYR`:
+
+  factor RC-YOUTH: PAST YEAR MAJOR DEPRESSIVE EPISODE (MDE)
+
+- `MDEIMPY`:
+
+  factor RC-YOUTH: MDE WITH SEVERE ROLE IMPAIRMENT
+
+- `AMIPY`:
+
+  integer RC-IMP AMI IND (1/0) BASED ON PREDICTED SMI PROB PY
+
+- `SMIPY`:
+
+  integer RC-IMP SMI IND (1/0) BASED ON PREDICTED SMI PROB PY
+
+- `AGE3`:
+
+  factor RECODE - FINAL EDITED AGE
+
+- `NEWRACE2`:
+
+  factor RC-RACE/HISPANICITY RECODE (7 LEVELS)
+
+- `IRSEX`:
+
+  factor SEX AT BIRTH - IMPUTATION REVISED
+
+- `POVERTY3`:
+
+  factor RC-POVERTY LEVEL-NEW INC (% OF US CENSUS POVERTY THRESHOLD)
+
+## Source
+
+<https://www.samhsa.gov/data/data-we-collect/nsduh-national-survey-drug-use-and-health/datafiles>

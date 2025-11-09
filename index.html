@@ -17,8 +17,8 @@
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Data Supplement for Exploring Complex Survey Data Analysis Using R">
-<meta name="description" content="Includes datasets for the Residential Energy Consumption Survey (2015 and 2020), the American National Election Studies (2020), and the National Crime Victimization Study (2021) - household, person, and incident files.">
-<meta property="og:description" content="Includes datasets for the Residential Energy Consumption Survey (2015 and 2020), the American National Election Studies (2020), and the National Crime Victimization Study (2021) - household, person, and incident files.">
+<meta name="description" content="Includes datasets for the Residential Energy Consumption Survey (2015 and 2020), the American National Election Studies (2020 and 2024), and the National Crime Victimization Study (2021) - household, person, and incident files.">
+<meta property="og:description" content="Includes datasets for the Residential Energy Consumption Survey (2015 and 2020), the American National Election Studies (2020 and 2024), and the National Crime Victimization Study (2021) - household, person, and incident files.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">srvyrexploR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -71,9 +72,9 @@
 </h2>
 <p>This package includes data from three surveys including the American National Election Studies (ANES), the National Crime Victimization Survey (NCVS), and the Residential Energy Consumption Survey (RECS).</p>
 <div class="section level3">
-<h3 id="anes">ANES<a class="anchor" aria-label="anchor" href="#anes"></a>
+<h3 id="anes-2020">ANES 2020<a class="anchor" aria-label="anchor" href="#anes-2020"></a>
 </h3>
-<p>The ANES data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the <a href="https://electionstudies.org/data-center/2020-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:</p>
+<p>The ANES 2020 data is based on the publicly available 2020 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2020 study, see the <a href="https://electionstudies.org/data-center/2020-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). We received permission to distribute this data for the purpose of the book. Once the package is loaded, you can use the data immediately as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">anes_2020</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   V200001 CaseID V200002 InterviewMode  V200010b    Weight V200010c VarUnit</span></span>
@@ -152,10 +153,34 @@
 <code class="sourceCode R"><span><span class="va">anes_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu">read_dta</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"anes_2020_stata_example.dta"</span>, package <span class="op">=</span> <span class="st">"srvyrexploR"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="anes-2024">ANES 2024<a class="anchor" aria-label="anchor" href="#anes-2024"></a>
+</h3>
+<p>The ANES 2024 data is based on the publicly available 2024 ANES data with additional derived variables and is subset to people who completed both pre and post-election interviews. The ANES Times Series Studies collect data on political polling in the United States and has been conducted since 1948. For more information about the 2024 study, see the <a href="https://electionstudies.org/data-center/2024-time-series-study/" class="external-link">American National Election Studies website</a>. On the ANES website, you can learn more about the study, see codebooks and methodology reports, and download the data (after registering). Once the package is loaded, you can use the data immediately as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">anes_2024</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 54</span></span>
+<span><span class="co">#&gt;   CaseID InterviewMode_Pre InterviewMode_Post Weight Stratum VarUnit</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;fct&gt;             &lt;fct&gt;               &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 140001 2. Internet (WEB) 2. Internet (WEB)   0.781      90       2</span></span>
+<span><span class="co">#&gt; 2 140002 2. Internet (WEB) 2. Internet (WEB)   2.51      107       2</span></span>
+<span><span class="co">#&gt; 3 140003 2. Internet (WEB) 2. Internet (WEB)   0.814     122       1</span></span>
+<span><span class="co">#&gt; 4 140004 2. Internet (WEB) 2. Internet (WEB)   0.263     110       2</span></span>
+<span><span class="co">#&gt; 5 140005 2. Internet (WEB) 2. Internet (WEB)   0.217     104       1</span></span>
+<span><span class="co">#&gt; 6 140006 2. Internet (WEB) 2. Internet (WEB)   0.474     118       2</span></span>
+<span><span class="co">#&gt; # ℹ 48 more variables: CampaignInterest &lt;fct&gt;, VotedPres2020 &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   VotedPres2020_selection &lt;fct&gt;, PartyID &lt;fct&gt;, TrustGovernment &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   TrustPeople &lt;fct&gt;, Age &lt;dbl&gt;, Education &lt;dbl&gt;, RaceEth &lt;fct&gt;, Sex &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   Income &lt;fct&gt;, EarlyVote2024 &lt;fct&gt;, VotedPres2024 &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   VotedPres2024_selection &lt;fct&gt;, AgeGroup &lt;fct&gt;, EducationGroup &lt;fct&gt;,</span></span>
+<span><span class="co">#&gt; #   Income7 &lt;fct&gt;, V240001 &lt;dbl&gt;, V240002a &lt;dbl+lbl&gt;, V240002b &lt;dbl+lbl&gt;,</span></span>
+<span><span class="co">#&gt; #   V240108b &lt;dbl&gt;, V240108d &lt;dbl&gt;, V240108c &lt;dbl&gt;, V241005 &lt;dbl+lbl&gt;, …</span></span></code></pre></div>
+<p>See <code><a href="reference/anes_2024.html">?anes_2024</a></code> for more information about the data.</p>
+</div>
+<div class="section level3">
 <h3 id="ncvs">NCVS<a class="anchor" aria-label="anchor" href="#ncvs"></a>
 </h3>
 <p>The NCVS data is based off of publicly available data for the 2021 NCVS. The NCVS is a survey conducted by the Bureau of Justice Statistics and asks people age 12 and over about their crime victimizations. The study has been conducted continuously since 1992. This package includes three datasets - one for household-level data (<code>ncvs_2021_household</code>), one for person-level data (<code>ncvs_2021_person</code>), and one for incident-level data (<code>ncvs_2021_incident</code>) where each includes a subset of the columns of the full data available from 2021 at <a href="https://www.icpsr.umich.edu/web/NACJD/studies/38429" class="external-link">ICPSR</a>. This data is reproduced here with permission from ICPSR.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ncvs_2021_household</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 12</span></span>
 <span><span class="co">#&gt;   YEARQ IDHH    WGTHHCY V2117 V2118 V2015 V2143 SC214A V2122 V2126B V2127B V2129</span></span>
@@ -198,7 +223,7 @@
 <h3 id="nsduh">NSDUH<a class="anchor" aria-label="anchor" href="#nsduh"></a>
 </h3>
 <p>The National Survey on Drug Use and Health (NSDUH) is an annual survey of the civilian, non-institutionalized population in the United States who are at least 12 years old. Topics include substance use (tobacco, alcohol, and illicit drugs including marijuana), mental health, and general health. This package provides a subset of the variables from the 2023 Public Use File. For more details about the study and the data, refer to the <a href="https://www.samhsa.gov/data/sites/default/files/reports/rpt47098/Methodological%20Summary%20and%20Definitions/2023-nsduh-method-summary-defs.pdf" class="external-link">Methodological Summary and Definitions</a>, <a href="https://www.samhsa.gov/data/sites/default/files/reports/rpt56198/2023-nsduh-puf-data-users-guide.pdf" class="external-link">Data User’s Guide</a>, and <a href="https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-info-codebook_v1.pdf" class="external-link">Codebook</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">nsduh_2023</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 22</span></span>
 <span><span class="co">#&gt;   QUESTID2 ANALWT2_C VESTR_C VEREP NICVAPMON TOBMON ALCMON ILLMON ILTOBVAPALC</span></span>
@@ -217,7 +242,7 @@
 <h3 id="recs">RECS<a class="anchor" aria-label="anchor" href="#recs"></a>
 </h3>
 <p>Three files are included associated with RECS - a dataset with the 2015 data with some derived variables created for the book (<code>recs_2015</code>), the 2020 data with some derived variables created for the book (<code>recs_2020</code>), and the 2020 data with the original variables (<code>recs_2020_raw</code>). RECS is a survey about energy consumption and expenditure among residential households in the United States and has been conducted since 1979 by the Energy Information Administration. More information about the original data is available at the <a href="https://www.eia.gov/consumption/residential/data/2020/" class="external-link">RECS website</a>.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">recs_2015</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 141</span></span>
 <span><span class="co">#&gt;   DOEID REGIONC Region    Division MSAStatus Urbanicity HousingUnitType YearMade</span></span>
@@ -274,7 +299,7 @@
 <h3 id="chis">CHIS<a class="anchor" aria-label="anchor" href="#chis"></a>
 </h3>
 <p>The CHIS data is a subset of variables from the 2023 California Health Interview Survey Adult Public Use File. CHIS is an annual survey of people in households in California with several topics related to <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis/chis-design-and-methods/survey-topics-and-questionnaires" class="external-link">health and social determinants of health</a>. For more information about the study, refer to the <a href="https://healthpolicy.ucla.edu/our-work/california-health-interview-survey-chis" class="external-link">CHIS website</a>. To download a full version of the data with all variables or view codebooks, create an account and <a href="https://healthpolicy.ucla.edu/our-work/public-use-files" class="external-link">download the public use files</a>. See a snippet of the data below:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chis_2023</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 98</span></span>
 <span><span class="co">#&gt;   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2</span></span>
@@ -299,10 +324,10 @@
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
 <p>To analyze the survey data, we recommend using the {srvyr} package as follows:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"gergness/srvyr"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://gdfe.co/srvyr/" class="external-link">srvyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">recs_des</span> <span class="op">&lt;-</span> <span class="va">recs_2020</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -363,6 +388,8 @@
 <p>ANES:</p>
 <ul>
 <li>American National Election Studies, 2021. ANES 2020 Time Series Study Full Release [dataset and documentation]. July 19, 2021 version. <a href="https://www.electionstudies.org" class="external-link uri">https://www.electionstudies.org</a>
+</li>
+<li>American National Election Studies. 2025. ANES 2024 Time Series Study Full Release [dataset and documentation]. August 8, 2025 version. <a href="https://www.electionstudies.org" class="external-link uri">https://www.electionstudies.org</a>
 </li>
 </ul>
 <p>CHIS:</p>
@@ -432,7 +459,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

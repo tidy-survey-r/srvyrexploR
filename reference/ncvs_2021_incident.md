@@ -1,0 +1,259 @@
+# National Crime Victimization Survey (NCVS) (2021) incident file
+
+A subset of the NCVS 2021 incident file. Includes all records but a
+subset of columns
+
+## Usage
+
+``` r
+ncvs_2021_incident
+```
+
+## Format
+
+A data frame with 8982 rows and 60 variables:
+
+- `YEARQ`:
+
+  double YEAR AND QUARTER OF INTERVIEW (YYYY.Q)
+
+- `IDHH`:
+
+  character NCVS ID FOR HOUSEHOLDS
+
+- `IDPER`:
+
+  character NCVS ID FOR PERSONS
+
+- `V4012`:
+
+  double INCIDENT NUMBER
+
+- `WGTVICCY`:
+
+  double ADJUSTED VICTIMIZATION WEIGHT - COLLECTION YEAR
+
+- `V4016`:
+
+  double HOW MANY TIMES INCIDENT OCCUR LAST 6 MOS
+
+- `V4017`:
+
+  integer CHECK ITEM B: HOW MANY INCIDENTS
+
+- `V4018`:
+
+  integer HECK ITEM C: ARE INCIDENTS SIMILAR IN DETAIL
+
+- `V4019`:
+
+  integer CHECK ITEM D: ENOUGH DETAIL TO DISTINGUISH INCIDENTS
+
+- `V4021B`:
+
+  integer ABOUT WHAT TIME DID INCIDENT OCCUR (START 1999 Q1)
+
+- `V4022`:
+
+  integer N WHAT CITY, TOWN, VILLAGE
+
+- `V4024`:
+
+  integer WHERE DID INCIDENT HAPPEN
+
+- `V4049`:
+
+  integer DID OFFENDER HAVE A WEAPON
+
+- `V4050`:
+
+  integer LI WHAT WAS WEAPON
+
+- `V4051`:
+
+  integer C WEAPON: HAND GUN
+
+- `V4052`:
+
+  integer C WEAPON: OTHER GUN
+
+- `V4053`:
+
+  integer C WEAPON: KNIFE
+
+- `V4054`:
+
+  integer C WEAPON: SHARP OBJECT
+
+- `V4055`:
+
+  integer C WEAPON: BLUNT OBJECT
+
+- `V4056`:
+
+  integer C WEAPON: OTHER
+
+- `V4057`:
+
+  integer C WEAPON: GUN TYPE UNKNOWN
+
+- `V4058`:
+
+  integer RESIDUE: TYPE OF WEAPON
+
+- `V4234`:
+
+  integer ONE OR MORE THAN ONE OFFENDER
+
+- `V4235`:
+
+  integer KNOW ANYTHING ABOUT ANY OFFENDERS
+
+- `V4241`:
+
+  integer SINGLE OFFENDER STRANGER
+
+- `V4242`:
+
+  integer SINGLE OFF WOULD RESP RECOGNIZE OFF
+
+- `V4243`:
+
+  integer SINGLE OFF HOW WELL KNOWN
+
+- `V4244`:
+
+  integer SINGLE OFF KNOW WHERE OFFENDER IS
+
+- `V4245`:
+
+  integer SINGLE OFF HOW DID RESP KNOW OFFENDER
+
+- `V4248`:
+
+  double NUMBER OF OFFENDERS (MULTIPLE OFFENDERS)
+
+- `V4256`:
+
+  integer MULTIPLE OFFENDERS ALL STRANGERS
+
+- `V4257`:
+
+  integer MULTIPLE OFFENDERS COULD RECOGNIZE
+
+- `V4258`:
+
+  integer LI MULT OFF HOW WELL KNOWN
+
+- `V4259`:
+
+  integer C MULT OFF KNOWN: BY SIGHT ONLY
+
+- `V4260`:
+
+  integer C MULT OFF KNOWN: CASUAL ACQUAINTANCE
+
+- `V4261`:
+
+  integer C MULT OFF KNOWN: WELL KNOWN
+
+- `V4262`:
+
+  integer RESIDUE: MULT OFF HOW WELL KNOWN
+
+- `V4263`:
+
+  integer MULTIPLE OFF: RESP KNOWS HOW TO FIND
+
+- `V4264`:
+
+  integer LI RELATION TO MULTIPLE OFFENDERS
+
+- `V4265`:
+
+  integer C MULT OFF: SPOUSE
+
+- `V4266`:
+
+  integer C MULT OFF: EX-SPOUSE
+
+- `V4267`:
+
+  integer C MULT OFF: PARENT/STEP
+
+- `V4268`:
+
+  integer C MULT OFF: CHILD/STEP
+
+- `V4269`:
+
+  integer C MULT OFF: BROTHER/SISTER
+
+- `V4270`:
+
+  integer C MULT OFF: OTHER RELATIVE
+
+- `V4271`:
+
+  integer C MULT OFF: BOY/GIRLFRIEND OR EX
+
+- `V4272`:
+
+  integer C MULT OFF: FRIEND OR EX-FRIEND
+
+- `V4273`:
+
+  integer C MULT OFF: ROOMMATE
+
+- `V4274`:
+
+  integer C MULT OFF: SCHOOLMATE
+
+- `V4275`:
+
+  integer C MULT OFF: NEIGHBOR
+
+- `V4276`:
+
+  integer C MULT OFF: CUSTOMER/CLIENT
+
+- `V4277`:
+
+  integer C MULT OFF: OTHER NONRELATIVE (END 2016 Q4) (START 2021 Q1)
+
+- `V4278`:
+
+  integer RESIDUE: RELATION TO MULT OFF
+
+- `V4277A`:
+
+  integer C MULT OFF: PATIENT (START 2001 Q3)
+
+- `V4277B`:
+
+  integer C MULT OFF: SUPERVISOR (CURR OR FORMER) (START 2001 Q3)
+
+- `V4277C`:
+
+  integer C MULT OFF: EMPLOYEE (CURRENT OR FORMER) (START 2001 Q3)
+
+- `V4277D`:
+
+  integer C MULT OFF: CO-WORKER (CURR OR FORMER) (START 2001 Q3)
+
+- `V4277E`:
+
+  integer C MULT OFF: TEACHER/SCHOOL STAFF (START 2007 Q1) (END 2016 Q4)
+  (START 2021 Q1)
+
+- `V4399`:
+
+  integer REPORTED TO POLICE
+
+- `V4529`:
+
+  integer TYPE OF CRIME CODE (NEW, NCVS)
+
+## Source
+
+<https://doi.org/10.3886/ICPSR38429.v1>

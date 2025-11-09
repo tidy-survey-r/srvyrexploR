@@ -1,0 +1,3 @@
+# License
+
+    Re-distributing the ANES or NCVS datasets is subject to their policies.
