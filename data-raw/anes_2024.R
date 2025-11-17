@@ -96,7 +96,9 @@ anes_2024 <- anes_in_2024_slim  %>%
          Sex = V241550, # PRE: WHAT IS YOUR (R) SEX? [REVISED]
          Income = V241566x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
          EarlyVote2024 = V241035, # PRE: DID R ALREADY VOTE
-         VotedPres2024 = V242066, # POST: DID R VOTE FOR PRESIDENT
+         Post_Vote24 = V242065, # POST: DID R VOTE IN NOVEMBER 2024 ELECTION
+         Pre_VotePres24 = V241038, # PRE: DID R VOTE FOR PRESIDENT
+         Post_VotePres24 = V242066, # POST: DID R VOTE FOR PRESIDENT
          VotedPres2024_selection = V242096x # PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE,
   ) %>%
   mutate(Education = as.numeric(Education),
@@ -107,7 +109,8 @@ anes_2024 <- anes_in_2024_slim  %>%
                   VotedPres2020,VotedPres2020_selection,
                   PartyID,TrustGovernment,TrustPeople,
                   Age,Education,RaceEth,Sex,Income,
-                  EarlyVote2024,VotedPres2024,VotedPres2024_selection),
+                  Post_Vote24,Pre_VotePres24,Post_VotePres24,
+                  EarlyVote2024,VotedPres2024_selection),
                 ~case_when(.x >= 0 ~ .x))
   ) %>%
   labelled::to_factor() %>% 
@@ -138,10 +141,17 @@ anes_2024 <- anes_in_2024_slim  %>%
       "$100k to < 125k" = c("23. $100,000-109,999", "24. $110,000-124,999"),
       "$125k or more" = c("25. $125,000-149,999", "26. $150,000-174,999", "27. $175,000-249,999", "28. $250,000 or more")
     ),
+    Voted2024 = case_when(EarlyVote2024 == "1. Have voted" ~ "Yes",
+                          Post_Vote24 == "4. I am sure I voted" ~ "Yes",
+                          !is.na(EarlyVote2024) | !is.na(Post_Vote24) ~ "No"),
+    VotedPres2024 = case_when(Pre_VotePres24 == "1. Yes, voted for President" ~ "Yes",
+                              Post_VotePres24 == "1. Yes, voted for President" ~ "Yes",
+                              !is.na(Pre_VotePres24) | !is.na(Post_VotePres24) ~ "No"),
     VotedPres2024_selection = fct_lump_n(VotedPres2024_selection, 2),
     across(c(InterviewMode_Pre,InterviewMode_Post,CampaignInterest,
              VotedPres2020,VotedPres2020_selection,PartyID,TrustGovernment,TrustPeople,
-             RaceEth,Sex,Income,EarlyVote2024,VotedPres2024,VotedPres2024_selection),
+             RaceEth,Sex,Income,Post_Vote24,Pre_VotePres24,Post_VotePres24,
+             EarlyVote2024,Voted2024,VotedPres2024,VotedPres2024_selection),
            fct_drop)
   ) %>% 
   full_join(anes_in_2024_slim %>% mutate(CaseID = V240001),join_by(CaseID))
@@ -185,11 +195,19 @@ anes_2024 %>% count(VotedPres2020, V241103)
 
 anes_2024 %>% count(VotedPres2020_selection, V241104)
 
-anes_2024 %>% count(VotedPres2024, V242066)
+anes_2024 %>% count(Post_Vote24, V242065)
+
+anes_2024 %>% count(Pre_VotePres24, V241038)
+
+anes_2024 %>% count(Post_VotePres24, V242066)
+
+anes_2024 %>% count(VotedPres2024, Pre_VotePres24, Post_VotePres24)
 
 anes_2024 %>% count(VotedPres2024_selection, V242096x)
 
 anes_2024 %>% count(EarlyVote2024, V241035)
+
+anes_2024 %>% count(Voted2024, EarlyVote2024, Post_Vote24)
 
 anes_2024 %>%
   summarise(WtSum = sum(Weight, na.rm = TRUE)) %>%

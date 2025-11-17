@@ -349,7 +349,6 @@
 #' @description Based on the 2024 ANES data with derived variables and subset to people who completed both pre and post-election interviews
 #' @format A data frame with 4964 rows and 54 variables:
 #' \describe{
-#'   \item{\code{V240001}}{double 2024 Case ID}
 #'   \item{\code{CaseID}}{double CASEID}
 #'   \item{\code{InterviewMode_Pre}}{Factor MODE OF INTERVIEW: PRE-ELECTION INTERVIEW}
 #'   \item{\code{InterviewMode_Post}}{Factor MODE OF INTERVIEW: POST-ELECTION INTERVIEW}
@@ -368,11 +367,14 @@
 #'   \item{\code{Sex}}{Factor PRE: WHAT IS YOUR (R) SEX? (REVISED)}
 #'   \item{\code{Income}}{Factor PRE: SUMMARY: TOTAL (FAMILY) INCOME}
 #'   \item{\code{EarlyVote2024}}{Factor PRE: DID R ALREADY VOTE}
-#'   \item{\code{VotedPres2024}}{Factor POST: DID R VOTE FOR PRESIDENT}
+#'   \item{\code{Post_Vote24}}{Factor POST: DID R VOTE IN NOVEMBER 2024 ELECTION}
+#'   \item{\code{Pre_VotePres24}}{Factor PRE: DID R VOTE FOR PRESIDENT}
+#'   \item{\code{Post_VotePres24}}{Factor POST: DID R VOTE FOR PRESIDENT}
 #'   \item{\code{VotedPres2024_selection}}{Factor PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE}
 #'   \item{\code{AgeGroup}}{Factor PRE: SUMMARY: RESPONDENT AGE (categorized)}
 #'   \item{\code{EducationGroup}}{Factor PRE: HIGHEST LEVEL OF EDUCATION (categorized)}
 #'   \item{\code{Income7}}{Factor PRE: SUMMARY: TOTAL (FAMILY) INCOME (7 categories)}
+#'   \item{\code{VotedPres2024}}{Factor POST: DID R VOTE FOR PRESIDENT}
 #'   \item{\code{V240001}}{double CASEID}
 #'   \item{\code{V240002a}}{double MODE OF INTERVIEW: PRE-ELECTION INTERVIEW}
 #'   \item{\code{V240002b}}{double MODE OF INTERVIEW: POST-ELECTION INTERVIEW}
