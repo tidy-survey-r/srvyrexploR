@@ -1,17 +1,25 @@
-## code to prepare `anes_2024` dataset goes here
-## ----setup, include=FALSE--------------------------------------------------------------------------------------------------------------------------------------------
+---
+title: "ANES 2024 prep"
+format: gfm
+---
+
+```{r}
+#| label: setup
+#| include: FALSE
 knitr::opts_chunk$set(echo = TRUE)
+```
 
-
-## ----loadpackages----------------------------------------------------------------------------------------------------------------------------------------------------
+```{r}
+#| label: loadpackages
 library(tidyverse) # data manipulation
 library(haven) # data import
 library(labelled)
 library(tidylog) # informative logging messages
 library(osfr)
+```
 
-
-## ----derivedata------------------------------------------------------------------------------------------------------------------------------------------------------
+```{r}
+#| label: derivedata
 anes_file_osf_det <- osf_retrieve_node("https://osf.io/z5c3m/") %>%
   osf_ls_files(path = "ANES_2024", pattern = "sav") %>%
   osf_download(conflicts = "overwrite", path = here::here("data-raw"))
@@ -33,16 +41,17 @@ anes_in_2024 %>%
 # Are all PSU/Stratum represented in post-weight? If so, we can drop pre-only cases later
 
 anes_in_2024 %>%
-  count(V240108d, V240108c, V240002c) %>%
-  group_by(V240108d, V240108c) %>%
+  count(V240108d, V240108c, V240002c, V240002a) %>%
+  group_by(V240108d, V240108c, V240002a) %>%
   mutate(
     Pct = n / sum(n)
   ) %>%
-  filter(V240002c == 2) %>%
+  ungroup() %>%
+  filter(V240002c == 2, V240002a != 3) %>%
   arrange(Pct)
 
 anes_in_2024_slim <- anes_in_2024 %>%
-  filter(V240002c == 2) %>% # Complete pre and post-election interviews
+  filter(V240002c == 2, V240002a != 3) %>% # Complete pre and post-election interviews, excluding PAPI
   select(
       V240001, # CASEID
       V240002a, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
@@ -68,6 +77,7 @@ anes_in_2024_slim <- anes_in_2024 %>%
       V241566x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
       V242065, # POST: DID R VOTE IN NOVEMBER 2024 ELECTION
       V241035, # PRE: DID R ALREADY VOTE
+      V241036, # PRE: ALREADY VOTED IN GENERAL ELECTION
       V241037, # PRE: HOW VOTE
       V242051, # POST: REGISTERED TO VOTE
       V242095x, # PRE-POST: SUMMARY: VOTER TURNOUT IN 2020
@@ -79,11 +89,11 @@ anes_in_2024_slim <- anes_in_2024 %>%
 
 anes_2024 <- anes_in_2024_slim  %>% 
   select(CaseID = V240001, # CASEID
-         InterviewMode_Pre = V240002a, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
-         InterviewMode_Post = V240002b, # MODE OF INTERVIEW: POST-ELECTION INTERVIEW
          Weight = V240108b, # FULL SAMPLE POST-ELECTION WEIGHT
          Stratum = V240108d, # FULL SAMPLE VARIANCE STRATUM
          VarUnit = V240108c, # FULL SAMPLE VARIANCE UNIT
+         InterviewMode_Pre = V240002a, # MODE OF INTERVIEW: PRE-ELECTION INTERVIEW
+         InterviewMode_Post = V240002b, # MODE OF INTERVIEW: POST-ELECTION INTERVIEW
          CampaignInterest = V241005, # PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS
          VotedPres2020 = V241103, # PRE: DID R VOTE FOR PRESIDENT IN 2020 [REVISED]
          VotedPres2020_selection = V241104, # PRE: RECALL OF LAST (2020) PRESIDENTIAL VOTE CHOICE
@@ -95,7 +105,8 @@ anes_2024 <- anes_in_2024_slim  %>%
          RaceEth = V241501x, # PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY
          Sex = V241550, # PRE: WHAT IS YOUR (R) SEX? [REVISED]
          Income = V241566x, # PRE: SUMMARY: TOTAL (FAMILY) INCOME
-         EarlyVote2024 = V241035, # PRE: DID R ALREADY VOTE
+         EarlyVote = V241035, # PRE: DID R ALREADY VOTE
+         EarlyVoteGeneral = V241036, # PRE: ALREADY VOTED IN GENERAL ELECTION
          Post_Vote24 = V242065, # POST: DID R VOTE IN NOVEMBER 2024 ELECTION
          Pre_VotePres24 = V241038, # PRE: DID R VOTE FOR PRESIDENT
          Post_VotePres24 = V242066, # POST: DID R VOTE FOR PRESIDENT
@@ -105,12 +116,7 @@ anes_2024 <- anes_in_2024_slim  %>%
          Age = if_else(as.numeric(Age) > 0, 
                        as.numeric(Age), 
                        NA_real_),
-         across(c(InterviewMode_Pre,InterviewMode_Post,CampaignInterest,
-                  VotedPres2020,VotedPres2020_selection,
-                  PartyID,TrustGovernment,TrustPeople,
-                  Age,Education,RaceEth,Sex,Income,
-                  Post_Vote24,Pre_VotePres24,Post_VotePres24,
-                  EarlyVote2024,VotedPres2024_selection),
+         across(c(InterviewMode_Pre:VotedPres2024_selection),
                 ~case_when(.x >= 0 ~ .x))
   ) %>%
   labelled::to_factor() %>% 
@@ -141,25 +147,27 @@ anes_2024 <- anes_in_2024_slim  %>%
       "$100k to < 125k" = c("23. $100,000-109,999", "24. $110,000-124,999"),
       "$125k or more" = c("25. $125,000-149,999", "26. $150,000-174,999", "27. $175,000-249,999", "28. $250,000 or more")
     ),
+    EarlyVote2024 = case_when(EarlyVote=="2. Have not voted"|EarlyVoteGeneral=="2. No, have not voted"~"2. Have not voted",
+                              EarlyVoteGeneral=="1. Yes, voted"~"1. Have voted"),
     Voted2024 = case_when(EarlyVote2024 == "1. Have voted" ~ "Yes",
                           Post_Vote24 == "4. I am sure I voted" ~ "Yes",
                           !is.na(EarlyVote2024) | !is.na(Post_Vote24) ~ "No"),
     VotedPres2024 = case_when(Pre_VotePres24 == "1. Yes, voted for President" ~ "Yes",
                               Post_VotePres24 == "1. Yes, voted for President" ~ "Yes",
-                              !is.na(Pre_VotePres24) | !is.na(Post_VotePres24) ~ "No"),
+                              !is.na(Post_VotePres24) | !is.na(Pre_VotePres24) ~ "No",
+                              ! Post_Vote24 %in% c(NA, "4. I am sure I voted") ~ "No"),
     VotedPres2024_selection = fct_lump_n(VotedPres2024_selection, 2),
-    across(c(InterviewMode_Pre,InterviewMode_Post,CampaignInterest,
-             VotedPres2020,VotedPres2020_selection,PartyID,TrustGovernment,TrustPeople,
-             RaceEth,Sex,Income,Post_Vote24,Pre_VotePres24,Post_VotePres24,
-             EarlyVote2024,Voted2024,VotedPres2024,VotedPres2024_selection),
+    across(InterviewMode_Pre:VotedPres2024_selection & !c(Age, Education),
            fct_drop)
   ) %>% 
   full_join(anes_in_2024_slim %>% mutate(CaseID = V240001),join_by(CaseID))
 
 summary(anes_2024)
+```
 
 
-## ----checkvars-------------------------------------------------------------------------------------------------------------------------------------------------------
+```{r}
+#| label: checkvars
 
 anes_2024 %>% count(InterviewMode_Pre, V240002a)
 anes_2024 %>% count(InterviewMode_Post, V240002b)
@@ -199,21 +207,29 @@ anes_2024 %>% count(Post_Vote24, V242065)
 
 anes_2024 %>% count(Pre_VotePres24, V241038)
 
-anes_2024 %>% count(Post_VotePres24, V242066)
+anes_2024 %>% count(Post_VotePres24, V242065, V242066)
 
-anes_2024 %>% count(VotedPres2024, Pre_VotePres24, Post_VotePres24)
+anes_2024 %>% count(VotedPres2024, Pre_VotePres24, Post_VotePres24, Post_Vote24)
 
 anes_2024 %>% count(VotedPres2024_selection, V242096x)
 
-anes_2024 %>% count(EarlyVote2024, V241035)
+anes_2024 %>% count(VotedPres2024_selection, VotedPres2024)
+
+anes_2024 |> filter(is.na(VotedPres2024_selection), VotedPres2024=="Yes") |> count(V242096x)
+
+anes_2024 %>% count(EarlyVote2024, V241035, V241036)
 
 anes_2024 %>% count(Voted2024, EarlyVote2024, Post_Vote24)
 
 anes_2024 %>%
   summarise(WtSum = sum(Weight, na.rm = TRUE)) %>%
   pull(WtSum)
+```
 
-
-## ----savedat---------------------------------------------------------------------------------------------------------------------------------------------------------
+```{r}
+#| label: savedat
+#| output: false
 
 usethis::use_data(anes_2024, overwrite = TRUE)
+```
+
