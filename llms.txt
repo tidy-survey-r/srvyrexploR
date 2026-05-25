@@ -12,6 +12,7 @@ To install the development version from [GitHub](https://github.com/),
 use:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("tidy-survey-r/srvyrexploR")
 ```
@@ -19,6 +20,7 @@ pak::pak("tidy-survey-r/srvyrexploR")
 To load the package, use:
 
 ``` r
+
 library(srvyrexploR)
 ```
 
@@ -43,6 +45,7 @@ received permission to distribute this data for the purpose of the book.
 Once the package is loaded, you can use the data immediately as follows:
 
 ``` r
+
 head(anes_2020)
 #>   V200001 CaseID V200002 InterviewMode  V200010b    Weight V200010c VarUnit
 #> 1  200015 200015       3           Web 1.0057375 1.0057375        2       2
@@ -126,6 +129,7 @@ post-election interviews. To load this dataset, we recommend using the
 {haven} package as follows:
 
 ``` r
+
 anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
 ```
 
@@ -143,6 +147,7 @@ and methodology reports, and download the data (after registering). Once
 the package is loaded, you can use the data immediately as follows:
 
 ``` r
+
 head(anes_2024)
 #> # A tibble: 6 × 54
 #>   CaseID InterviewMode_Pre InterviewMode_Post Weight Stratum VarUnit
@@ -180,6 +185,7 @@ the full data available from 2021 at
 is reproduced here with permission from ICPSR.
 
 ``` r
+
 head(ncvs_2021_household)
 #> # A tibble: 6 × 12
 #>   YEARQ IDHH    WGTHHCY V2117 V2118 V2015 V2143 SC214A V2122 V2126B V2127B V2129
@@ -235,6 +241,7 @@ and
 [Codebook](https://www.samhsa.gov/data/system/files/media-puf-file/NSDUH-2023-DS0001-info-codebook_v1.pdf).
 
 ``` r
+
 head(nsduh_2023)
 #> # A tibble: 6 × 22
 #>   QUESTID2 ANALWT2_C VESTR_C VEREP NICVAPMON TOBMON ALCMON ILLMON ILTOBVAPALC
@@ -263,6 +270,7 @@ information about the original data is available at the [RECS
 website](https://www.eia.gov/consumption/residential/data/2020/).
 
 ``` r
+
 head(recs_2015)
 #> # A tibble: 6 × 141
 #>   DOEID REGIONC Region    Division MSAStatus Urbanicity HousingUnitType YearMade
@@ -331,6 +339,7 @@ files](https://healthpolicy.ucla.edu/our-work/public-use-files). See a
 snippet of the data below:
 
 ``` r
+
 head(chis_2023)
 #> # A tibble: 6 × 98
 #>   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2
@@ -360,11 +369,13 @@ To analyze the survey data, we recommend using the {srvyr} package as
 follows:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("gergness/srvyr")
 ```
 
 ``` r
+
 library(srvyr)
 
 recs_des <- recs_2020 %>%
