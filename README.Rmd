@@ -4,9 +4,14 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+
+  <!-- badges: start -->
+  [![R-CMD-check](https://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
 # srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
 
-```{r, include = FALSE}
+```{r}
 #| label: setup
 #| include: false
 knitr::opts_chunk$set(
@@ -50,7 +55,6 @@ The ANES 2020 data is based on the publicly available 2020 ANES data with additi
 
 ```{r}
 #| label: show-anes-2020
-
 head(anes_2020)
 ```
 
@@ -60,8 +64,11 @@ Also, included in the package is a Stata version of the ANES data with a subset 
 
 ```{r}
 #| label: anes-stata
-
-anes_stata <- haven::read_dta(system.file("extdata", "anes_2020_stata_example.dta", package = "srvyrexploR"))
+anes_stata <- haven::read_dta(system.file(
+  "extdata",
+  "anes_2020_stata_example.dta",
+  package = "srvyrexploR"
+))
 ```
 
 
@@ -71,7 +78,6 @@ The ANES 2024 data is based on the publicly available 2024 ANES data with additi
 
 ```{r}
 #| label: show-anes-2024
-
 head(anes_2024)
 ```
 
@@ -84,7 +90,6 @@ The NCVS data is based off of publicly available data for the 2021 NCVS. The NCV
 
 ```{r}
 #| label: ncvs-show
-
 head(ncvs_2021_household)
 head(ncvs_2021_person)
 head(ncvs_2021_incident)
@@ -96,7 +101,6 @@ The National Survey on Drug Use and Health (NSDUH) is an annual survey of the ci
 
 ```{r}
 #| label: nsduh-show
-
 head(nsduh_2023)
 ```
 
@@ -106,7 +110,6 @@ Three files are included associated with RECS - a dataset with the 2015 data wit
 
 ```{r}
 #| label: recs-show
-
 head(recs_2015)
 head(recs_2020)
 head(recs_2020_raw)
@@ -118,7 +121,6 @@ The CHIS data is a subset of variables from the 2023 California Health Interview
 
 ```{r}
 #| label: show-chis
-
 head(chis_2023)
 ```
 
@@ -140,8 +142,11 @@ library(srvyr)
 
 recs_des <- recs_2020 %>%
   as_survey_rep(
-    weights = NWEIGHT, repweights = NWEIGHT1:NWEIGHT60,
-    type = "JK1", scale = 59 / 60, mse = TRUE,
+    weights = NWEIGHT,
+    repweights = NWEIGHT1:NWEIGHT60,
+    type = "JK1",
+    scale = 59 / 60,
+    mse = TRUE,
     variables = c(ACUsed, Region)
   )
 
@@ -150,7 +155,12 @@ recs_des
 recs_des %>%
   group_by(Region) %>%
   summarize(
-    p = survey_mean(ACUsed, vartype = "ci", proportion = TRUE, prop_method = "logit")
+    p = survey_mean(
+      ACUsed,
+      vartype = "ci",
+      proportion = TRUE,
+      prop_method = "logit"
+    )
   )
 ```
 
