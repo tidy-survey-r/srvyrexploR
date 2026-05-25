@@ -1,11 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
+
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidy-survey-r/srvyrexploR/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
-
-# srvyrexploR <img src="man/figures/srvyrExplore.png" alt="Hex sticker for srvyrexploR package - a fake world with hills made out of pie charts, fields that look like matrix plots, and buildings that have error bars. A dragon in the water." align="right" height="149" width="149"/>
 
 The **srvyexploR** package provides datasets used in the book [Exploring
 Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr}
@@ -51,22 +52,76 @@ Once the package is loaded, you can use the data immediately as follows:
 
 ``` r
 head(anes_2020)
-#> # A tibble: 6 × 65
-#>   V200001 CaseID  V200002 InterviewMode V200010b Weight V200010c VarUnit V200010d
-#>     <dbl>  <dbl> <hvn_lb> <fct>            <dbl>  <dbl>    <dbl> <fct>      <dbl>
-#> 1  200015 200015        3 Web              1.01   1.01         2 2              9
-#> 2  200022 200022        3 Web              1.16   1.16         2 2             26
-#> 3  200039 200039        3 Web              0.769  0.769        1 1             41
-#> 4  200046 200046        3 Web              0.521  0.521        2 2             29
-#> 5  200053 200053        3 Web              0.966  0.966        1 1             23
-#> 6  200060 200060        3 Web              0.235  0.235        2 2             37
-#> # ℹ 56 more variables: Stratum <fct>, V201006 <hvn_lbll>,
-#> #   CampaignInterest <fct>, V201023 <hvn_lbll>, EarlyVote2020 <fct>,
-#> #   V201024 <hvn_lbll>, V201025x <hvn_lbll>, V201028 <hvn_lbll>,
-#> #   V201029 <hvn_lbll>, V201101 <hvn_lbll>, V201102 <hvn_lbll>,
-#> #   VotedPres2016 <fct>, V201103 <hvn_lbll>, VotedPres2016_selection <fct>,
-#> #   V201228 <hvn_lbll>, V201229 <hvn_lbll>, V201230 <hvn_lbll>,
-#> #   V201231x <hvn_lbll>, PartyID <fct>, V201233 <hvn_lbll>, …
+#>   V200001 CaseID V200002 InterviewMode  V200010b    Weight V200010c VarUnit
+#> 1  200015 200015       3           Web 1.0057375 1.0057375        2       2
+#> 2  200022 200022       3           Web 1.1634731 1.1634731        2       2
+#> 3  200039 200039       3           Web 0.7686811 0.7686811        1       1
+#> 4  200046 200046       3           Web 0.5210195 0.5210195        2       2
+#> 5  200053 200053       3           Web 0.9657892 0.9657892        1       1
+#> 6  200060 200060       3           Web 0.2347078 0.2347078        2       2
+#>   V200010d Stratum V201006     CampaignInterest V201023 EarlyVote2020 V201024
+#> 1        9       9       2  Somewhat interested      -1          <NA>      -1
+#> 2       26      26       3  Not much interested      -1          <NA>      -1
+#> 3       41      41       2  Somewhat interested      -1          <NA>      -1
+#> 4       29      29       3  Not much interested      -1          <NA>      -1
+#> 5       23      23       2  Somewhat interested      -1          <NA>      -1
+#> 6       37      37       1 Very much interested      -1          <NA>      -1
+#>   V201025x V201028 V201029 V201101 V201102 VotedPres2016 V201103
+#> 1        3      -1      -1      -1       1           Yes       2
+#> 2        3      -1      -1      -1       1           Yes       5
+#> 3        3      -1      -1      -1       1           Yes       1
+#> 4        3      -1      -1      -1       1           Yes       1
+#> 5        3      -1      -1      -1       1           Yes       2
+#> 6        3      -1      -1      -1       2            No      -1
+#>   VotedPres2016_selection V201228 V201229 V201230 V201231x
+#> 1                   Trump       2       1      -1        7
+#> 2                   Other       5      -1       2        4
+#> 3                 Clinton       3      -1       3        3
+#> 4                 Clinton       2       2      -1        6
+#> 5                   Trump       3      -1       2        4
+#> 6                    <NA>       3      -1       3        3
+#>                      PartyID V201233     TrustGovernment V201237
+#> 1          Strong republican       5               Never       3
+#> 2                Independent       5               Never       4
+#> 3       Independent-democrat       4    Some of the time       4
+#> 4 Not very strong republican       3 About half the time       2
+#> 5                Independent       5               Never       4
+#> 6       Independent-democrat       4    Some of the time       2
+#>           TrustPeople V201507x Age    AgeGroup V201510   Education V201546
+#> 1 About half the time       46  46       40-49       6  Bachelor's       1
+#> 2    Some of the time       37  37       30-39       3     Post HS       2
+#> 3    Some of the time       40  40       40-49       2 High school       2
+#> 4    Most of the time       41  41       40-49       4     Post HS       2
+#> 5    Some of the time       72  72 70 or older       8    Graduate       2
+#> 6    Most of the time       71  71 70 or older       3     Post HS       2
+#>   V201547a V201547b V201547c V201547d V201547e V201547z V201549x      RaceEth
+#> 1       -3       -3       -3       -3       -3       -3        3     Hispanic
+#> 2       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI
+#> 3       -3       -3       -3       -3       -3       -3        1        White
+#> 4       -3       -3       -3       -3       -3       -3        4 Asian, NH/PI
+#> 5       -3       -3       -3       -3       -3       -3        5        AI/AN
+#> 6       -3       -3       -3       -3       -3       -3        1        White
+#>   V201600 Gender V201607 V201610 V201611 V201613 V201615 V201616 V201617x
+#> 1       1   Male      -3      -3      -3      -3      -3      -3       21
+#> 2       2 Female      -3      -3      -3      -3      -3      -3       13
+#> 3       2 Female      -3      -3      -3      -3      -3      -3       17
+#> 4       1   Male      -3      -3      -3      -3      -3      -3        7
+#> 5       1   Male      -3      -3      -3      -3      -3      -3       22
+#> 6       2 Female      -3      -3      -3      -3      -3      -3        3
+#>             Income         Income7 V202051 V202066 V202072 VotedPres2020
+#> 1 $175,000-249,999   $125k or more      -1       1      -1          <NA>
+#> 2   $70,000-74,999   $60k to < 80k      -1       4       1           Yes
+#> 3 $100,000-109,999 $100k to < 125k      -1       4       1           Yes
+#> 4   $35,000-39,999   $20k to < 40k      -1       4       1           Yes
+#> 5 $250,000 or more   $125k or more      -1       4       1           Yes
+#> 6   $15,000-19,999      Under $20k      -1       4       1           Yes
+#>   V202073 V202109x V202110x VotedPres2020_selection
+#> 1      -1        0       -1                    <NA>
+#> 2       3        1        3                   Other
+#> 3       1        1        1                   Biden
+#> 4       1        1        1                   Biden
+#> 5       2        1        2                   Trump
+#> 6       1        1        1                   Biden
 ```
 
 See `?anes_2020` for more information about the data.
@@ -135,34 +190,34 @@ is reproduced here with permission from ICPSR.
 ``` r
 head(ncvs_2021_household)
 #> # A tibble: 6 × 12
-#>   YEARQ IDHH     WGTHHCY V2117 V2118 V2015 V2143 SC214A V2122 V2126B V2127B V2129
-#>   <dbl> <chr>      <dbl> <dbl> <dbl> <fct> <fct> <fct>  <fct> <fct>  <fct>  <fct>
-#> 1 2021. 1710051…      0    139     1 <NA>  3     12     33    0      2      3    
-#> 2 2021. 1710051…   1072.    63     2 2     2     8      32    17     2      1    
-#> 3 2021. 1710051…      0    140     1 <NA>  2     5      33    13     2      3    
-#> 4 2021. 1710051…      0    139     1 <NA>  3     13     33    0      2      3    
-#> 5 2021. 1710053…   1200.   138     1 1     2     11     29    18     2      1    
-#> 6 2021. 1710053…   1254.   138     1 1     2     8      24    13     2      2
+#>   YEARQ IDHH    WGTHHCY V2117 V2118 V2015 V2143 SC214A V2122 V2126B V2127B V2129
+#>   <dbl> <chr>     <dbl> <dbl> <dbl> <fct> <fct> <fct>  <fct> <fct>  <fct>  <fct>
+#> 1 2021. 171005…      0    139     1 <NA>  3     12     33    0      2      3    
+#> 2 2021. 171005…   1072.    63     2 2     2     8      32    17     2      1    
+#> 3 2021. 171005…      0    140     1 <NA>  2     5      33    13     2      3    
+#> 4 2021. 171005…      0    139     1 <NA>  3     13     33    0      2      3    
+#> 5 2021. 171005…   1200.   138     1 1     2     11     29    18     2      1    
+#> 6 2021. 171005…   1254.   138     1 1     2     8      24    13     2      2
 head(ncvs_2021_person)
 #> # A tibble: 6 × 11
-#>   YEARQ IDHH            IDPER WGTPERCY V3014 V3015 V3018 V3023A V3024 V3084 V3086
-#>   <dbl> <chr>           <chr>    <dbl> <dbl> <fct> <fct> <fct>  <fct> <fct> <fct>
-#> 1 2021. 17100513653680… 1710…    1216.    84 3     2     1      2     6     2    
-#> 2 2021. 17100539254580… 1710…    1362.    70 5     2     1      2     2     2    
-#> 3 2021. 17100539254580… 1710…       0     43 5     1     1      2     <NA>  <NA> 
-#> 4 2021. 17100539254580… 1710…       0     15 5     1     1      2     <NA>  <NA> 
-#> 5 2021. 17100539653454… 1710…    1422.    89 1     2     1      2     2     2    
-#> 6 2021. 17100539653454… 1710…       0     90 1     1     1      2     <NA>  <NA>
+#>   YEARQ IDHH           IDPER WGTPERCY V3014 V3015 V3018 V3023A V3024 V3084 V3086
+#>   <dbl> <chr>          <chr>    <dbl> <dbl> <fct> <fct> <fct>  <fct> <fct> <fct>
+#> 1 2021. 1710051365368… 1710…    1216.    84 3     2     1      2     6     2    
+#> 2 2021. 1710053925458… 1710…    1362.    70 5     2     1      2     2     2    
+#> 3 2021. 1710053925458… 1710…       0     43 5     1     1      2     <NA>  <NA> 
+#> 4 2021. 1710053925458… 1710…       0     15 5     1     1      2     <NA>  <NA> 
+#> 5 2021. 1710053965345… 1710…    1422.    89 1     2     1      2     2     2    
+#> 6 2021. 1710053965345… 1710…       0     90 1     1     1      2     <NA>  <NA>
 head(ncvs_2021_incident)
 #> # A tibble: 6 × 60
-#>   YEARQ IDHH      IDPER V4012 WGTVICCY V4016 V4017 V4018 V4019 V4021B V4022 V4024
-#>   <dbl> <chr>     <chr> <dbl>    <dbl> <dbl> <fct> <fct> <fct> <fct>  <fct> <fct>
-#> 1 2021. 17100713… 1710…     1    1780.     1 1     <NA>  <NA>  9      3     6    
-#> 2 2021. 17100719… 1710…     1    1990.     2 1     <NA>  <NA>  8      3     7    
-#> 3 2021. 17100719… 1710…     2    1990.     2 1     <NA>  <NA>  8      3     7    
-#> 4 2021. 17100739… 1710…     1    4653.     1 1     <NA>  <NA>  1      3     5    
-#> 5 2021. 17100741… 1710…     1    2302.     1 1     <NA>  <NA>  2      3     21   
-#> 6 2021. 17100746… 1710…     1    2308.     1 1     <NA>  <NA>  8      3     5    
+#>   YEARQ IDHH     IDPER V4012 WGTVICCY V4016 V4017 V4018 V4019 V4021B V4022 V4024
+#>   <dbl> <chr>    <chr> <dbl>    <dbl> <dbl> <fct> <fct> <fct> <fct>  <fct> <fct>
+#> 1 2021. 1710071… 1710…     1    1780.     1 1     <NA>  <NA>  9      3     6    
+#> 2 2021. 1710071… 1710…     1    1990.     2 1     <NA>  <NA>  8      3     7    
+#> 3 2021. 1710071… 1710…     2    1990.     2 1     <NA>  <NA>  8      3     7    
+#> 4 2021. 1710073… 1710…     1    4653.     1 1     <NA>  <NA>  1      3     5    
+#> 5 2021. 1710074… 1710…     1    2302.     1 1     <NA>  <NA>  2      3     21   
+#> 6 2021. 1710074… 1710…     1    2308.     1 1     <NA>  <NA>  8      3     5    
 #> # ℹ 48 more variables: V4049 <fct>, V4050 <fct>, V4051 <fct>, V4052 <fct>,
 #> #   V4053 <fct>, V4054 <fct>, V4055 <fct>, V4056 <fct>, V4057 <fct>,
 #> #   V4058 <fct>, V4234 <fct>, V4235 <fct>, V4241 <fct>, V4242 <fct>,
@@ -218,14 +273,14 @@ website](https://www.eia.gov/consumption/residential/data/2020/).
 ``` r
 head(recs_2015)
 #> # A tibble: 6 × 141
-#>   DOEID REGIONC Region    Division  MSAStatus Urbanicity HousingUnitType YearMade
-#>   <dbl>   <dbl> <fct>     <fct>     <fct>     <fct>      <fct>           <ord>   
-#> 1 10001       4 West      Pacific   Metropol… Urban Area Single-family … 2000-20…
-#> 2 10002       3 South     West Sou… None      Rural      Single-family … 1980-19…
-#> 3 10003       3 South     East Sou… Metropol… Urban Area Single-family … 1970-19…
-#> 4 10004       2 Midwest   West Nor… Micropol… Urban Clu… Single-family … 1950-19…
-#> 5 10005       1 Northeast Middle A… Metropol… Urban Area Single-family … 1970-19…
-#> 6 10006       1 Northeast New Engl… None      Urban Clu… Apartment: 5 o… 1980-19…
+#>   DOEID REGIONC Region    Division MSAStatus Urbanicity HousingUnitType YearMade
+#>   <dbl>   <dbl> <fct>     <fct>    <fct>     <fct>      <fct>           <ord>   
+#> 1 10001       4 West      Pacific  Metropol… Urban Area Single-family … 2000-20…
+#> 2 10002       3 South     West So… None      Rural      Single-family … 1980-19…
+#> 3 10003       3 South     East So… Metropol… Urban Area Single-family … 1970-19…
+#> 4 10004       2 Midwest   West No… Micropol… Urban Clu… Single-family … 1950-19…
+#> 5 10005       1 Northeast Middle … Metropol… Urban Area Single-family … 1970-19…
+#> 6 10006       1 Northeast New Eng… None      Urban Clu… Apartment: 5 o… 1980-19…
 #> # ℹ 133 more variables: SpaceHeatingUsed <lgl>, HeatingBehavior <fct>,
 #> #   WinterTempDay <dbl>, WinterTempAway <dbl>, WinterTempNight <dbl>,
 #> #   ACUsed <lgl>, ACBehavior <fct>, SummerTempDay <dbl>, SummerTempAway <dbl>,
@@ -235,14 +290,14 @@ head(recs_2015)
 #> #   BRRWT8 <dbl>, BRRWT9 <dbl>, BRRWT10 <dbl>, BRRWT11 <dbl>, BRRWT12 <dbl>, …
 head(recs_2020)
 #> # A tibble: 6 × 100
-#>    DOEID ClimateRegion_BA Urbanicity Region    REGIONC   Division      STATE_FIPS
-#>    <dbl> <fct>            <fct>      <fct>     <chr>     <fct>         <chr>     
-#> 1 100001 Mixed-Dry        Urban Area West      WEST      Mountain Sou… 35        
-#> 2 100002 Mixed-Humid      Urban Area South     SOUTH     West South C… 05        
-#> 3 100003 Mixed-Dry        Urban Area West      WEST      Mountain Sou… 35        
-#> 4 100004 Mixed-Humid      Urban Area South     SOUTH     South Atlant… 45        
-#> 5 100005 Mixed-Humid      Urban Area Northeast NORTHEAST Middle Atlan… 34        
-#> 6 100006 Hot-Humid        Urban Area South     SOUTH     West South C… 48        
+#>    DOEID ClimateRegion_BA Urbanicity Region    REGIONC   Division     STATE_FIPS
+#>    <dbl> <fct>            <fct>      <fct>     <chr>     <fct>        <chr>     
+#> 1 100001 Mixed-Dry        Urban Area West      WEST      Mountain So… 35        
+#> 2 100002 Mixed-Humid      Urban Area South     SOUTH     West South … 05        
+#> 3 100003 Mixed-Dry        Urban Area West      WEST      Mountain So… 35        
+#> 4 100004 Mixed-Humid      Urban Area South     SOUTH     South Atlan… 45        
+#> 5 100005 Mixed-Humid      Urban Area Northeast NORTHEAST Middle Atla… 34        
+#> 6 100006 Hot-Humid        Urban Area South     SOUTH     West South … 48        
 #> # ℹ 93 more variables: state_postal <fct>, state_name <fct>, HDD65 <dbl>,
 #> #   CDD65 <dbl>, HDD30YR <dbl>, CDD30YR <dbl>, HousingUnitType <fct>,
 #> #   YearMade <ord>, TOTSQFT_EN <dbl>, TOTHSQFT <dbl>, TOTCSQFT <dbl>,
@@ -252,14 +307,14 @@ head(recs_2020)
 #> #   SummerTempNight <dbl>, NWEIGHT <dbl>, NWEIGHT1 <dbl>, NWEIGHT2 <dbl>, …
 head(recs_2020_raw)
 #> # A tibble: 6 × 789
-#>    DOEID REGIONC   DIVISION         STATE_FIPS state_postal state_name BA_climate
-#>    <dbl> <chr>     <chr>            <chr>      <chr>        <chr>      <chr>     
-#> 1 100001 WEST      Mountain South   35         NM           New Mexico Mixed-Dry 
-#> 2 100002 SOUTH     West South Cent… 05         AR           Arkansas   Mixed-Hum…
-#> 3 100003 WEST      Mountain South   35         NM           New Mexico Mixed-Dry 
-#> 4 100004 SOUTH     South Atlantic   45         SC           South Car… Mixed-Hum…
-#> 5 100005 NORTHEAST Middle Atlantic  34         NJ           New Jersey Mixed-Hum…
-#> 6 100006 SOUTH     West South Cent… 48         TX           Texas      Hot-Humid 
+#>    DOEID REGIONC   DIVISION        STATE_FIPS state_postal state_name BA_climate
+#>    <dbl> <chr>     <chr>           <chr>      <chr>        <chr>      <chr>     
+#> 1 100001 WEST      Mountain South  35         NM           New Mexico Mixed-Dry 
+#> 2 100002 SOUTH     West South Cen… 05         AR           Arkansas   Mixed-Hum…
+#> 3 100003 WEST      Mountain South  35         NM           New Mexico Mixed-Dry 
+#> 4 100004 SOUTH     South Atlantic  45         SC           South Car… Mixed-Hum…
+#> 5 100005 NORTHEAST Middle Atlantic 34         NJ           New Jersey Mixed-Hum…
+#> 6 100006 SOUTH     West South Cen… 48         TX           Texas      Hot-Humid 
 #> # ℹ 782 more variables: IECC_climate_code <chr>, UATYP10 <chr>, HDD65 <dbl>,
 #> #   CDD65 <dbl>, HDD30YR_PUB <dbl>, CDD30YR_PUB <dbl>, TYPEHUQ <dbl>,
 #> #   CELLAR <dbl>, CRAWL <dbl>, CONCRETE <dbl>, BASEOTH <dbl>, BASEFIN <dbl>,
@@ -286,21 +341,21 @@ snippet of the data below:
 ``` r
 head(chis_2023)
 #> # A tibble: 6 × 98
-#>   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1     DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2
-#>   <chr>    <fct> <fct> <fct>    <fct>   <fct>    <dbl> <fct> <fct> <fct>   <fct> 
-#> 1 23021436 Yes   No    No       Very g… No        35.6 Obes… No    No      No    
-#> 2 23009146 Yes   No    No       Excell… No        23.0 Norm… No    No      No    
-#> 3 23005039 Yes   No    No       Good    No        25.6 Over… Yes   No      Borde…
-#> 4 23025815 Yes   Yes   No       Fair    No        42.5 Obes… No    No      Borde…
-#> 5 23010158 Yes   No    No       Good    Yes       24.7 Norm… No    No      Yes   
-#> 6 23006250 Yes   No    No       Excell… No        19.1 Norm… No    No      No    
+#>   PUF1Y_ID AH1V2 AH22  SMKCUR30 AB1    DIABETES BMI_P RBMI  AB17  DSTRS12 AB29V2
+#>   <chr>    <fct> <fct> <fct>    <fct>  <fct>    <dbl> <fct> <fct> <fct>   <fct> 
+#> 1 23021436 Yes   No    No       Very … No        35.6 Obes… No    No      No    
+#> 2 23009146 Yes   No    No       Excel… No        23.0 Norm… No    No      No    
+#> 3 23005039 Yes   No    No       Good   No        25.6 Over… Yes   No      Borde…
+#> 4 23025815 Yes   Yes   No       Fair   No        42.5 Obes… No    No      Borde…
+#> 5 23010158 Yes   No    No       Good   Yes       24.7 Norm… No    No      Yes   
+#> 6 23006250 Yes   No    No       Excel… No        19.1 Norm… No    No      No    
 #> # ℹ 87 more variables: SPK_ENG <fct>, POVLL2_P1V2 <dbl>, POVLL <fct>,
 #> #   SRAGE_P1 <ord>, SRSEX <fct>, OMBSRR_P1 <fct>, RAKEDW0 <dbl>, RAKEDW1 <dbl>,
 #> #   RAKEDW2 <dbl>, RAKEDW3 <dbl>, RAKEDW4 <dbl>, RAKEDW5 <dbl>, RAKEDW6 <dbl>,
-#> #   RAKEDW7 <dbl>, RAKEDW8 <dbl>, RAKEDW9 <dbl>, RAKEDW10 <dbl>, RAKEDW11 <dbl>,
-#> #   RAKEDW12 <dbl>, RAKEDW13 <dbl>, RAKEDW14 <dbl>, RAKEDW15 <dbl>,
-#> #   RAKEDW16 <dbl>, RAKEDW17 <dbl>, RAKEDW18 <dbl>, RAKEDW19 <dbl>,
-#> #   RAKEDW20 <dbl>, RAKEDW21 <dbl>, RAKEDW22 <dbl>, RAKEDW23 <dbl>, …
+#> #   RAKEDW7 <dbl>, RAKEDW8 <dbl>, RAKEDW9 <dbl>, RAKEDW10 <dbl>,
+#> #   RAKEDW11 <dbl>, RAKEDW12 <dbl>, RAKEDW13 <dbl>, RAKEDW14 <dbl>,
+#> #   RAKEDW15 <dbl>, RAKEDW16 <dbl>, RAKEDW17 <dbl>, RAKEDW18 <dbl>,
+#> #   RAKEDW19 <dbl>, RAKEDW20 <dbl>, RAKEDW21 <dbl>, RAKEDW22 <dbl>, …
 ```
 
 See `?chis_2023` for more information about the data.
@@ -332,16 +387,17 @@ recs_des
 #> Call: Called via srvyr
 #> Unstratified cluster jacknife (JK1) with 60 replicates and MSE variances.
 #> Sampling variables:
-#>   - repweights: `NWEIGHT1 + NWEIGHT2 + NWEIGHT3 + NWEIGHT4 + NWEIGHT5 + NWEIGHT6
-#>     + NWEIGHT7 + NWEIGHT8 + NWEIGHT9 + NWEIGHT10 + NWEIGHT11 + NWEIGHT12 +
-#>     NWEIGHT13 + NWEIGHT14 + NWEIGHT15 + NWEIGHT16 + NWEIGHT17 + NWEIGHT18 +
-#>     NWEIGHT19 + NWEIGHT20 + NWEIGHT21 + NWEIGHT22 + NWEIGHT23 + NWEIGHT24 +
-#>     NWEIGHT25 + NWEIGHT26 + NWEIGHT27 + NWEIGHT28 + NWEIGHT29 + NWEIGHT30 +
-#>     NWEIGHT31 + NWEIGHT32 + NWEIGHT33 + NWEIGHT34 + NWEIGHT35 + NWEIGHT36 +
-#>     NWEIGHT37 + NWEIGHT38 + NWEIGHT39 + NWEIGHT40 + NWEIGHT41 + NWEIGHT42 +
-#>     NWEIGHT43 + NWEIGHT44 + NWEIGHT45 + NWEIGHT46 + NWEIGHT47 + NWEIGHT48 +
-#>     NWEIGHT49 + NWEIGHT50 + NWEIGHT51 + NWEIGHT52 + NWEIGHT53 + NWEIGHT54 +
-#>     NWEIGHT55 + NWEIGHT56 + NWEIGHT57 + NWEIGHT58 + NWEIGHT59 + NWEIGHT60` 
+#>   - repweights: `NWEIGHT1 + NWEIGHT2 + NWEIGHT3 + NWEIGHT4 + NWEIGHT5 +
+#>     NWEIGHT6 + NWEIGHT7 + NWEIGHT8 + NWEIGHT9 + NWEIGHT10 + NWEIGHT11 +
+#>     NWEIGHT12 + NWEIGHT13 + NWEIGHT14 + NWEIGHT15 + NWEIGHT16 + NWEIGHT17 +
+#>     NWEIGHT18 + NWEIGHT19 + NWEIGHT20 + NWEIGHT21 + NWEIGHT22 + NWEIGHT23 +
+#>     NWEIGHT24 + NWEIGHT25 + NWEIGHT26 + NWEIGHT27 + NWEIGHT28 + NWEIGHT29 +
+#>     NWEIGHT30 + NWEIGHT31 + NWEIGHT32 + NWEIGHT33 + NWEIGHT34 + NWEIGHT35 +
+#>     NWEIGHT36 + NWEIGHT37 + NWEIGHT38 + NWEIGHT39 + NWEIGHT40 + NWEIGHT41 +
+#>     NWEIGHT42 + NWEIGHT43 + NWEIGHT44 + NWEIGHT45 + NWEIGHT46 + NWEIGHT47 +
+#>     NWEIGHT48 + NWEIGHT49 + NWEIGHT50 + NWEIGHT51 + NWEIGHT52 + NWEIGHT53 +
+#>     NWEIGHT54 + NWEIGHT55 + NWEIGHT56 + NWEIGHT57 + NWEIGHT58 + NWEIGHT59 +
+#>     NWEIGHT60` 
 #>   - weights: NWEIGHT 
 #> Data variables: 
 #>   - ACUsed (lgl), Region (fct)
