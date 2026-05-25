@@ -24,6 +24,8 @@ knitr::opts_chunk$set(
   fig.align = "center",
   tidy = "styler"
 )
+options(tibble.print_max = 10, tibble.print_min = 5)
+
 ```
 
 The **srvyexploR** package provides datasets used in the book [Exploring Complex Survey Data Analysis Using R: A Tidy Introduction with {srvyr} and {survey}](https://tidy-survey-r.github.io/tidy-survey-book/). This will help readers follow along with the examples and work through the exercises.
@@ -54,7 +56,8 @@ The ANES 2020 data is based on the publicly available 2020 ANES data with additi
 
 ```{r}
 #| label: show-anes-2020
-head(anes_2020)
+library(tibble)
+anes_2020
 ```
 
 See `?anes_2020` for more information about the data.
@@ -77,7 +80,7 @@ The ANES 2024 data is based on the publicly available 2024 ANES data with additi
 
 ```{r}
 #| label: show-anes-2024
-head(anes_2024)
+anes_2024
 ```
 
 See `?anes_2024` for more information about the data.
@@ -89,9 +92,9 @@ The NCVS data is based off of publicly available data for the 2021 NCVS. The NCV
 
 ```{r}
 #| label: ncvs-show
-head(ncvs_2021_household)
-head(ncvs_2021_person)
-head(ncvs_2021_incident)
+ncvs_2021_household
+ncvs_2021_person
+ncvs_2021_incident
 ```
 
 ### NSDUH
@@ -100,7 +103,7 @@ The National Survey on Drug Use and Health (NSDUH) is an annual survey of the ci
 
 ```{r}
 #| label: nsduh-show
-head(nsduh_2023)
+nsduh_2023
 ```
 
 ### RECS
@@ -109,9 +112,9 @@ Three files are included associated with RECS - a dataset with the 2015 data wit
 
 ```{r}
 #| label: recs-show
-head(recs_2015)
-head(recs_2020)
-head(recs_2020_raw)
+recs_2015
+recs_2020
+recs_2020_raw
 ```
 
 ### CHIS
@@ -120,7 +123,7 @@ The CHIS data is a subset of variables from the 2023 California Health Interview
 
 ```{r}
 #| label: show-chis
-head(chis_2023)
+chis_2023
 ```
 
 See `?chis_2023` for more information about the data.
