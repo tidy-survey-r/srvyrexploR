@@ -347,64 +347,67 @@
 
 #' @title American National Election Studies (ANES) (2024) data
 #' @description Based on the 2024 ANES data with derived variables and subset to people who completed both pre and post-election interviews
-#' @format A data frame with 4964 rows and 54 variables:
+#' @format A data frame with 4764 rows and 60 variables:
 #' \describe{
-#'   \item{\code{CaseID}}{double CASEID}
-#'   \item{\code{InterviewMode_Pre}}{Factor MODE OF INTERVIEW: PRE-ELECTION INTERVIEW}
-#'   \item{\code{InterviewMode_Post}}{Factor MODE OF INTERVIEW: POST-ELECTION INTERVIEW}
-#'   \item{\code{Weight}}{double FULL SAMPLE POST-ELECTION WEIGHT}
-#'   \item{\code{Stratum}}{double FULL SAMPLE VARIANCE STRATUM}
-#'   \item{\code{VarUnit}}{double FULL SAMPLE VARIANCE UNIT}
-#'   \item{\code{CampaignInterest}}{Factor PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS}
-#'   \item{\code{VotedPres2020}}{Factor PRE: DID R VOTE FOR PRESIDENT IN 2020 (REVISED)}
-#'   \item{\code{VotedPres2020_selection}}{Factor PRE: RECALL OF LAST (2020) PRESIDENTIAL VOTE CHOICE}
-#'   \item{\code{PartyID}}{Factor PRE: SUMMARY: PARTY ID}
-#'   \item{\code{TrustGovernment}}{Factor PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT (REVISED)}
-#'   \item{\code{TrustPeople}}{Factor PRE: HOW OFTEN CAN PEOPLE BE TRUSTED}
-#'   \item{\code{Age}}{double PRE: SUMMARY: RESPONDENT AGE}
-#'   \item{\code{Education}}{double PRE: HIGHEST LEVEL OF EDUCATION}
-#'   \item{\code{RaceEth}}{Factor PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY}
-#'   \item{\code{Sex}}{Factor PRE: WHAT IS YOUR (R) SEX? (REVISED)}
-#'   \item{\code{Income}}{Factor PRE: SUMMARY: TOTAL (FAMILY) INCOME}
-#'   \item{\code{EarlyVote2024}}{Factor PRE: DID R ALREADY VOTE}
-#'   \item{\code{Post_Vote24}}{Factor POST: DID R VOTE IN NOVEMBER 2024 ELECTION}
-#'   \item{\code{Pre_VotePres24}}{Factor PRE: DID R VOTE FOR PRESIDENT}
-#'   \item{\code{Post_VotePres24}}{Factor POST: DID R VOTE FOR PRESIDENT}
+#'   \item{\code{CaseID}}{double 2024 Time Series Case ID}
+#'   \item{\code{Weight}}{double Post-election raked weight: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{Stratum}}{double Stratum: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{VarUnit}}{double PSU: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{InterviewMode_Pre}}{Factor Mode of interview: pre-election interview}
+#'   \item{\code{InterviewMode_Post}}{Factor Mode of interview: post-election interview}
+#'   \item{\code{CampaignInterest}}{Factor PRE: How interested in following campaigns}
+#'   \item{\code{VotedPres2020}}{Factor PRE: Did R vote for President in 2020 \[revised\]}
+#'   \item{\code{VotedPres2020_selection}}{Factor PRE: Recall of last (2020) Presidential vote choice}
+#'   \item{\code{PartyID}}{Factor PRE: SUMMARY: Party ID}
+#'   \item{\code{TrustGovernment}}{Factor PRE: How often trust government in Washington to do what is right \[revised\]}
+#'   \item{\code{TrustPeople}}{Factor PRE: How often can people be trusted}
+#'   \item{\code{Age}}{double Respondent age on Election Day}
+#'   \item{\code{RaceEth}}{Factor PRE: SUMMARY: R self-identified race/ethnicity}
+#'   \item{\code{Sex}}{Factor PRE: What is R's sex? \[revised\]}
+#'   \item{\code{Income}}{Factor PRE: SUMMARY: Total (household) income}
+#'   \item{\code{EarlyVote}}{Factor PRE: Already voted in General Election}
+#'   \item{\code{EarlyVoteGeneral}}{Factor PRE: Confirmation voted (early) in November 5 election}
+#'   \item{\code{Post_Vote24}}{Factor POST: Did R vote in the 2024 election}
+#'   \item{\code{Pre_VotePres24}}{Factor PRE: Did R vote for President}
+#'   \item{\code{Post_VotePres24}}{Factor POST: Did R vote for President}
 #'   \item{\code{VotedPres2024_selection}}{Factor PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE}
-#'   \item{\code{AgeGroup}}{Factor PRE: SUMMARY: RESPONDENT AGE (categorized)}
-#'   \item{\code{EducationGroup}}{Factor PRE: HIGHEST LEVEL OF EDUCATION (categorized)}
-#'   \item{\code{Income7}}{Factor PRE: SUMMARY: TOTAL (FAMILY) INCOME (7 categories)}
-#'   \item{\code{VotedPres2024}}{Factor POST: DID R VOTE FOR PRESIDENT}
-#'   \item{\code{V240001}}{double CASEID}
-#'   \item{\code{V240002a}}{double MODE OF INTERVIEW: PRE-ELECTION INTERVIEW}
-#'   \item{\code{V240002b}}{double MODE OF INTERVIEW: POST-ELECTION INTERVIEW}
-#'   \item{\code{V240108b}}{double FULL SAMPLE POST-ELECTION WEIGHT}
-#'   \item{\code{V240108d}}{double FULL SAMPLE VARIANCE STRATUM}
-#'   \item{\code{V240108c}}{double FULL SAMPLE VARIANCE UNIT}
-#'   \item{\code{V241005}}{double PRE: HOW INTERESTED IN FOLLOWING CAMPAIGNS}
-#'   \item{\code{V241103}}{double PRE: DID R VOTE FOR PRESIDENT IN 2020 (REVISED)}
-#'   \item{\code{V241104}}{double PRE: RECALL OF LAST (2020) PRESIDENTIAL VOTE CHOICE}
-#'   \item{\code{V241038}}{double PRE: DID R VOTE FOR PRESIDENT}
-#'   \item{\code{V241221}}{double PRE: PARTY ID}
-#'   \item{\code{V241222}}{double PRE: PARTY ID STRONG}
-#'   \item{\code{V241223}}{double PRE: PARTY ID LEAN}
-#'   \item{\code{V241227x}}{double PRE: SUMMARY: PARTY ID}
-#'   \item{\code{V241229}}{double PRE: HOW OFTEN TRUST GOVERNMENT IN WASHINGTON TO DO WHAT IS RIGHT (REVISED)}
-#'   \item{\code{V241234}}{double PRE: HOW OFTEN CAN PEOPLE BE TRUSTED}
-#'   \item{\code{V241458x}}{double PRE: SUMMARY: RESPONDENT AGE}
-#'   \item{\code{V241463}}{double PRE: HIGHEST LEVEL OF EDUCATION}
-#'   \item{\code{V241499}}{double PRE: HISPANIC ETHNICITY}
-#'   \item{\code{V241501x}}{double PRE: SUMMARY: R SELF-IDENTIFIED RACE/ETHNICITY}
-#'   \item{\code{V241550}}{double PRE: WHAT IS YOUR (R) SEX? (REVISED)}
-#'   \item{\code{V241566x}}{double PRE: SUMMARY: TOTAL (FAMILY) INCOME}
-#'   \item{\code{V242065}}{double POST: DID R VOTE IN NOVEMBER 2024 ELECTION}
-#'   \item{\code{V241035}}{double PRE: DID R ALREADY VOTE}
-#'   \item{\code{V241037}}{double PRE: HOW VOTE}
-#'   \item{\code{V242051}}{double POST: REGISTERED TO VOTE}
-#'   \item{\code{V242095x}}{double PRE-POST: SUMMARY: VOTER TURNOUT IN 2020}
-#'   \item{\code{V242066}}{double POST: DID R VOTE FOR PRESIDENT}
-#'   \item{\code{V241039}}{double PRE: FOR WHOM DID R VOTE FOR PRESIDENT (2024)}
-#'   \item{\code{V242067}}{double POST: FOR WHOM DID R VOTE FOR PRESIDENT (2024)}
+#'   \item{\code{AgeGroup}}{Factor Respondent age on Election Day (categorized)}
+#'   \item{\code{EducationGroup}}{Factor Highest level of education (categorized)}
+#'   \item{\code{Income7}}{Factor PRE: SUMMARY: Total (household) income}
+#'   \item{\code{EarlyVote2024}}{character PRE: DID R ALREADY VOTE}
+#'   \item{\code{Voted2024}}{character Voted in 2024 election}
+#'   \item{\code{VotedPres2024}}{character Voted for president in 2024 election}
+#'   \item{\code{V240001}}{double 2024 Time Series Case ID}
+#'   \item{\code{V240002a}}{double Mode of interview: pre-election interview}
+#'   \item{\code{V240002b}}{double Mode of interview: post-election interview}
+#'   \item{\code{V240108b}}{double Post-election raked weight: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{V240108d}}{double Stratum: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{V240108c}}{double PSU: Face-to-Face (FTF), Web, & 2016-2024 Panel samples combined \[FINAL\]}
+#'   \item{\code{V241005}}{double PRE: How interested in following campaigns}
+#'   \item{\code{V241103}}{double PRE: Did R vote for President in 2020 \[revised\]}
+#'   \item{\code{V241104}}{double PRE: Recall of last (2020) Presidential vote choice}
+#'   \item{\code{V241038}}{double PRE: Did R vote for President}
+#'   \item{\code{V241221}}{double PRE: Party ID: Does R think of self as Democrat, Republican, or Independent}
+#'   \item{\code{V241222}}{double PRE: Party Identification strong - Democrat Republican}
+#'   \item{\code{V241223}}{double PRE: No Party Identification - closer to Democratic Party or Republican Party}
+#'   \item{\code{V241227x}}{double PRE: SUMMARY: Party ID}
+#'   \item{\code{V241229}}{double PRE: How often trust government in Washington to do what is right \[revised\]}
+#'   \item{\code{V241234}}{double PRE: How often can people be trusted}
+#'   \item{\code{V241458x}}{double PRE: SUMMARY: Respondent age on Election Day}
+#'   \item{\code{V241463}}{double PRE: Highest level of education}
+#'   \item{\code{V241499}}{double PRE: R: Are you Spanish, Hispanic, or Latino}
+#'   \item{\code{V241501x}}{double PRE: SUMMARY: R self-identified race/ethnicity}
+#'   \item{\code{V241550}}{double PRE: What is R's sex? \[revised\]}
+#'   \item{\code{V241566x}}{double PRE: SUMMARY: Total (household) income}
+#'   \item{\code{V242065}}{double POST: Did R vote in the 2024 election}
+#'   \item{\code{V241035}}{double PRE: Already voted in General Election}
+#'   \item{\code{V241036}}{double PRE: Confirmation voted (early) in November 5 election}
+#'   \item{\code{V241037}}{double PRE: In what manner did R vote}
+#'   \item{\code{V242051}}{double POST: Is R registered to vote}
+#'   \item{\code{V242095x}}{double PRE-POST: SUMMARY: VOTER TURNOUT IN 2024}
+#'   \item{\code{V242066}}{double POST: Did R vote for President}
+#'   \item{\code{V241039}}{double PRE: For whom did R vote for President}
+#'   \item{\code{V242067}}{double POST: For whom did R vote for President}
 #'   \item{\code{V242096x}}{double PRE-POST: SUMMARY: 2024 PRESIDENTIAL VOTE}
 #'  }
 #' @source \url{https://electionstudies.org/data-center/2024-time-series-study/}
